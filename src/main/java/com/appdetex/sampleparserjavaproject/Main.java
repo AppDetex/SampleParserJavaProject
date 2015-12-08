@@ -1,12 +1,15 @@
 
-package com.appde.M<tex.sampleparserjavaproject;
+package com.appdetex.sampleparserjavaproject;
+
 import java.io.IOException;
 
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
+import org.jsoup.select.Elements;
 
 /**
+ * 
  * Main Java Class This class will use Jsoup to retrieve a provided URL and
  * parse out certain data, printing that data to stdout in a JSON format.
  */
@@ -16,7 +19,8 @@ public class Main {
 	public static final String RATING_DIV = "div[class=score]";
 	public static final String PUBLISHER_DIV = "span[itemprop=name]";
 	public static final String PRICE_META = "meta[itemprop=price]";
-	public static final String P_TAG = "<\\/?[^>]+>";
+	private static String singleLineREGX = "[\r\n]+"; // regex to remove return
+														// carriage & new line
 
 	/**
 	 * main method
@@ -33,24 +37,26 @@ public class Main {
 		}
 
 		try {
-			String appURL = args[0];
-			Document doc = Jsoup.connect(appURL).get();
+				String appURL = args[0];
+				Document doc = Jsoup.connect(appURL).get();
 
-			builder.append("{\n\"title\": " + "\"" + formatTitle(doc.title()) + "\",\n");
+				builder.append("{\n \"title\": " + "\"" + formatTitle(doc.title()) + "\",\n");
 
-			String descriptionBody = doc.select(DESCRIPTION_DIV).html();
-			String cleanBody = Jsoup.clean(descriptionBody.toString(), Whitelist.basic());
-			builder.append("\"description\": " + "\"" + cleanBody.replaceAll(P_TAG, "").trim() + "\",\n");
+				Elements descriptionBody = doc.select(DESCRIPTION_DIV);
 
-			String appPublisher = doc.select(PUBLISHER_DIV).text();
-			builder.append("\"publisher\": " + "\"" + appPublisher + "\",\n");
+				String cleanBody = Jsoup.clean(descriptionBody.html(), "", Whitelist.basic().removeTags("p"));
 
-			String appPrice = doc.select(PRICE_META).first().attr("content");
-			builder.append("\"price\": " + "\"" + formatPrice(appPrice) + "\",\n");
+				builder.append(" \"description\": " + "\"" + deepClean(cleanBody) + "\",\n");
 
-			double appRating = Double.parseDouble(doc.select(RATING_DIV).text());
-			builder.append("\"rating\": " + appRating + "\n}");
-			System.out.println(builder);
+				String appPublisher = doc.select(PUBLISHER_DIV).text();
+				builder.append(" \"publisher\": " + "\"" + appPublisher + "\",\n");
+
+				String appPrice = doc.select(PRICE_META).first().attr("content");
+				builder.append(" \"price\": " + "\"" + priceLabel(appPrice) + "\",\n");
+
+				double appRating = Double.parseDouble(doc.select(RATING_DIV).text());
+				builder.append(" \"rating\": " + appRating + "\n}");
+				System.out.println(builder);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -59,7 +65,26 @@ public class Main {
 
 	}
 
-	private static String formatPrice(String price) {
+	/**
+	 * Converts the string to a single line and replaces double quotes.
+	 * 
+	 * @param string
+	 *            - string to clean
+	 * @return sanitized string.
+	 */
+	private static String deepClean(String string) {
+		return string.replaceAll(singleLineREGX, "").replace("\"", ""); // replace
+																		// "" (double quotes);
+	}
+
+	/**
+	 * Determines the price label
+	 * 
+	 * @param price
+	 * @return "Free" if price contains no dollar value; otherwise the dollar
+	 *         value as a string(with $).
+	 */
+	private static String priceLabel(String price) {
 		StringBuilder builder = new StringBuilder("");
 		if (price.charAt(0) != '$') {
 			return builder.append("Free").toString();
@@ -67,6 +92,13 @@ public class Main {
 		return price;
 	}
 
+	/**
+	 * Formats the title to only include the app's title
+	 * 
+	 * @param docTitle
+	 *            - Jsoup Document title
+	 * @return - String containing just the app's name.
+	 */
 	private static String formatTitle(String docTitle) {
 		return docTitle.substring(0, docTitle.indexOf('-')).trim();
 	}
