@@ -44,7 +44,7 @@ public class Main {
 
 				Elements descriptionBody = doc.select(DESCRIPTION_DIV);
 
-				String cleanBody = Jsoup.clean(descriptionBody.html(), "", Whitelist.basic().removeTags("p"));
+				String cleanBody = Jsoup.clean(descriptionBody.html(), "", Whitelist.basic().removeTags("p").removeTags("a"));
 
 				builder.append(" \"description\": " + "\"" + deepClean(cleanBody) + "\",\n");
 
