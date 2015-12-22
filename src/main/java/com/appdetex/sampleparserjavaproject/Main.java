@@ -44,7 +44,8 @@ public class Main {
          */
 
         //title
-        String title = doc.title();
+        Elements titleElements = doc.select("h1.document-title");
+        String title = titleElements.first().text();
         json.put("title", title);
 
         //description
@@ -67,6 +68,9 @@ public class Main {
         String priceBuy = priceButtonElems.first().text();
         // take substring because we don't need "Buy" in our output
         String price = priceBuy.substring(0, priceBuy.length()-4);
+        if (price.equals("Ins")){
+            price = "Free";
+        }
         json.put("price", price);
 
         //rating
