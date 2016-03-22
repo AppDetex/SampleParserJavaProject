@@ -10,7 +10,16 @@ package com.appdetex.sampleparserjavaproject;
 public class Main {
 
     public static void main( String[] args ) {
-        // Put code here
+        if (args.length != 1) {
+        	printUsage();
+        	System.exit(1);
+        }
+        MobileApp mobileApp = new MobileApp(args[0]);
+        mobileApp.parseInfo();
     }
 
+    private static void printUsage() {
+        System.out.println("Usage: Main [ https://play.google.com/store/your/url ]");
+    }
 }
+
