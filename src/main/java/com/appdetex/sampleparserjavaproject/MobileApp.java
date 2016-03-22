@@ -2,10 +2,12 @@ package com.appdetex.sampleparserjavaproject;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.json.simple.JSONObject;
+
 //import org.jsoup.nodes.Element;
 //import org.jsoup.select.Elements;
-
 import java.io.IOException;
+
 
 public class MobileApp {
 
@@ -16,6 +18,8 @@ public class MobileApp {
     private String publisher;
     private String price;
     private String rating;
+    
+    private JSONObject object = new JSONObject();
 
 
     MobileApp (String url) {
@@ -32,13 +36,24 @@ public class MobileApp {
             price = document.select("meta[itemprop=price]").get(0).attr("content");
             rating = document.select("div[class=score").text();
             //System.out.println(document);
-            printResults();
+            //printResults();
+            jsonEncode();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void jsonEncode() {
+    	object.put("title", title);
+    	object.put("description", description);
+    	object.put("publisher", publisher);
+    	object.put("price", price);
+    	object.put("rating", rating);
+    	
+    	System.out.println(object.toJSONString());	
+    }
+    
     public void printResults() {
         System.out.println("");
         System.out.println("title: " + title);
