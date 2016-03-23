@@ -1,0 +1,26 @@
+
+***************************************
+* AppDetex - Sample Parser Java Project
+* Connor Silkworth
+* 23 March, 2016
+***************************************
+
+===================
+PROJECT DESCRIPTION
+===================
+
+    This project is a web scraper utility for the Google Play App store. It takes a URL as input and uses Jsoup to parse necessary application information including title, description, publisher, price, and rating from the store's page. This information is then converted to a JSON formatted string, UTF-8 encoded.
+
+    I chose to encode the strings in UTF-8 because it is the dominant character encoding for the WWWW.
+    
+====================
+BUILDING AND RUNNING
+====================
+
+    This project uses Maven for project management. To build the project navigate to the top level directory:
+
+        mvn clean install
+
+    To run the program:
+
+        mvn exec:java -Dexec.mainClass="com.appdetex.sampleparserjavaproject.Main" -Dexec.args="https://your/desired/Google/Play/URL"
