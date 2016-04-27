@@ -1,0 +1,100 @@
+=========================
+Author:
+Ashish Sharma
+Boise State University
+=========================
+
+APPDETEX Interview Assignment:
+------------------------------
+April 26, 2016
+--------------
+
+Build And Run:
+-------------
+You must create a package (.jar file) and run it using the commands as instructed below. The maven pom.xml contains all the dependencies that this project needs. 
+
+Please use sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar" file to run the program as instructed below.
+
+Go to the root directory of the project (i.e. /sampleparserjavaproject), then run the following commands:
+
+i) To crawl a single url
+$ mvn package
+$ java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar -lu <url>
+
+
+i) To crawl a multiple urls
+$ mvn package
+$ java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar -lu "<url1> <url2> <url3>"
+Note: Pass the space delimited urls wrapped up inside the inverted commas. My command line argument parser will it properly and another reason is to avoid to run the process in background job as URLs might
+contain "&" characters.
+
+
+Example: 
+i) Single URL
+$ java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar -lu https://play.google.com/store/apps/details?id=com.exozet.game.carcassonne
+
+ii) Multiple Url
+java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar -lu "https://play.google.com/store/apps/details?id=com.skype.raider&hl=en https://play.google.com/store/apps/details?id=com.whatsapp&hl=en"
+
+usage: 
+-----
+	<above java command> -lu <arg>
+ -lu <arg>   Space delimited list of Urls
+ 
+ I've developed this project so that it can accept the space delimited urls as command line arguments and it can also read the urls from a file.
+ 
+ The requirement of this assignment is met by default when you run the project without any changes. But if you also want to look at how it is reading the urls (I used it to test the crawler) from the files, please
+ follow the following steps:
+ 
+ a) To read URLS from the file ("urls.txt"), uncomment the "Comment Section 2"
+ b) Comment out "Comment Section 1"
+ 
+ Then you will have to build the project again as explained above then it will take the input from the file "urls.txt"
+ 
+ Output:
+ -------
+ The crawled.json file contains all the crawled information (from all the passed urls) in a single file. 
+ 
+ Source file structure:
+ ----------------------
+[Root]sampleparserjavaproject:
+├── crawled.json								Output file
+├── pom.xml
+├── README		
+├── src											Main Source directory
+│   └── main
+│       └── java
+│           └── com
+│               └── appdetex
+│                   └── sampleparserjavaproject	
+│                       ├── Main.java			Project's main class
+│                       ├── PageInfo.java		Class that represents the "expected" attributes of the page
+│                       └── Utils.java			Utilities class
+├── target										
+│   ├── archive-tmp
+│   ├── classes									Main bytecode folder							
+│   │   └── com
+│   │       └── appdetex
+│   │           └── sampleparserjavaproject
+│   │               ├── Main.class
+│   │               ├── PageInfo.class
+│   │               └── Utils.class
+│   ├── maven-archiver
+│   │   └── pom.properties
+│   ├── maven-status
+│   │   └── maven-compiler-plugin
+│   │       └── compile
+│   │           └── default-compile
+│   │               ├── createdFiles.lst
+│   │               └── inputFiles.lst
+│   ├── sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar			Jar file that is packaged with ALL the used dependencies. 
+│   └── test-classes
+└── urls.txt																	Text file that contains the URLs (one each line) that I used to test the functionality
+ 
+ 
+ Final Note:
+ -----------
+ I hope you guys like my work. 
+ =================================================================================================================
+ If you have any questions, please write back to me at ashishsharma@u.boisestate.edu
+ Thanks.
