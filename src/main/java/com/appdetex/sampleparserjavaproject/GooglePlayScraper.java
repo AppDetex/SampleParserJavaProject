@@ -3,15 +3,17 @@ package com.appdetex.sampleparserjavaproject;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
+/**
+ * Parses and stores information from a Google Play Store web page in a JSON format.
+ */
 public class GooglePlayScraper {
 
 	private Document doc;
-    private JSONObject data = new JSONObject();;
+    private JSONObject data = new JSONObject();
 
 	public GooglePlayScraper(String url)	{
         try {
@@ -33,11 +35,11 @@ public class GooglePlayScraper {
         return appTitle.text();
     }
 
-    private String getAppRating()  {
+    private double getAppRating()  {
         Elements rating = doc.select(".star-rating-non-editable-container");
-        String ratingAria = rating.attr("aria-label");
-        String[] splitRating = ratingAria.split(" ");
-        return splitRating[2];
+        String[] ratingWords = rating.attr("aria-label").split(" ");
+        String appRating = ratingWords[2]; //2 is the position of the numerical rating inside the aria label
+        return Double.parseDouble(appRating);
     }
 
     private String getAppParagraph() {
