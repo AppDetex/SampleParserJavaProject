@@ -32,7 +32,7 @@ public class ScrapingTool {
 	}
 
 	/**
-	 * Jsoup retrievers data from the URL provided by the user
+	 * Jsoup retrieves data from the URL provided by the user
 	 */
 	private void scrapingTool() {
 		// Jsoup connects to the URL
@@ -47,7 +47,7 @@ public class ScrapingTool {
 	}
 
 	/**
-	 * Once we obtained data from the App this function parses data using 
+	 * Once we obtained data from the App. This function parses the data using 
 	 * jsoup.nodes.Element[s] libraries and stores them in Strings, later to be put
 	 * in a JSONObject file.
 	 * @param docInfo - Document
@@ -76,7 +76,7 @@ public class ScrapingTool {
 	/**
 	 * Associates the specified value with the specified key in the JSONObject file
 	 * 
-	 * NOTE: The order of elements varies because JSON specification stays that 
+	 * NOTE: The order of elements varies because JSON specification stays:  
 	 * An JSONObject is an unordered set of name/value pairs
 	 */
 	private void produceJSONFile() {
@@ -89,7 +89,7 @@ public class ScrapingTool {
 	}
 
 	/**
-	 * Display and creates a JSON-formatted file from the JSONObject previously produced 
+	 * Displays and creates a JSON-formatted file from the JSONObject previously produced 
 	 */
 	public void getJsonFile() {
 
