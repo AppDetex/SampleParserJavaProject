@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject;
 
+import org.jsoup.*;
+
 /**
  * Main Java Class
  *
@@ -10,7 +12,17 @@ package com.appdetex.sampleparserjavaproject;
 public class Main {
 
     public static void main( String[] args ) {
-        // Put code here
+        //Argument checking
+    	if (args.length != 1) {
+    		printUsage();
+    	}
+    	
+    	new GooglePlayPage(args[0]);
+    }
+    
+    private static void printUsage() {
+    	System.err.println("Usage: java Main <URL>");
+    	System.exit(1);
     }
 
 }
