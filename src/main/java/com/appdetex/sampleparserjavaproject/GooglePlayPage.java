@@ -13,10 +13,10 @@ import org.jsoup.nodes.*;
  */
 public class GooglePlayPage {
 	private Document doc;
-	private String title, description, rating, price, publisher;
+	private String title, description, rating, price, publisher, json;
 
 	/**
-	 * Gets Google Play app page at given URL and parses it for data.
+	 * Gets Google Play app page at given URL, parses it for data, and builds JSON representation of page.
 	 * @param string
 	 * @throws IOException 
 	 * @throws MalformedURLException 
@@ -24,6 +24,7 @@ public class GooglePlayPage {
 	public GooglePlayPage(String url) throws MalformedURLException, IOException {
 		this.doc = Jsoup.parse(new URL(url), 4000);
 		parsePage();
+		buildJson();
 	}
 	
 	/**
@@ -31,10 +32,33 @@ public class GooglePlayPage {
 	 */
 	private void parsePage() {
 		title = doc.select(".id-app-title").first().text();
+		System.out.println(doc.select("div[jsname=C4s9Ed]").text());
 		description = doc.select(".description").first().text();
 		publisher  = doc.select("div.left-info a > *[itemprop=name]").text();
 		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
 		rating = doc.select(".score").first().text();
+	}
+	
+	/**
+	 * Builds the JSON string.
+	 */
+	private void buildJson() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{\n");
+		sb.append("\t\"title\": " + title + "\n");
+		sb.append("\t\"description\": " + description + "\n");
+		sb.append("\t\"publisher\": " + publisher + "\n");
+		sb.append("\t\"price\": " + price + "\n");
+		sb.append("\t\"rating\": " + rating + "\n");
+		sb.append("}");
+		json = sb.toString();
+	}
+	
+	/**
+	 * @return JSON representation of page
+	 */
+	public String getJson() {
+		return json;
 	}
 
 	/**
@@ -71,5 +95,7 @@ public class GooglePlayPage {
 	public String getPublisher() {
 		return publisher;
 	}
+	
+
 
 }

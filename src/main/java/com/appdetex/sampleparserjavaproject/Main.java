@@ -32,13 +32,7 @@ public class Main {
 			printUsage();
 		}
     	
-    	System.out.println("{");
-    	System.out.println("\t\"title\": " +page.getTitle());
-    	System.out.println("\t\"description\": " + page.getDescription());
-    	System.out.println("\t\"publisher\": " + page.getPublisher());
-    	System.out.println("\t\"price\": " + page.getPrice());
-    	System.out.println("\t\"rating\": " + page.getRating());
-    	System.out.println("}");
+    	System.out.println(page.getJson());
     }
     
     /**
