@@ -4,6 +4,7 @@
 package com.appdetex.sampleparserjavaproject;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.jsoup.*;
@@ -17,64 +18,28 @@ import org.jsoup.select.Elements;
  */
 public class GooglePlayPage {
 	private Document doc;
-	private String title, description, rating;
+	private String title, description, rating, price, publisher;
 
 	/**
 	 * @param string
+	 * @throws IOException 
+	 * @throws MalformedURLException 
 	 */
-	public GooglePlayPage(String string) {
-		try {
-			this.doc = Jsoup.parse(new URL(string), 4000);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.err.println("Unable to get: " + string);
-			System.exit(1);
-		}
-
-		parseRating(doc.getElementsByClass("score"));
-		parseTitle(doc.getElementsByClass("id-app-title"));
-		parseDescription(doc.getElementsByClass("description"));
+	public GooglePlayPage(String string) throws MalformedURLException, IOException {
+		this.doc = Jsoup.parse(new URL(string), 4000);
+		parsePage();
 	}
-
+	
 	/**
-	 * @param price
+	 * 
 	 */
-	private void parsePrice(Elements price) {
-
-	}
-
-	/**
-	 * @param publisher
-	 */
-	private void parsePublisher(Elements publisher) {
-
-	}
-
-	/**
-	 * @param score
-	 */
-	private void parseRating(Elements rating) {
-		for (Element e : rating) {
-			this.rating = new String("rating: " + e.text());
-		}
-	}
-
-	/**
-	 * @param title
-	 */
-	private void parseTitle(Elements title) {
-		for (Element e : title) {
-			this.title = new String("title: " + e.text());
-		}
-	}
-
-	/**
-	 * @param description
-	 */
-	private void parseDescription(Elements description) {
-		for (Element e : description) {
-			this.description = new String("description: " + e.text());
-		}
+	private void parsePage() {
+		rating = doc.getElementsByClass("score").first().text();
+		title = doc.getElementsByClass("id-app-title").first().text();
+		description = doc.getElementsByClass("description").first().text();
+		// Ugly line of code, I know
+		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
+		publisher = doc.select("span.author-name").last().text();
 	}
 
 	/**
@@ -96,6 +61,20 @@ public class GooglePlayPage {
 	 */
 	public String getRating() {
 		return rating;
+	}
+
+	/**
+	 * @return the price
+	 */
+	public String getPrice() {
+		return price;
+	}
+
+	/**
+	 * @return the publisher
+	 */
+	public String getPublisher() {
+		return publisher;
 	}
 
 }

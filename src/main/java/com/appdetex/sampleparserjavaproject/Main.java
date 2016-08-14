@@ -1,6 +1,7 @@
 package com.appdetex.sampleparserjavaproject;
 
-import org.jsoup.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  * Main Java Class
@@ -12,14 +13,35 @@ import org.jsoup.*;
 public class Main {
 
     public static void main( String[] args ) {
+    	GooglePlayPage page;
+    	
         //Argument checking
     	if (args.length != 1) {
     		printUsage();
     	}
     	
-    	new GooglePlayPage(args[0]);
+    	page = null;
+    	
+    	try {
+			page = new GooglePlayPage(args[0]);
+		} catch (MalformedURLException e) {
+			System.err.println("Error trying to get: " + args[0]);
+			printUsage();
+		} catch (IOException e) {
+			System.err.println("Error trying to get: " + args[0]);
+			printUsage();
+		}
+    	
+    	System.out.println("\"title\": " +page.getTitle());
+    	System.out.println("\"description\": " + page.getDescription());
+    	System.out.println("\"publisher\": " + page.getPublisher());
+    	System.out.println("\"price\": " + page.getPrice());
+    	System.out.println("\"rating\": " + page.getRating());
     }
     
+    /**
+     * 
+     */
     private static void printUsage() {
     	System.err.println("Usage: java Main <URL>");
     	System.exit(1);
