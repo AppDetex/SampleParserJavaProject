@@ -40,7 +40,7 @@ public class Main {
     }
     
     /**
-     * 
+     * Prints a usage statement and exits on bad input.
      */
     private static void printUsage() {
     	System.err.println("Usage: java Main <URL>");

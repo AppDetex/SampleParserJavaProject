@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.appdetex.sampleparserjavaproject;
 
 import java.io.IOException;
@@ -8,38 +5,36 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.jsoup.*;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.jsoup.nodes.*;
 
 /**
- * @author sammcmahon
- *
+ * Accepts a URL for a Google Play app page, and returns relevant data for the app.
+ * @author Sam McMahon
  */
 public class GooglePlayPage {
 	private Document doc;
 	private String title, description, rating, price, publisher;
 
 	/**
+	 * Gets Google Play app page at given URL and parses it for data.
 	 * @param string
 	 * @throws IOException 
 	 * @throws MalformedURLException 
 	 */
-	public GooglePlayPage(String string) throws MalformedURLException, IOException {
-		this.doc = Jsoup.parse(new URL(string), 4000);
+	public GooglePlayPage(String url) throws MalformedURLException, IOException {
+		this.doc = Jsoup.parse(new URL(url), 4000);
 		parsePage();
 	}
 	
 	/**
-	 * 
+	 * Parses the page for certain fields.
 	 */
 	private void parsePage() {
-		rating = doc.getElementsByClass("score").first().text();
-		title = doc.getElementsByClass("id-app-title").first().text();
-		description = doc.getElementsByClass("description").first().text();
-		// Ugly line of code, I know
+		title = doc.select(".id-app-title").first().text();
+		description = doc.select(".description").first().text();
+		publisher  = doc.select("div.left-info a > *[itemprop=name]").text();
 		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
-		publisher = doc.select("span.author-name").last().text();
+		rating = doc.select(".score").first().text();
 	}
 
 	/**
