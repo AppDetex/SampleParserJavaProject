@@ -32,11 +32,13 @@ public class Main {
 			printUsage();
 		}
     	
-    	System.out.println("\"title\": " +page.getTitle());
-    	System.out.println("\"description\": " + page.getDescription());
-    	System.out.println("\"publisher\": " + page.getPublisher());
-    	System.out.println("\"price\": " + page.getPrice());
-    	System.out.println("\"rating\": " + page.getRating());
+    	System.out.println("{");
+    	System.out.println("\t\"title\": " +page.getTitle());
+    	System.out.println("\t\"description\": " + page.getDescription());
+    	System.out.println("\t\"publisher\": " + page.getPublisher());
+    	System.out.println("\t\"price\": " + page.getPrice());
+    	System.out.println("\t\"rating\": " + page.getRating());
+    	System.out.println("}");
     }
     
     /**
