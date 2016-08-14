@@ -32,8 +32,13 @@ public class GooglePlayPage {
 	 */
 	private void parsePage() {
 		title = doc.select(".id-app-title").first().text();
-		System.out.println(doc.select("div[jsname=C4s9Ed]").text());
-		description = doc.select(".description").first().text();
+		
+		// Build description string from just first paragraph from page
+		description = doc.select("div[jsname=C4s9Ed]").toString();
+		description = description.substring(0, description.indexOf("<p>"));
+		description = description.substring(description.lastIndexOf('>') + 1, description.length()-1);
+		description = description.replace('\n', ' ').trim();
+		
 		publisher  = doc.select("div.left-info a > *[itemprop=name]").text();
 		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
 		rating = doc.select(".score").first().text();
