@@ -4,66 +4,39 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.jsoup.*;
-import org.jsoup.nodes.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 /**
- * Accepts a URL for a Google Play app page, and returns relevant data for the app.
+ * Accepts a URL for a Google Play app page, and returns relevant data for the
+ * app.
+ * 
  * @author Sam McMahon
  */
 public class GooglePlayPage {
-	private Document doc;
-	private String title, description, rating, price, publisher, json;
+	private String title, description, rating, price, publisher;
 
 	/**
-	 * Gets Google Play app page at given URL, parses it for data, and builds JSON representation of page.
+	 * Gets Google Play app page at given URL, parses it for data from certain
+	 * fields.
+	 * 
 	 * @param string
-	 * @throws IOException 
-	 * @throws MalformedURLException 
+	 * @throws IOException
+	 * @throws MalformedURLException
 	 */
 	public GooglePlayPage(String url) throws MalformedURLException, IOException {
-		this.doc = Jsoup.parse(new URL(url), 4000);
-		parsePage();
-		buildJson();
-	}
-	
-	/**
-	 * Parses the page for certain fields.
-	 */
-	private void parsePage() {
+		Document doc = Jsoup.parse(new URL(url), 4000);
 		title = doc.select(".id-app-title").first().text();
-		
+
 		// Build description string from just first paragraph from page
 		description = doc.select("div[jsname=C4s9Ed]").toString();
 		description = description.substring(0, description.indexOf("<p>"));
-		description = description.substring(description.lastIndexOf('>') + 1, description.length()-1);
+		description = description.substring(description.lastIndexOf('>') + 1, description.length() - 1);
 		description = description.replace('\n', ' ').trim();
-		
-		publisher  = doc.select("div.left-info a > *[itemprop=name]").text();
+
+		publisher = doc.select("div.left-info a > *[itemprop=name]").text();
 		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
 		rating = doc.select(".score").first().text();
-	}
-	
-	/**
-	 * Builds the JSON string.
-	 */
-	private void buildJson() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("{\n");
-		sb.append("\t\"title\": " + title + "\n");
-		sb.append("\t\"description\": " + description + "\n");
-		sb.append("\t\"publisher\": " + publisher + "\n");
-		sb.append("\t\"price\": " + price + "\n");
-		sb.append("\t\"rating\": " + rating + "\n");
-		sb.append("}");
-		json = sb.toString();
-	}
-	
-	/**
-	 * @return JSON representation of page
-	 */
-	public String getJson() {
-		return json;
 	}
 
 	/**
@@ -100,7 +73,28 @@ public class GooglePlayPage {
 	public String getPublisher() {
 		return publisher;
 	}
-	
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// Traditional Java toString()
+		StringBuilder builder = new StringBuilder();
+		builder.append("GooglePlayPage [title=");
+		builder.append(title);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", rating=");
+		builder.append(rating);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", publisher=");
+		builder.append(publisher);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
