@@ -33,7 +33,7 @@ public class Main {
 			printUsage();
 		}
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 		System.out.println(gson.toJson(page));
 	}
 

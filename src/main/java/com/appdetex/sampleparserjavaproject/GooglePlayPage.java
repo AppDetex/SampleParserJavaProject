@@ -30,12 +30,21 @@ public class GooglePlayPage {
 
 		// Build description string from just first paragraph from page
 		description = doc.select("div[jsname=C4s9Ed]").toString();
-		description = description.substring(0, description.indexOf("<p>"));
-		description = description.substring(description.lastIndexOf('>') + 1, description.length() - 1);
-		description = description.replace('\n', ' ').trim();
+		// For the case that for some reason description == null
+		if (description != null) {
+			description = description.substring(0, description.indexOf("<p>"));
+			description = description.substring(description.lastIndexOf('>') + 1, description.length() - 1);
+			description = description.replace('\n', ' ').trim();
+		}
 
 		publisher = doc.select("div.left-info a > *[itemprop=name]").text();
-		price = doc.select(":containsOwn(Buy)").first().text().split(" ")[0];
+		
+		// Build price
+		price = doc.select("[itemprop=price]").toString();
+		// For the case that for some reason price == null
+		if (price != null)
+			price = price.substring(price.indexOf("\"") + 1, price.indexOf("itemprop") - 2);
+		
 		rating = doc.select(".score").first().text();
 	}
 
