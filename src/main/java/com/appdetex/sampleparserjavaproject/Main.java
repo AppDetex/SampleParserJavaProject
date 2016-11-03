@@ -7,6 +7,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /**
  * Main Java Class
  *
@@ -157,10 +160,10 @@ public class Main {
 	 *
 	 * @return rating
 	 */
-	public String getRating() 
+	public double getRating() 
 	{
 		Element app_score;
-		String rating = "";
+		double rating = 0;
 		
 		//Select first class that is named score in the app page
 		app_score = doc.select(".score").first();
@@ -172,7 +175,7 @@ public class Main {
 		
 		//Get the text from the element
 		if (app_score.hasText()) {
-			rating = (app_score.text());
+			rating = Double.parseDouble((app_score.text())); //Convert rating string to double
 		}
 		
 		return rating;
@@ -180,18 +183,24 @@ public class Main {
 	
 	
 	/**
-	 *	printJSON(): prints the results in JSON format
+	 *	printJSON(): prints the results in JSON format using googles Gson library
 	 *
 	 */
-	public void printJSON(String title, String description, String publisher, String price, String rating) 
+	public void printJSON(String title, String description, String publisher, String price, double rating) 
 	{
-		System.out.printf("{\n");
-		System.out.printf("\t" + "\"title\": " + "\"" + title + "\",\n");
-		System.out.printf("\t" + "\"description\": " + "\"" + description + "\",\n");
-		System.out.printf("\t" + "\"publisher\": " + "\"" + publisher + "\",\n");
-		System.out.printf("\t" + "\"price\": " + "\"" + price + "\",\n");
-		System.out.printf("\t" + "\"rating\": " + rating + ",\n");
-		System.out.printf("}\n");
+		//Convert rating into double
+		
+		//Create new object that contains all of the parsed data
+		AppInfo info = new AppInfo(title, description, publisher, price, rating);
+		
+		//Create Gson object to format the data
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
+		//Format data into JSON format and store
+		String jsonOutput2 = gson.toJson(info);
+		
+		//print to stdout JSON string
+		System.out.println(jsonOutput2);
 	}
 	
 	
@@ -209,7 +218,7 @@ public class Main {
     	String description = "";
     	String publisher = "";
     	String price = "";
-    	String rating = "";
+    	double rating = 0;
     	
     	//Check for command line args
     	if (args.length <= 0 || args.length> 1) {
