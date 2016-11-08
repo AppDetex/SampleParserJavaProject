@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -31,32 +33,74 @@ public class Main {
         // Create new PageValues object to hold the values we are interested in.
         PageValues values = new PageValues();
 
+        // Finds the title and sets it in the PageValue object
         String titleElem = page.getElementsByClass("id-app-title").get(0).text();
         values.setTitle(titleElem);
-        //values.parseString("<div", page.select("div.id-app-title").toString(), "title");
 
-        Elements description = page.select("[jsname=C4s9Ed]");
+        // Finds the 1st paragraph of description and sets it in PageValues object
+        values.setDescription(findDescriptionFirstPara(page));
 
-        values.parseString("<div", page.select("[jsname=C4s9Ed]").toString(), "description");
+        // Finds the publisher info and sets it in the PageValues object
+        values.setPublisher(findPublisherElement(page.getElementsByClass("meta-info")));
 
-        String publisher = findPublisherElement(page.getElementsByClass("meta-info"));
-        if(publisher != null)
-            values.setPublisher(publisher);
-
-        String price = page.select("button.price").get(0).text();
+        // Finds the first <btn> with class='price'.  Selects all the <span> tags within
+        Elements spanGrp = page.select("button.price").get(0).select("span");
+        // Selects the last <span> tag from spanGrp containing the price and sets it in
+        // the PageValues object
+        String price = spanGrp.get(spanGrp.size()-1).text();
         values.setPrice(price);
 
+        // Finds the <div> with the app rating and gets its text.  Then parses the double from
+        // the text and sets it in the PageValues object
         String ratingStr = page.getElementsByClass("score").get(0).text();
         double rating = Double.parseDouble(ratingStr);
         values.setRating(rating);
 
-        values.printValuesInJSON();
+        // Creates a new JSON Building object
+        Gson gs = new GsonBuilder().setPrettyPrinting().create();
+        // Serializes the PageValues object into JSON and prints it to console
+        System.out.println(gs.toJson(values));
 
     }
 
-    private static String findDescriptionFirstPara(){
+    /**
+     * Because we only want the first paragraph of the description, we have to account for two cases.  The first
+     * case is when the entire description is in one paragraph.  In this case, the description is text within the
+     * parent <div> that happens before the first <p> tag.  The second case happens when the description has
+     * multiple paragraphs.  In this case, the description is broken up between multiple <p> tags within the parent
+     * <div> tag.  This method discovers which is the case and returns only the first paragraph.
+     *
+     * @param page - This is the entire HTML page as a Document object
+     * @return Only a string containing the first paragraph of the description
+     */
+    private static String findDescriptionFirstPara(Document page){
+        // Grabs the entire <div> containing the description of the app
+        Element descBlock = page.select("[jsname=C4s9Ed]").get(0);
+        // Grabs all the <p> tags from within the above block
+        Elements ptags = descBlock.getElementsByTag("p");
 
-        return "";
+        // Grabs the text of the entire block including <p> tags and the text from only
+        // the <p> tags and removes white space from front and rear of string
+        String descBlockText = descBlock.text().trim();
+        String ptagsText = ptags.text().trim();
+
+        // If the text from the <p> tags is not equal to the beginning of the entire <div> then
+        // there is text before the first <p> tag and we have a description with only one paragraph
+        if(descBlockText.indexOf(ptagsText) != 0)
+        {
+            // Subtracts the length of the text from the entire <div> section from the length of
+            // the text from <p> tags to give us the length of what is in front of the <p> tags
+            int firstParaLength = descBlockText.length() - ptagsText.length();
+
+            // Using that length, we take a substring of the <div> section to give us only the
+            // first paragraph without the reviews or anything
+            return descBlockText.substring(0, firstParaLength);
+        }
+
+        // There are multiple paragraphs in the description and returns the first <p> tag's text
+        else
+            return ptags.get(0).text();
+
     }
 
     /**
@@ -66,7 +110,7 @@ public class Main {
      *
      * @param metaGroup - An ArrayList(Jsoup Elements Object) of all the <div class="meta-info"> chunks scraped
      *                  from the site
-     * @return An Element object that contains the <div class="content"> chunk that contains the publisher info
+     * @return A string that contains the publisher info
      */
     private static String findPublisherElement(Elements metaGroup)
     {
@@ -81,25 +125,7 @@ public class Main {
             }
         }
 
-        System.out.println("Publisher not found");
-        return null;
-    }
-
-    /**
-     * There are several <btn class="price"> elements on these pages, so we take an ArrayList(Jsoup Elements object)
-     * of those elements and find the correct one to return for the price of this specific app.
-     *
-     * @param btnGroup - An ArrayList(Jsoup Elements Object) of all the <btn class="price"> chunks scraped
-     *                  from the site
-     * @return An Element object that contains the <span> chunk that contains the price info
-     */
-    private static Element findPriceElement(Elements btnGroup)
-    {
-        // Chooses the first <btn> tag in 'btnGroup' and selects all <span> tags from it
-        Elements spans = btnGroup.get(0).select("span");
-        // Chooses the last <span> in the group of them just found and returns it, which contains the price we
-        // are looking for
-        return spans.get(spans.size()-1);
+        return "**Publisher not Found**";
     }
 
 }
