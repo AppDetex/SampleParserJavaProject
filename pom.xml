@@ -15,5 +15,11 @@
       <artifactId>jsoup</artifactId>
       <version>1.8.3</version>
     </dependency>
+    <dependency>
+        <!-- GSON - Library to convert objects into JSON -->
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.7</version>
+    </dependency>
   </dependencies>
 </project>
