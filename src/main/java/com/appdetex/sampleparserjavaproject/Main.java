@@ -78,11 +78,11 @@ public class Main {
     public void buildOutputString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
-        sb.append("    \"title\": " + this.title + "\",\n");
-        sb.append("    \"description\": " + this.description + "\",\n");
-        sb.append("    \"publisher\": " + this.publisher + "\",\n");
-        sb.append("    \"price\": " + this.price + "\",\n");
-        sb.append("    \"rating\": " + this.rating + "\",\n");
+        sb.append("    \"title\": \"" + this.title + "\",\n");
+        sb.append("    \"description\": \"" + this.description + "\",\n");
+        sb.append("    \"publisher\": \"" + this.publisher + "\",\n");
+        sb.append("    \"price\": \"" + this.price + "\",\n");
+        sb.append("    \"rating\": \"" + this.rating + "\",\n");
         sb.append("}");
         System.out.println(sb.toString());
 
