@@ -1,5 +1,3 @@
-package com.appdetex.sampleparserjavaproject;
-
 import java.net.*;
 import java.io.*;
 import java.util.*;
