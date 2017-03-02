@@ -1,0 +1,672 @@
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "Buy. Sell. Simple. The largest mobile marketplace for local buyers and sellers. Great Deals. Better than Classified Ads.",
+"publisher": "OfferUp Inc.",
+"title": "OfferUp - Buy. Sell. Offer Up"
+}
+{
+"price": "free",
+"rating": 4.2,
+"description": "Solitaire by Harpan is the #1 Solitaire card game app. Solitaire is a popular and classic single player card game also known as Klondike Solitaire and Patience. This solitaire app has Klondike Solitaire 1 card and Klondike Solitaire 3 card draw.",
+"publisher": "Harpan LLC",
+"title": "Solitaire"
+}
+{
+"price": "$1.99",
+"rating": 4.8,
+"description": "** Discounted price for a limited time only, get 60% off your purchase **",
+"publisher": "Playdigious",
+"title": "Mini Metro"
+}
+{
+"price": "$4.99",
+"rating": 4.2,
+"description": "**PLEASE NOTE** In order to play Scribblenauts Unlimited, you must have at least 600 MB of free space on your device.",
+"publisher": "Warner Bros. International Enterprises",
+"title": "Scribblenauts Unlimited"
+}
+{
+"price": "free",
+"rating": 4.3,
+"description": "Uber is a ridesharing app for fast, reliable rides in minutes—day or night. There’s no need to park or wait for a taxi or bus. With Uber, you just tap to request a ride, and it’s easy to pay with credit or cash in select cities.",
+"publisher": "Uber Technologies, Inc.",
+"title": "Uber"
+}
+{
+"price": "$2.99",
+"rating": 4.5,
+"description": "Five-star tower defense with unrivaled depth and replayability. Now with rewarded leaderboards for even more fun and challenge!",
+"publisher": "ninja kiwi",
+"title": "Bloons TD 5"
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "Get ready to soil your plants as a mob of fun-loving zombies is about to invade your home. Use your arsenal of 49 zombie-zapping plants — Peashooters, Wall-nuts, Cherry Bombs and more — to mulchify 26 types of zombies before they break down your door.",
+"publisher": "ELECTRONIC ARTS",
+"title": "Plants vs. Zombies™"
+}
+{
+"price": "$1.99",
+"rating": 4.4,
+"description": "Get our Google Play Year-End Deal: Over 70% Off.",
+"publisher": "True Axis",
+"title": "True Skate"
+}
+{
+"price": "$1.99",
+"rating": 3.8,
+"description": "It’s "GO" time! Take a ride on the Reading Railroad. Buy Boardwalk. Go directly to Jail. Buy, sell, and trade the famous MONOPOLY properties, and see the game jump to life with animated features and easy gameplay. Challenge friends and even customize the game rules!",
+"publisher": "ELECTRONIC ARTS",
+"title": "MONOPOLY"
+}
+{
+"price": "$0.99",
+"rating": 4.7,
+"description": "Join the world’s biggest casino community with SLOTS™ HUUUGE CASINO. Play the best slot machines, compete in leagues, join clubs and have great fun in Las Vegas style. SLOTS™ HUUUGE CASINO is THE casino slots experience you want! SLOTS™ HUUUGE CASINO gives you access to over 100 TOP SLOT GAMES, POKER, BACCARAT, ROULETTE and many other casino games! Download Slots™ Huuuge Casino now - The #1 casino on mobile!",
+"publisher": "Huuuge: Multiplayer Slots, Casino, Poker",
+"title": "Slots™ Huuuge Casino"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": "******S Photo Editor: A Mind-blowing Photo Editor!******",
+"publisher": "S Team",
+"title": "S Photo Editor - Collage Maker"
+}
+{
+"price": "$4.99",
+"rating": 3.6,
+"description": "Following the record-breaking launch of NBA 2K16, the NBA 2K franchise continues to stake its claim as the most authentic sports video game with NBA 2K17. As the franchise that “all sports video games should aspire to be” (GamesRadar), NBA 2K17 will take the game to new heights and continue to blur the lines between video game and reality.",
+"publisher": "2K, Inc.",
+"title": "NBA 2K17"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "Township is a unique blend of city-building and farming!",
+"publisher": "Playrix Games",
+"title": "Township"
+}
+{
+"price": "$1.99",
+"rating": 4.6,
+"description": "Geometry Dash is back with a brand new adventure! New levels, new music, new monsters, new everything!",
+"publisher": "RobTop Games",
+"title": "Geometry Dash World"
+}
+{
+"price": "free",
+"rating": 4.6,
+"description": "Pinterest is the world’s catalog of ideas. Find and save recipes, parenting hacks, style inspiration and other ideas to try!",
+"publisher": "Pinterest",
+"title": "Pinterest"
+}
+{
+"price": "free",
+"rating": 4.4,
+"description": "letgo is the fastest growing mobile marketplace to buy and sell locally.",
+"publisher": "letgo mobile app",
+"title": "letgo: Buy & Sell Used Stuff"
+}
+{
+"price": "$1.99",
+"rating": 4.8,
+"description": "Jump and fly your way through danger in this rhythm-based action platformer!",
+"publisher": "RobTop Games",
+"title": "Geometry Dash"
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "The world’s hottest app – Forbes.",
+"publisher": "Tinder",
+"title": "Tinder"
+}
+{
+"price": "$6.99",
+"rating": 4.5,
+"description": "Our latest free update, The Ender Update, includes The End and its iconic ultimate boss battle, the Ender Dragon. And don't miss the first ever Mash-Up to come to this edition, complete with a Festive skin pack, texture pack, and world.",
+"publisher": "Mojang",
+"title": "Minecraft: Pocket Edition"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "*** 80% OFF for a limited time! ***",
+"publisher": "SQUARE ENIX Ltd",
+"title": "Hitman Sniper"
+}
+{
+"price": "$4.95",
+"rating": 4.5,
+"description": "See what your car is doing in realtime, get OBD fault codes, car performance, sensor data and more!",
+"publisher": "Ian Hawkins",
+"title": "Torque Pro (OBD 2 & Car)"
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "Venusaur, Charizard, Blastoise, Pikachu, and many other Pokémon have been discovered on planet Earth!",
+"publisher": "Niantic, Inc.",
+"title": "Pokémon GO"
+}
+{
+"price": "$1.99",
+"rating": 4.9,
+"description": "Official GiraffeMoji Stickers brought to you by Moji and Animal Adventure Park.",
+"publisher": "AppMoji, Inc.",
+"title": "GiraffeMoji"
+}
+{
+"price": "$2.99",
+"rating": 4.5,
+"description": "Over 125,000,000 downloads worldwide!",
+"publisher": "Fortafy Games",
+"title": "Color Switch"
+}
+{
+"price": "free",
+"rating": 3.9,
+"description": "Instantly reach the people in your life—for free. Messenger is just like texting, but you don't have to pay for every message (it works with your data plan).",
+"publisher": "Facebook",
+"title": "Messenger"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "From rage-­filled Barbarians with glorious mustaches to pyromaniac wizards, raise your own army and lead your clan to victory! Build your village to fend off raiders, battle against millions of players worldwide, and forge a powerful clan with others to destroy enemy clans.",
+"publisher": "Supercell",
+"title": "Clash of Clans"
+}
+{
+"price": "$2.99",
+"rating": 3.3,
+"description": "HotSchedules’ Android application 2.0 includes a completely revamped interface and delivers an incredible user experience. It is compatible for use on both smartphone and tablet devices.",
+"publisher": "HotSchedules",
+"title": "HotSchedules"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "“Visually striking and with adrenaline-pumping Star Wars™ music, Galaxy of Heroes is a must-play for fans for the franchise.” – USA Today",
+"publisher": "ELECTRONIC ARTS",
+"title": "Star Wars™: Galaxy of Heroes"
+}
+{
+"price": "$2.99",
+"rating": 4.5,
+"description": "Welcome to Circus Baby's Pizza World, where family fun and interactivity go beyond anything you've seen at those *other* pizza places! Now hiring: Late night technician. Must enjoy cramped spaces and be comfortable around active machinery. Not responsible for death or dismemberment.",
+"publisher": "Scott Cawthon",
+"title": "Five Nights at Freddy's: SL"
+}
+{
+"price": "$1.49",
+"rating": 4.0,
+"description": "ORIGINAL PACKAGE DISABLER PRO ( CHECK no. of DOWNLOADS) **ONLY AVAILABLE FOR SAMSUNG DEVICES - NO ROOT REQUIRED**",
+"publisher": "policedeveloper",
+"title": "Package Disabler Pro (Samsung)"
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "Life's more fun when you live in the moment :) Happy Snapping!",
+"publisher": "Snap Inc",
+"title": "Snapchat"
+}
+{
+"price": "$4.99",
+"rating": 4.2,
+"description": "DIG! FIGHT! EXPLORE! BUILD! Join the community of millions of Terrarians!",
+"publisher": "505 Games Srl",
+"title": "Terraria."
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "Paper.io ! Check out the latest game by Voodoo.",
+"publisher": "VOODOO",
+"title": "Paper.io"
+}
+{
+"price": "$1.99",
+"rating": 4.4,
+"description": "More than 70 M downloads worldwide.",
+"publisher": "BitMango",
+"title": "Roll the Ball™ - slide puzzle"
+}
+{
+"price": "$2.99",
+"rating": 4.7,
+"description": "**Play Store Most Innovative Game of 2016**",
+"publisher": "DevolverDigital",
+"title": "Reigns"
+}
+{
+"price": "$3.99",
+"rating": 4.3,
+"description": "Play against other people online! Can you become the longest player?",
+"publisher": "Lowtech Studios",
+"title": "slither.io"
+}
+{
+"price": "$0.99",
+"rating": 3.9,
+"description": "Become an action hero like Arnold Schwarzenegger in the new game of modern war -  Mobile Strike! Build a base, control the action, and test your elite troops against enemies on the battlefield! With cutting-edge assault vehicles in your arsenal this worldwide MMO game tests your ability to wage a tactical and intelligent war.",
+"publisher": "Epic War",
+"title": "Mobile Strike"
+}
+{
+"price": "free",
+"rating": 4.5,
+"description": "Instagram is a simple way to capture and share the world’s moments. Follow your friends and family to see what they’re up to, and discover accounts from all over the world that are sharing things you love. Join the community of over 500 million people and express yourself by sharing all the moments of your day––the highlights and everything in between, too.",
+"publisher": "Instagram",
+"title": "Instagram"
+}
+{
+"price": "free",
+"rating": 4.0,
+"description": "Keeping up with friends is faster than ever.",
+"publisher": "Facebook",
+"title": "Facebook"
+}
+{
+"price": "$0.99",
+"rating": 4.1,
+"description": "The Walking Dead: Road to Survival is the definitive Walking Dead strategy game, brought to you by Robert Kirkman, creator of The Walking Dead comic series.",
+"publisher": "Scopely",
+"title": "Walking Dead: Road to Survival"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": "Welcome to the ultimate virtual universe powered by imagination. Over 30 million players come each month to explore amazing 3D virtual worlds with friends. Join the largest user-generated gaming community and play thousands of games, ranging from immersive multiplayer games and competitions, to interactive adventures where you can imagine what it’s like to be a dinosaur, a miner in a quarry, or an astronaut on a space exploration.",
+"publisher": "ROBLOX Corporation",
+"title": "ROBLOX"
+}
+{
+"price": "$3.99",
+"rating": 4.6,
+"description": "We love podcasts, so we made a podcast player that is full featured, beautiful and easy to use. We're no strangers to awards having been chosen as a Google Play Top Developer, a Google Play Editors Choice and winning a Google Material Design Award. Mostly though, we love you, our customers, which is why we always keep our app relevant and up to date based on your feedback.",
+"publisher": "Shifty Jelly",
+"title": "Pocket Casts"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "***** Winner of Google Play's Most Competitive Game of 2016!",
+"publisher": "IGG.COM",
+"title": "Lords Mobile"
+}
+{
+"price": "$4.99",
+"rating": 4.8,
+"description": "Accept no substitutes! Nova Launcher is the original and most polished customizable launcher for modern Android",
+"publisher": "TeslaCoil Software",
+"title": "Nova Launcher Prime"
+}
+{
+"price": "$0.99",
+"rating": 4.4,
+"description": "Welcome to Gardenscapes! Rake your way through a storyline full of unexpected twists to restore a wonderful garden to its former glory!",
+"publisher": "Playrix Games",
+"title": "Gardenscapes - New Acres"
+}
+{
+"price": "$99.00",
+"rating": 3.9,
+"description": "Don’t miss your chance to become legendary!",
+"publisher": "Machine Zone, Inc.",
+"title": "Game of War - Fire Age"
+}
+{
+"price": "$0.99",
+"rating": 4.4,
+"description": "Candy Crush Saga, from the makers of Candy Crush Soda Saga",
+"publisher": "King",
+"title": "Candy Crush Saga"
+}
+{
+"price": "$0.99",
+"rating": 4.7,
+"description": "Pianotiles2™ is a popular game that has 500 million players around the world.",
+"publisher": "Cheetah Games",
+"title": "Piano Tiles 2™"
+}
+{
+"price": "$6.99",
+"rating": 2.9,
+"description": "LONG LIVE THE SIMS! Enjoy hours of fun on your Android device as you shape your Sims and their world. The possibilities are endless!",
+"publisher": "ELECTRONIC ARTS",
+"title": "The Sims 3"
+}
+{
+"price": "$2.99",
+"rating": 4.6,
+"description": "This is the official port of Five Nights at Freddy's 2!",
+"publisher": "Scott Cawthon",
+"title": "Five Nights at Freddy's 2"
+}
+{
+"price": "free",
+"rating": 4.5,
+"description": "Protect, boost, and clean your Android with DFNDR: Antivirus & Booster. Enhance your phone’s performance and remove adware, spyware, and unwanted viruses. Optimize your device for the best battery percentage with DFNDR’s battery booster feature. Clear cache and junk files to help get more storage on your device. Use a top of the line mobile security system for your Android with DFNDR: Antivirus & Booster.",
+"publisher": "PSafe",
+"title": "DFNDR: Antivirus & Cleaner"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "World's best words puzzle game "Word Cookies"",
+"publisher": "BitMango",
+"title": "Word Cookies"
+}
+{
+"price": "$0.99",
+"rating": 4.2,
+"description": "THINK IT! CREATE IT! SOLVE IT! The award-winning, best-selling video game is now available for Android tablets and phones!",
+"publisher": "Warner Bros. International Enterprises",
+"title": "Scribblenauts Remix"
+}
+{
+"price": "$4.99",
+"rating": 4.4,
+"description": "Powered by the Music Genome Project®, the most comprehensive music analysis ever undertaken, Pandora gives you personalized radio that plays what you love and continually evolves with your tastes.",
+"publisher": "Pandora",
+"title": "Pandora® Radio"
+}
+{
+"price": "free",
+"rating": 4.4,
+"description": "WhatsApp Messenger is a FREE messaging app available for Android and other smartphones. WhatsApp uses your phone's Internet connection (4G/3G/2G/EDGE or Wi-Fi, as available) to let you message and call friends and family. Switch from SMS to WhatsApp to send and receive messages, calls, photos, videos, documents, and Voice Messages.",
+"publisher": "WhatsApp Inc.",
+"title": "WhatsApp Messenger"
+}
+{
+"price": "$2.99",
+"rating": 4.5,
+"description": "This is the official mobile port of Five Nights at Freddy's; made with Clickteam Fusion!",
+"publisher": "Scott Cawthon",
+"title": "Five Nights at Freddy's"
+}
+{
+"price": "free",
+"rating": 4.5,
+"description": "Spotify is now free on mobile and tablet. Listen to the right music, wherever you are.",
+"publisher": "Spotify Ltd.",
+"title": "Spotify Music"
+}
+{
+"price": "$2.99",
+"rating": 4.7,
+"description": "Clean Master, the No.1 FREE Android optimizing tool. Trusted by over 740 million users to make their phones run as it's brand new.",
+"publisher": "Cheetah Mobile",
+"title": "Clean Master (Boost&Antivirus)"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "DASH as fast as you can!",
+"publisher": "Kiloo",
+"title": "Subway Surfers"
+}
+{
+"price": "$2.99",
+"rating": 3.9,
+"description": "You've perfected the art of fry cooking… now what? Keep cookin’ ! You have plenty of quests, tasks, costumes and items to collect in order to make your Bikini Bottom, The Ultimate Bikini Bottom!",
+"publisher": "Nickelodeon",
+"title": "SpongeBob Moves In"
+}
+{
+"price": "$1.99",
+"rating": 4.0,
+"description": "The original multi-layer holographic illusion live wallpaper!",
+"publisher": "Vinwap",
+"title": "3D Parallax Background"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": "Start playing Candy Crush Soda Saga today - already enjoyed by millions of players around the world!",
+"publisher": "King",
+"title": "Candy Crush Soda Saga"
+}
+{
+"price": "$5.99",
+"rating": 4.6,
+"description": "RollerCoaster Tycoon® Classic is a new RCT experience, combining the best features from two of the most successful and beloved RCT games in the series’ history – RollerCoaster Tycoon® and RollerCoaster Tycoon® 2. Create and run amazing parks complete with the most outrageous rides imaginable. RCT Classic includes a mixture of authentic playability, depth of gameplay and unique graphical style of Chris Sawyer’s original best-selling RollerCoaster Tycoon® PC Games, now enhanced for handheld devices. Packed with content, players can enjoy designing and building roller coasters and rides, landscaping parks and managing the staff and finances to keep their guests happy and the money flowing in. Can you become the next RollerCoaster Tycoon?",
+"publisher": "Atari, Inc.",
+"title": "RollerCoaster Tycoon® Classic"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "More than 30 M downloads worldwide.",
+"publisher": "BitMango",
+"title": "Block! Hexa Puzzle"
+}
+{
+"price": "$7.99",
+"rating": 4.4,
+"description": "Netflix is the world’s leading subscription service for watching TV episodes and movies on your phone. This Netflix mobile application delivers the best experience anywhere, anytime.",
+"publisher": "Netflix, Inc.",
+"title": "Netflix"
+}
+{
+"price": "$9.98",
+"rating": 4.5,
+"description": "Have you ever wanted to buy a vowel? Spin the Wheel with Pat Sajak? Guess letters and watch them appear on the iconic puzzle board? It’s WHEEL...OF...FORTUNE – the popular game show and now it’s a free mobile game!",
+"publisher": "Scopely",
+"title": "Wheel of Fortune Free Play"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "Play HOUSE OF FUN Casino Slots - the best Las Vegas FREE SLOT GAMES online! Taste the virtual casino slots experience with welcome bonus coins, big gold coins wins & free spins, huge jackpots and much more.",
+"publisher": "Playtika HOF",
+"title": "House of Fun Slots Casino"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "Rolling Sky,Google Play Best Game of 2016,which is a game that pushes the boundaries of your speed and reaction. The splendid 3D effect scene enables you to experience the imaginary traps and barriers. Now, let's control the ball and conquer the world by overcoming challenges.",
+"publisher": "Cheetah Games",
+"title": "Rolling Sky"
+}
+{
+"price": "free",
+"rating": 4.2,
+"description": "Games get more fun with the Google Play Games app. Compete with friends, track your achievements, and pick up where you left off, on any device. As you master more games, show off your skills in your Gamer Profile. Record your gameplay and share it to YouTube. And whether you love puzzles, racing, sports or action games, you can choose from thousands of great games from right within the app. Play the world, anywhere in the world, all from one place.",
+"publisher": "Google Inc.",
+"title": "Google Play Games"
+}
+{
+"price": "$6.99",
+"rating": 4.4,
+"description": "Five years ago, Carl Johnson escaped from the pressures of life in Los Santos, San Andreas, a city tearing itself apart with gang trouble, drugs and corruption. Where filmstars and millionaires do their best to avoid the dealers and gangbangers.",
+"publisher": "Rockstar Games",
+"title": "Grand Theft Auto: San Andreas"
+}
+{
+"price": "free",
+"rating": 4.6,
+"description": "ZEDGE™ is the most trusted app in phone personalization with free wallpapers, ringtones, app icons, alarms and notification sounds to easily customize your phone, tablet or other mobile device. Join the over 200 million people worldwide who depend on ZEDGE™",
+"publisher": "Zedge",
+"title": "ZEDGE™ Ringtones & Wallpapers"
+}
+{
+"price": "$0.99",
+"rating": 4.8,
+"description": "Welcome to The Room, a physical puzzler, wrapped in a mystery game, inside a beautifully tactile 3D world.",
+"publisher": "Fireproof Games",
+"title": "The Room"
+}
+{
+"price": "$14.99",
+"rating": 3.9,
+"description": "HBO NOW is the standalone streaming service that gives you all of HBO—no TV package required. Start your free one-month trial and watch across all your favorite devices including your phone, tablet, computer, TV and online at HBONOW.com. After your free trial is over, enjoy HBO NOW for just $14.99/month. There’s no commitment—cancel anytime.",
+"publisher": "HBO NOW",
+"title": "HBO NOW: Series, movies & more"
+}
+{
+"price": "$0.99",
+"rating": 4.4,
+"description": "Slotomania Free Slot Games - The World’s Favorite App for Free Slots & Online Casino Games!",
+"publisher": "Playtika",
+"title": "Slotomania Free Slots 777"
+}
+{
+"price": "$2.99",
+"rating": 4.0,
+"description": "The sequel to one of the most successful strategy games on mobile is here! Sid Meier's Civilization Revolution 2 challenges players  to build a glorious empire that will stand the test of time. This is the first game in the Civilization catalog to be developed and available exclusively for mobile devices. Civilization Revolution 2 offers mobile strategy fans a brand new 3D presentation and more tactical depth than ever before! Find out if you have what it takes to rule the world!",
+"publisher": "2K, Inc.",
+"title": "Civilization Revolution 2"
+}
+{
+"price": "$0.99",
+"rating": 4.7,
+"description": "Bubble Witch 3 Saga - The brand new game in the popular Bubble Witch series. Stella the Witch is back and she needs your help to defeat the evil Wilbur in this exciting adventure! He may look cute, but he's full of magical mischief! Travel the realm bursting as many bubbles as you can in this bubble shooting puzzle game.",
+"publisher": "King",
+"title": "Bubble Witch 3 Saga"
+}
+{
+"price": "free",
+"rating": 4.5,
+"description": "Over 200 million people use Wish to get trending items for 50-80% cheaper than what you’d pay at your local mall. Join them and get the hottest products at incredible prices delivered directly to your door. Wish is the #1 shopping mall in Europe and North America, allowing you to browse a worldwide selection of trending fashion, accessories, and electronics directly at your fingertips.",
+"publisher": "Wish Inc.",
+"title": "Wish - Shopping Made Fun"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "THE ULTIMATE MATCHING PUZZLE GAME WITH UNIQUE MAGIC POWERS AND BOOSTS!",
+"publisher": "Peak Games",
+"title": "Toy Blast"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": "Cut fruit, dodge bombs – that’s all you need to know to play Fruit Ninja, the hit mobile game enjoyed by billions of players around the world!",
+"publisher": "Halfbrick Studios",
+"title": "Fruit Ninja Free"
+}
+{
+"price": "$9.99",
+"rating": 4.4,
+"description": "Welcome to the BEST free slots casino app for Vegas slots by Aristocrat Gaming - now with the BIGGEST casino bonus of 2,000,000 FREE slots coins! Come and play free slot games with Heart!",
+"publisher": "Product Madness",
+"title": "Heart of Vegas™ Slots Casino"
+}
+{
+"price": "$0.99",
+"rating": 3.9,
+"description": "Google Play Special Offer - Get over 80% off for a limited time only!",
+"publisher": "ELECTRONIC ARTS",
+"title": "Need for Speed Most Wanted"
+}
+{
+"price": "$0.99",
+"rating": 4.2,
+"description": "Looking for action? We got it all right here in Clash of Kings!",
+"publisher": "Elex Wireless",
+"title": "Clash of Kings"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "Sequel to the most addictive and entertaining physics based driving game ever! And it's free!",
+"publisher": "Fingersoft",
+"title": "Hill Climb Racing 2"
+}
+{
+"price": "$0.99",
+"rating": 4.0,
+"description": "■ Intro",
+"publisher": "The Pokemon Company",
+"title": "Pokémon Duel"
+}
+{
+"price": "$0.99",
+"rating": 4.6,
+"description": "Bitmoji is your own personal emoji.",
+"publisher": "Bitstrips",
+"title": "Bitmoji – Your Personal Emoji"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "Enter the Arena! From the creators of Clash of Clans comes a real-time multiplayer game starring the Royales, your favorite Clash characters and much, much more.",
+"publisher": "Supercell",
+"title": "Clash Royale"
+}
+{
+"price": "$2.99",
+"rating": 4.5,
+"description": "Ultimate Guitar Tabs & Chords is a mobile version of the world's largest catalog of guitar & ukulele chords, tabs and lyrics, available even offline. Learn how to play your favorite songs on acoustic, electric guitar or ukulele. Get over 1,000,000 tabs and free daily updates with recent hit songs! Learn how to play guitar from scratch or refresh your knowledge of the instrument with our interactive lessons (available as an in-app purchase).",
+"publisher": "Ultimate Guitar USA LLC",
+"title": "Ultimate Guitar Tabs & Chords"
+}
+{
+"price": "$1.99",
+"rating": 4.6,
+"description": "Open the gateways between worlds, Heroes at your side.",
+"publisher": "Nintendo Co., Ltd.",
+"title": "Fire Emblem Heroes"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": "Prepare for epic versus-fighting action with your favorite Marvel Super Heroes & Super Villains in the ultimate cosmic showdown! Spider-Man, Iron Man, Wolverine & more await your summons to battle! Assemble a team & begin your quest to become the Ultimate Marvel Champion!",
+"publisher": "Kabam",
+"title": "MARVEL Contest of Champions"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "* Insanely addictive game-play! Don't say we didn't warn you *",
+"publisher": "Cheetah Games",
+"title": "Tap Tap Dash"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "Discover the #1 games app in 135 countries! Adopt your very own baby kitten and help him grow into a fully grown cat. Take good care of your virtual pet, name him and make him part of your daily life by feeding him, playing with him and nurturing him as he grows.",
+"publisher": "Outfit7",
+"title": "My Talking Tom"
+}
+{
+"price": "$0.99",
+"rating": 4.5,
+"description": "•The World's #1 Pool game - now on Android!•",
+"publisher": "Miniclip.com",
+"title": "8 Ball Pool"
+}
+{
+"price": "free",
+"rating": 4.6,
+"description": "Super-Bright LED Flashlight instantly turns your device into a bright flashlight. The ultimate lighting tool takes full advantage of the LED light. Strobe/Blinking Mode is also supported as on a $100 tactical flashlight. and it's FREE!",
+"publisher": "Surpax Inc.",
+"title": "Super-Bright LED Flashlight"
+}
+{
+"price": "$0.99",
+"rating": 4.2,
+"description": "Get your armor on, the hottest real-time MMO of 2017 is here! Raise your dragon and build your army in the quest to lift Excalibur and become the King. Taste power and victory while making friends and enemies along the way. Chat, help, trade and wage war with players around the globe. King Arthur’s death has left an empty throne. Get ready to get medieval; the battle to conquer the kingdom has started!",
+"publisher": "DIANDIAN INTERACTIVE HOLDING",
+"title": "King of Avalon: Dragon Warfare"
+}
+{
+"price": "$0.99",
+"rating": 4.3,
+"description": ""An action-packed fantasy RPG with over 70 million Summoners around the world!",
+"publisher": "Com2uS",
+"title": "Summoners War"
+}
+{
+"price": "$2.99",
+"rating": 4.3,
+"description": "MAKE CHOICES, GET PAID, OR LOSE IT ALL!",
+"publisher": "Marmalade Game Studio",
+"title": "The Game of Life"
+}
