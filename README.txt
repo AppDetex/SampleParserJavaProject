@@ -29,11 +29,10 @@ Files
 6) results_urls.txt: Output of GooglePlay.Test.java
 --------------------------
 
-To Run Main
+To Run
 --------------------------
 mvn exec:java -Dexec.mainClass="com.appdetex.sampleparserjavaproject.Main" -Dexec.args="url"
+mvn exec:java -Dexec.mainClass="com.appdetex.sampleparserjavaproject.MainNoSoup" -Dexec.args="url"
+mvn exec:java -Dexec.mainClass="com.appdetex.sampleparserjavaproject.GooglePlayTop"
+mvn exec:java -Dexec.mainClass="com.appdetex.sampleparserjavaproject.GooglePlayTest"
 
-To Run MainNoSoup
---------------------------
-javac filename.java
-java filename 'some_url'
