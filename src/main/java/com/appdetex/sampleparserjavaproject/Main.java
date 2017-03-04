@@ -54,16 +54,20 @@ public class Main {
 		String jsname = "<div jsname=\"C4s9Ed\"> \n";
 
 		String descMod = "";
-
-		if(desc.contains("<br>")){ 
-
-			descMod = desc.substring(desc.indexOf(jsname)+jsname.length(), desc.indexOf("<br>")).trim();
-
-		}else{ //the case where the description only contains 1 paragraph and therefore no <br> tag
-
-			descMod = description.text().trim();
-
+		
+		if(desc.contains("<br>")){
+			
+			String[] parts = desc.split("<br>");
+			descMod= parts[0];
+			descMod = descMod.substring(descMod.indexOf(jsname)+jsname.length(), descMod.length()-1).trim();
+		
+		}else{ //if description does not have any <br> tags
+			
+			descMod = description.text();
 		}
+
+
+	
 
 		JSON += "\"description\": \""+descMod+"\",\n\t";
 
