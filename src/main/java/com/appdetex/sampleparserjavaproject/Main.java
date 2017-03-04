@@ -1,5 +1,3 @@
-package com.appdetex.sampleparserjavaproject;
-
 import java.io.IOException;
 
 
@@ -8,23 +6,22 @@ import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 
 
+
 /**
  * Main Java Class
  *
  * This class will use Jsoup to retrieve a provided URL
  * and parse out certain data, printing that data to
  * stdout in a JSON format.
- *
- * @author Catherine Soraya Yazdanpour
  */
 public class Main {
 
-    public static void main( String[] args ) {
-        
+	public static void main( String[] args ) {
+
 
 		if (args.length != 1){
 
-			System.out.println("Usage: java Main <google play app url>");
+			System.out.println("Usage: java Main <url>");
 
 		}
 
@@ -50,14 +47,23 @@ public class Main {
 
 		//DESC
 
-		Elements description = doc.getElementsByClass("show-more-content text-body");
+		Elements description = doc.getElementsByAttributeValue("jsname", "C4s9Ed");
 
 		String desc = description.toString();
 
-		String jsname = "<div jsname=\"C4s9Ed\">";
-		String descMod = desc.substring(desc.indexOf(jsname)+jsname.length()+3, desc.indexOf("<br>")-3);
+		String jsname = "<div jsname=\"C4s9Ed\"> \n";
 
+		String descMod = "";
 
+		if(desc.contains("<br>")){ 
+
+			descMod = desc.substring(desc.indexOf(jsname)+jsname.length(), desc.indexOf("<br>")).trim();
+
+		}else{ //the case where the description only contains 1 paragraph and therefore no <br> tag
+
+			descMod = description.text().trim();
+
+		}
 
 		JSON += "\"description\": \""+descMod+"\",\n\t";
 
@@ -74,15 +80,15 @@ public class Main {
 
 
 		String priceActual = "";
-		
+
 		if(price.text().contains("$")){
-		
+
 			priceActual = price.get(0).text().substring(0,price.get(0).text().indexOf(" ") );
-		
+
 		}else{
-			
+
 			priceActual = "free";
-			
+
 		}
 
 		JSON += "\"price\": \""+priceActual+"\",\n\t";
@@ -98,6 +104,8 @@ public class Main {
 
 		System.out.println(JSON);
 
-    }
+
+
+	}
 
 }
