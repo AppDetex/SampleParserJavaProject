@@ -51,9 +51,17 @@ public class Main {
     
     //Retrieves description from play store url.
     private static String getDescription(Document doc){
-    	return doc.getElementsByClass("show-more-content text-body").html().split
-    	("<br>")[0].split("<div jsname=\"C4s9Ed\">\n ")[1];
+        String description = doc.getElementsByClass("show-more-content text-body").html().split("<br>")[0].split("<div jsname=\"C4s9Ed\">\n ")[1];
+        String tokens[] = description.split(" ");
+        description = tokens[0];
+        for (int i = 1; i < tokens.length; i++){
+            description = description + " " + tokens[i];
+            if(i % 10 == 0)
+                description = description + "\n";
+        }
+        return description;
     }
+    
     
     //Retireves publisher from play store url.
     private static String getPublisher(Document doc){
