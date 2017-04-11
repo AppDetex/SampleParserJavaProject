@@ -1,5 +1,11 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.google.gson.Gson;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 /**
  * Main Java Class
  *
@@ -9,8 +15,22 @@ package com.appdetex.sampleparserjavaproject;
  */
 public class Main {
 
-    public static void main( String[] args ) {
-        // Put code here
+    public static void main(String[] args) {
+
+        if (args.length == 0) {
+            System.err.println("Missing URL parameter");
+            return;
+        }
+
+        GooglePlayParser parser = new GooglePlayParser();
+        ResultsModel model = parser.getDataForUrl(args[0]);
+
+        if (model == null) {
+            System.err.println("Invalid response while fetching data for URL");
+            return;
+        }
+
+        System.out.println(new Gson().toJson(model));
     }
 
 }
