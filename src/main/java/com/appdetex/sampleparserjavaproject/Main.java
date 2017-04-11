@@ -15,24 +15,22 @@ import java.io.IOException;
  */
 public class Main {
 
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
 
-        try {
-
-            Document doc = Jsoup.connect(args[0]).get();
-
-            ResultsModel model = new ResultsModel();
-            model.setTitle(doc.select(".id-app-title").text());
-            model.setDescription(doc.select("[itemprop=\"description\"] > div").html().split("(<br */?>)")[0]);
-            model.setPublisher(doc.select("[itemprop=\"author\"] [itemprop=\"name\"]").text());
-            model.setPrice(doc.select("[itemprop=\"price\"]").attr("content"));
-            model.setRating(Double.valueOf(doc.select(".score-container .score").text()));
-
-            System.out.println(new Gson().toJson(model));
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (args.length == 0) {
+            System.err.println("Missing URL parameter");
+            return;
         }
+
+        GooglePlayParser parser = new GooglePlayParser();
+        ResultsModel model = parser.getDataForUrl(args[0]);
+
+        if (model == null) {
+            System.err.println("Invalid response while fetching data for URL");
+            return;
+        }
+
+        System.out.println(new Gson().toJson(model));
     }
 
 }
