@@ -48,10 +48,7 @@ public class Main {
 
     private static String getPrice(Document doc) {
         Element priceElement = doc.select(".price").first();
-        String priceString = priceElement.toString();
-        int index1 = priceString.indexOf("\" itemprop=\"price\"");
-        int index2 = priceString.indexOf("<meta content=\"", index1-25);
-        return priceString.substring(index2 + 15, index1);
+        return priceElement.child(0).child(0).child(1).attr("content");
     }
 
     private static String getDescription(Document doc) {
@@ -61,8 +58,7 @@ public class Main {
 
     private static String getRating(Document doc) {
         Element ratingElement = doc.select("div.score").first();
-        String ratingString = ratingElement.text();
-        return ratingString;
+        return ratingElement.text();
     }
 
     @Test
