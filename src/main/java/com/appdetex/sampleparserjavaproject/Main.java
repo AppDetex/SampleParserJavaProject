@@ -21,6 +21,11 @@ public class Main {
 
   public static void main(String[] args) {
     try {
+      if(args.length == 0) {
+        System.out.println("Please provice a valid app URL");
+        System.exit(1);
+      }
+
       Document doc = Jsoup.connect(args[0]).get();
       ObjectMapper mapper = new ObjectMapper();
       ObjectNode node = mapper.createObjectNode();
@@ -42,25 +47,27 @@ public class Main {
   }
 
   private static String getPublisher(Document doc) {
-    Element publisherElement = doc.select("div.left-info").first();
-    return publisherElement.child(0).child(1).text();
+    return doc.select("div.left-info").first().select("a.primary").text();
   }
 
   private static String getPrice(Document doc) {
-    Element priceElement = doc.select(".price").first();
+    Element priceElement = doc.select("button.price").first();
     return priceElement.child(0).child(0).child(1).attr("content");
   }
 
   private static String getDescription(Document doc) {
-    Element descriptionElement = doc.select(".description").first();
-    return descriptionElement.child(0).child(0).child(1).child(0).text();
+    return doc.select("div.description").first().select("div.text-body").first().child(0).text();
   }
 
   private static String getRating(Document doc) {
-    Element ratingElement = doc.select("div.score").first();
-    return ratingElement.text();
+    return doc.select("div.score").first().text();
   }
 
+  /*
+  Unfortunately this test method would need to be updated whenever the product's price/rating changes.  An alternative
+  would be to save the HTML to a file and reload it, but then we would fail to detect when the live HTML's format
+  changes.
+   */
   @Test
   public void test() throws IOException {
     Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=com.exozet.game.carcassonne")
