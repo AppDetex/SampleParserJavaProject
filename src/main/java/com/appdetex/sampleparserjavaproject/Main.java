@@ -3,9 +3,12 @@ package com.appdetex.sampleparserjavaproject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.IOException;
 
 /**
  * Main Java Class
@@ -63,6 +66,21 @@ public class Main {
         Element ratingElement = doc.select("div.score").first();
         String ratingString = ratingElement.text();
         return ratingString;
+    }
+
+    @Test
+    public void test() {
+        try {
+            Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=com.exozet.game.carcassonne")
+                .get();
+            assert(getTitle(doc).equals("Carcassonne"));
+            assert(getDescription(doc).startsWith("The award-winning tile based board game is finally here on Android!"));
+            assert(getPublisher(doc).equals("Exozet"));
+            assert(getPrice(doc).equals("$0.99"));
+            assert(getRating(doc).equals("4.3"));
+        } catch (IOException e) {
+            assert(e == null);
+        }
     }
 
 }
