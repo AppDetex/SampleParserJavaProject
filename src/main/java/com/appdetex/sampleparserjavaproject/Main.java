@@ -43,10 +43,7 @@ public class Main {
 
     private static String getPublisher(Document doc) {
         Element publisherElement = doc.select("div.left-info").first();
-        String publisherString = publisherElement.toString();
-        int index1 = publisherString.indexOf("<span itemprop=\"name\">");
-        int index2 = publisherString.indexOf("</span>", index1);
-        return publisherString.substring(index1 + 22, index2);
+        return publisherElement.child(0).child(1).text();
     }
 
     private static String getPrice(Document doc) {
