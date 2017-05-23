@@ -56,10 +56,7 @@ public class Main {
 
     private static String getDescription(Document doc) {
         Element descriptionElement = doc.select(".description").first();
-        String descriptionString = descriptionElement.child(0).child(0).child(1).child(0).toString();
-        int index1 = descriptionString.indexOf(">");
-        int index2 = descriptionString.indexOf("</div>");
-        return descriptionString.substring(index1+1, index2).trim().replaceAll("<br>", "");
+        return descriptionElement.child(0).child(0).child(1).child(0).text();
     }
 
     private static String getRating(Document doc) {
