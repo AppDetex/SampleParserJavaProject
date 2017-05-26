@@ -1,0 +1,38 @@
+Overview:
+The assignment was to create a simple java parser which when given an url of an app in the app store returns a json object with the app details.
+
+Usage:
+java Main <URL>
+
+Implemetation:
+Extractor.java - It is the extractor class which extracts information from the app page using jsoup.
+
+AppDetails.java - Simple class to hold the details of the app.
+
+Main.java - The main class which accepts the arguments and prints out the json object.
+
+Sample input/output:
+
+https://play.google.com/store/apps/details?id=com.exozet.android.catan&hl=en
+
+{
+     "price": "$4.99",
+     "rating": 4.0,
+     "description": ""Catan", the legendary strategy game provides gaming fun anytime, anywhere. ",
+     "publisher": "USM",
+     "title": "Catan"
+}
+
+https://play.google.com/store/apps/details?id=com.exozet.game.carcassonne
+
+{
+     "price": "$4.99",
+     "rating": 4.3,
+     "description": "The award-winning tile based board game is finally here on Android! Just a few years after its release, Carcassonne became a modern classic and a must-play. Turn by turn, the players create a landscape by placing tiles with roads, cities, fields, and cloisters. The players strategically deploy their followers, so called "Meeples", as knights, monks, thieves, or farmers to earn points. The player with the most points after the final scoring wins the game. The ever-changing landscape makes each game a new experience. You can play against clever AI opponents or with up to 5 other players in an online or local multiplayer match. ",
+     "publisher": "Exozet",
+     "title": "Carcassonne"
+}
+
+Discussion:
+Overall it was an interesting project to work on. Got a lot of insight on the retrieval of information on using the right elements to extract information using jsoup and developer tools.
+ 
