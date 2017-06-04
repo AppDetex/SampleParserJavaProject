@@ -29,8 +29,8 @@ public class Main {
         CommandLine line = null;
         Options options = new Options();
 
+        // Create Command Line Options and Parse them
         options.addOption("url", true, "The Google Play Application URL you wish to Query.");
-
         CommandLineParser parser = new DefaultParser();
         try {
             line = parser.parse(options, args);
@@ -38,17 +38,24 @@ public class Main {
             System.err.printf("Parsing failed.  Reason: " + e.getMessage());
         }
 
+        if (!line.hasOption("url")) {
+            System.err.printf("A URL is required.  Please specify a URL with the -url option.");
+        }
+
         if (line.hasOption("url")) {
+            // Make HTTP Request to get HTML Data
             String requestedUrl = line.getOptionValue("url");
             String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36";
             Document doc = Jsoup.connect(requestedUrl).userAgent(userAgent).get();
 
+            // Select desired data from incoming HTML data
             Elements description = doc.select("div[itemprop=description]>div[jsname]");
             String descriptionString = breakToNewline(description.toString());
             Elements publisher = doc.select("span[itemprop=name]");
             Elements price = doc.getElementsByAttributeValue("itemprop", "price");
             Elements rating = doc.select("div.score-container>div.score");
 
+            // Clean and set selected data to return model
             SampleParserReturnModel sampleParserReturnModel = new SampleParserReturnModel();
             sampleParserReturnModel.setTitle(doc.title().split("stop|-")[0].trim());
             sampleParserReturnModel.setDescription(descriptionString.split("stop|\\n")[1].trim());
@@ -56,6 +63,7 @@ public class Main {
             sampleParserReturnModel.setPrice(price.attr("content").trim());
             sampleParserReturnModel.setRating(rating.text().trim());
 
+            // Return pretty printed JSON
             Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
             JsonParser jp = new JsonParser();
             JsonElement je = jp.parse(gson.toJson(sampleParserReturnModel));
