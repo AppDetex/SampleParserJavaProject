@@ -1,5 +1,10 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.appdetex.sampleparserjavaproject.models.SampleParserReturnModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -34,7 +39,6 @@ public class Main {
         }
 
         if (line.hasOption("url")) {
-            System.out.print(line.getOptionValue("url"));
             String requestedUrl = line.getOptionValue("url");
             String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36";
             Document doc = Jsoup.connect(requestedUrl).userAgent(userAgent).get();
@@ -45,15 +49,17 @@ public class Main {
             Elements price = doc.getElementsByAttributeValue("itemprop", "price");
             Elements rating = doc.select("div.score-container>div.score");
 
-            System.out.printf("\nTitle: " + doc.title().split("stop|-")[0]);
-            System.out.printf("\nDescription: " + descriptionString.split("stop|\\n")[1]);
-            System.out.printf("\nPublisher: " + publisher.text());
-            System.out.printf("\nPrice: " + price.attr("content"));
-            System.out.printf("\nRating: " + rating.text());
+            SampleParserReturnModel sampleParserReturnModel = new SampleParserReturnModel();
+            sampleParserReturnModel.setTitle(doc.title().split("stop|-")[0].trim());
+            sampleParserReturnModel.setDescription(descriptionString.split("stop|\\n")[1].trim());
+            sampleParserReturnModel.setPublisher(publisher.text().trim());
+            sampleParserReturnModel.setPrice(price.attr("content").trim());
+            sampleParserReturnModel.setRating(rating.text().trim());
 
-            // TODO: Make HTTP Call
-            // TODO: Parse HTTP Call
-            // TODO: Return JSON
+            Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+            JsonParser jp = new JsonParser();
+            JsonElement je = jp.parse(gson.toJson(sampleParserReturnModel));
+            System.out.printf("\n" + gson.toJson(je));
         }
     }
 
