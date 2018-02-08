@@ -1,5 +1,8 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.appdetex.sampleparserjavaproject.googleplay.AppParser;
+import com.appdetex.sampleparserjavaproject.googleplay.model.App;
+
 /**
  * Main Java Class
  *
@@ -10,7 +13,12 @@ package com.appdetex.sampleparserjavaproject;
 public class Main {
 
     public static void main( String[] args ) {
-        // Put code here
+    	if (args.length > 0 && args[0].startsWith("http")){
+			App app = AppParser.scrapeGooglePlayApp(args[0]);
+			System.out.println(app.toJSON());
+		}else {
+			System.out.println("You need to provide a Google Play Store link "
+					+ "in the first command line argument.");
+		}
     }
-
 }
