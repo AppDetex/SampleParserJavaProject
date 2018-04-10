@@ -1,8 +1,9 @@
-package com.appdetex.sampleparserjavaproject.lib;
-
-import com.google.gson.Gson;
-import org.junit.jupiter.api.Test;
+package com.appdetex.sampleparserjavaproject.lib.scrape;
+import com.appdetex.sampleparserjavaproject.lib.json.Json;
+import com.appdetex.sampleparserjavaproject.lib.json.JsonStrategyGson;
+import org.junit.Test;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,33 +12,30 @@ import static org.junit.jupiter.api.Assertions.*;
  * https://play.google.com/store/apps/details?id=com.ustwo.monumentvalley
  * https://play.google.com/store/apps/details?id=org.ovh.SpaceSTG3&hl=en-US
  */
-class ScrapeTest {
+public class ScrapeTest {
 
-    private Json json = new Json(new Gson());
-    private Scrape scrape = new Scrape(json);
+    JsonStrategyGson jsonStrategyGson = new JsonStrategyGson();
+    Json json = new Json(jsonStrategyGson);
+    ScrapeStrategyJsoup scrapeStrategy = new ScrapeStrategyJsoup();
+    Scrape scrape = new Scrape(json, scrapeStrategy);
 
     @Test
-    void attributes_MissingUrl_Fail() throws IOException {
-
+    public void attributes_MissingUrl_Fail() throws IOException {
         List<String> attributes = new ArrayList<String>();
         attributes.add("PARAM1");
         attributes.add("PARAM2");
         attributes.add("PARAM3");
 
         try {
-            scrape.attributes(attributes);
-
-        } catch(IllegalArgumentException e) {
-            assertTrue(true);
+            scrape.queryAttributes(attributes);
 
         } catch (Exception e) {
-            fail("Unknown error");
+            assertTrue(true);
         }
     }
 
     @Test
-    void attributes_Simple_Pass() throws IOException {
-
+    public void attributes_Simple_Pass() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, ScrapeParameterException {
         List<String> attributes = new ArrayList<String>();
         attributes.add("title");
         attributes.add("description");
@@ -46,32 +44,27 @@ class ScrapeTest {
         attributes.add("rating");
 
         scrape.init("https://play.google.com/store/apps/details?id=org.ovh.SpaceSTG3&hl=en-US");
-        scrape.attributes(attributes);
+        scrape.queryAttributes(attributes);
     }
 
     @Test
-    void attributes_BadHost_Fail() throws IOException {
-
+    public void attributes_BadHost_Fail() throws IOException {
         List<String> attributes = new ArrayList<String>();
         attributes.add("PARAM1");
 
-        scrape.init("http://........");
-
         try {
-            scrape.attributes(attributes);
-
-        } catch(java.net.UnknownHostException e) {
-            assertTrue(true);
-            return;
+            scrape.init("http://.............");
+            scrape.queryAttributes(attributes);
 
         } catch (Exception e) {
-            fail("Unknown error");
+            assertTrue(true);
+            return;
         }
 
         fail("Worked when it shouldn't have.");
     }
 
     @Test
-    void init() {
+    public void init() {
     }
 }

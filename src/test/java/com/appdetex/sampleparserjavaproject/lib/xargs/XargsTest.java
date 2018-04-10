@@ -1,19 +1,16 @@
 package com.appdetex.sampleparserjavaproject.lib.xargs;
-
-import com.appdetex.sampleparserjavaproject.lib.Cons;
 import org.apache.commons.cli.ParseException;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
-class XargsTest {
+public class XargsTest {
 
-    private Cons console = new Cons(System.out);
-    private Xargs xargs = new Xargs(console);
+    Xargs xargs = new Xargs();
 
     @Test
-    void init_HappyBootstrap_Pass() {
+    public void init_HappyBootstrap_Pass() {
 
         Map<String, Object> xargsOptions = new HashMap<String, Object>();
         xargsOptions.put( "opt", "u" );
@@ -30,7 +27,7 @@ class XargsTest {
     }
 
     @Test
-    void init_MissingUrlParameterShowHelp_Fail() {
+    public void init_MissingUrlParameterShowHelp_Fail() {
 
         Map<String, Object> xargsOptions = new HashMap<String, Object>();
         xargsOptions.put( "opt", "u" );
@@ -47,7 +44,7 @@ class XargsTest {
     }
 
     @Test
-    void getExpectedParam_Pass() {
+    public void getExpectedParam_Pass() {
 
         Map<String, Object> xargsOptions = new HashMap<String, Object>();
         xargsOptions.put( "opt", "u" );

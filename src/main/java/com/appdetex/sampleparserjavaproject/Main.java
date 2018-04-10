@@ -1,9 +1,14 @@
 package com.appdetex.sampleparserjavaproject;
 import com.appdetex.sampleparserjavaproject.lib.*;
+import com.appdetex.sampleparserjavaproject.lib.json.Json;
+import com.appdetex.sampleparserjavaproject.lib.json.JsonStrategyGson;
+import com.appdetex.sampleparserjavaproject.lib.scrape.Scrape;
+import com.appdetex.sampleparserjavaproject.lib.scrape.ScrapeStrategyJsoup;
 import com.appdetex.sampleparserjavaproject.lib.xargs.Xargs;
 import com.appdetex.sampleparserjavaproject.lib.xargs.XargsInputException;
-import com.google.gson.Gson;
-
+import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
+import java.net.UnknownHostException;
 import java.util.*;
 
 /**
@@ -13,14 +18,12 @@ import java.util.*;
  * and parse out certain data, printing that data to
  * stdout in a JSON format.
  *
- *
- * An design choice.
  * A state machine might be a good candidate for a future upgrade, especially if this evolves into
  * an interactive console application, where it would then become helpful for negotiating screen changes and
  * give an approximate service layer. Here is how it might look:
  *
- * app.start();
  * ApplicationFsm app = new ApplicationFsm(xargs, console, scrape, json);
+ * app.start();
  * app.transition("initialize"); *
  * app.transition("setup", attributes); // Bring in all data
  * app.transition("load-data-using-cli-param"); // A discreet loading step
@@ -42,10 +45,13 @@ public class Main {
          * Start your engines
          */
 
-        Cons console = new Cons(System.out);
-        Xargs xargs = new Xargs(console);
-        Json json = new Json(new Gson());
-        Scrape scrape = new Scrape(json);
+        Xargs xargs = new Xargs();
+        JsonStrategyGson jsonStrategyGson = new JsonStrategyGson();
+        Json json = new Json(jsonStrategyGson);
+        ScrapeStrategyJsoup scrapeStrategy = new ScrapeStrategyJsoup();
+        Scrape scrape = new Scrape(json, scrapeStrategy);
+        PrintStream ps = new PrintStream(System.out);
+        Cons console = new Cons(ps);
 
         /*
          * Transient config
@@ -60,10 +66,10 @@ public class Main {
         attributes.add("rating");
 
         Map<String, Object> xargsOptions = new HashMap<String, Object>();
-        xargsOptions.put( "opt", "u" );
-        xargsOptions.put( "longOpt", "url" );
-        xargsOptions.put( "hasArg", true );
-        xargsOptions.put( "description", "url of play store app" );
+        xargsOptions.put("opt", "u");
+        xargsOptions.put("longOpt", "url");
+        xargsOptions.put("hasArg", true);
+        xargsOptions.put("description", "url of play store app");
 
         /*
          * Main application run
@@ -71,23 +77,32 @@ public class Main {
 
         try {
             xargs.init(xargsOptions, args);
-
             scrape.init(xargs.get("url"));
-
-            String result = scrape.attributes(attributes).toJson();
-
+            String result = scrape.queryAttributes(attributes).toJsonPretty();
+            scrape.queryAttributes(attributes).toJsonPretty();
             console.write(result);
 
         } catch (XargsInputException e) {
+            System.exit(1);
 
+        } catch (UnknownHostException e) {
+            console.write("Unknown host");
+            xargs.printHelp();
+            System.exit(1);
+
+        } catch (IllegalArgumentException e) {
+            console.write("Malformed URL");
+            xargs.printHelp();
+            System.exit(1);
+
+        } catch (InvocationTargetException e) {
+            console.write("Attribute not found");
+            xargs.printHelp();
             System.exit(1);
 
         } catch(Exception e) {
-
-            console.write(e.getMessage());
-
-            console.write(Arrays.toString(e.getStackTrace()));
-
+            e.printStackTrace();
+            xargs.printHelp();
             System.exit(1);
         }
     }

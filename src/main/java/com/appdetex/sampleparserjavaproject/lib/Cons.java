@@ -1,10 +1,6 @@
 package com.appdetex.sampleparserjavaproject.lib;
 import java.io.PrintStream;
 
-/**
- * This will unable to handle complex screen drawings
- * and may need to be retooled if the project grows
- */
 public class Cons {
 
     private PrintStream console;
@@ -13,8 +9,7 @@ public class Cons {
         this.console = console;
     }
 
-    public boolean write(String message) {
-        System.out.println(message);
-        return true;
+    public void write(String message) {
+        this.console.println(message);
     }
 }
