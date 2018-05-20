@@ -1,0 +1,17 @@
+google-play:
+  location: 'play.google.com'
+  select-keys:
+    title: 'h1.AHFaub > span'
+    description: 'div.DWPxHB > content > div'
+    publisher: 'span.T32cc.UAO9ie > a'
+    price: 'button.LKLjZd.ScJHi.HPiPcc.IfEcue > span > span > meta[itemprop=price]'
+    rating: 'div.BHMmbe'
+
+apple-store:
+  location: 'itunes.apple.com'
+  select-keys:
+    title: 'demo'
+    description: 'demo'
+    publisher: 'demo'
+    price: 'demo'
+    rating: 'demo'

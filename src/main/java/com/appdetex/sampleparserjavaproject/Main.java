@@ -1,16 +1,38 @@
 package com.appdetex.sampleparserjavaproject;
 
-/**
- * Main Java Class
- *
- * This class will use Jsoup to retrieve a provided URL
- * and parse out certain data, printing that data to
- * stdout in a JSON format.
- */
-public class Main {
+import com.appdetex.sampleparserjavaproject.commands.CliService;
+import com.appdetex.sampleparserjavaproject.commands.CmdPrompt;
+import com.appdetex.sampleparserjavaproject.parsing.ParseQuery;
+import com.appdetex.sampleparserjavaproject.parsing.ParsedInfo;
+import com.appdetex.sampleparserjavaproject.parsing.WebParsingService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-    public static void main( String[] args ) {
-        // Put code here
+@Slf4j
+@SpringBootApplication
+@RequiredArgsConstructor
+public class Main implements CommandLineRunner {
+
+    private final CliService cliService;
+    private final WebParsingService webParsingService;
+
+    public void run(String... args) throws Exception {
+        log.info("SPRING BOOT CAN DO CLI APPS?! Neat!");
+
+        CmdPrompt prompt = cliService.getCmdPrompt();
+
+        ParseQuery parseQuery = ParseQuery.builder()
+                .websiteUrl(prompt.getWebsiteUrl())
+                .build();
+
+        ParsedInfo parsedInfo = webParsingService.parseWebsite(parseQuery);
+        cliService.printParsedInfo(parsedInfo);
     }
 
+    public static void main( String[] args ) {
+        SpringApplication.run(Main.class, args);
+    }
 }
