@@ -17,7 +17,7 @@ public class CliService {
     public CmdPrompt getCmdPrompt() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter google play url: ");
+        System.out.print("\r\n\r\nEnter app store url: ");
         String websiteUrl = scanner.next();
 
         return CmdPrompt.builder()

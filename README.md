@@ -8,4 +8,11 @@ mvn clean package
 ```
 
 ### Running with the Devil
-TBD
+```bash
+mvn spring-boot:run
+```
+###### OR
+Be sure to build the application first
+```bash
+java -jar target/sampleparserjavaproject-1.0-SNAPSHOT.jar
+```
