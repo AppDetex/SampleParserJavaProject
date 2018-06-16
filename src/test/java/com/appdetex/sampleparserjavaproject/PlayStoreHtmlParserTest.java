@@ -21,6 +21,16 @@ public class PlayStoreHtmlParserTest {
         assertThat(app.getTitle(), is("Weather Forecast Pro"));
     }
 
+    @Test
+    public void canParseDescriptionFromHtml() throws IOException {
+        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
+        Document document = getDocument("weather-forecast-pro.html");
+        PlayStoreApp app = playStoreHtmlParser.parse(document);
+
+        assertThat(app.getDescription(), is("This is pro version that does not contain ads and has premium support."));
+
+    }
+
     private Document getDocument(String filename) throws IOException {
         InputStream resource = this.getClass().getResourceAsStream(filename);
         return Jsoup.parse(IOUtils.toString(resource, "UTF-8"));
