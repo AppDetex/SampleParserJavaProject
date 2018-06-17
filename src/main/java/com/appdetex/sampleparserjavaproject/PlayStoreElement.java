@@ -4,7 +4,7 @@ public enum PlayStoreElement {
     TITLE("h1[class=AHFaub][itemprop=name] > span"),
     DESCRIPTION("div[class=DWPxHb][itemprop=description] > content > div"),
     PUBLISHER("a.hrTbp.R8zArc"),
-    PRICE("span.LV0gI"),
+    PRICE("meta[itemprop=price]"),
     RATING("div.BHMmbe")
     ;
 

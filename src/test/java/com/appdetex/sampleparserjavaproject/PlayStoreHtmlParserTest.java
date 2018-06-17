@@ -2,59 +2,43 @@ package com.appdetex.sampleparserjavaproject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Collection;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@RunWith(Parameterized.class)
 public class PlayStoreHtmlParserTest {
+    @Parameterized.Parameters
+    public static Collection<Object[]> params() {
+        return Arrays.asList(
+                new Object[]{"weather-forecast-pro.html", new PlayStoreApp("Weather Forecast Pro", "This is pro version that does not contain ads and has premium support.", "Best App - Top Droid Team", "$0.00", 4.7)},
+                new Object[]{"tower-of-infinity-vip.html", new PlayStoreApp("Tower of Infinity VIP", "■ VIP version benefits: Reward 300 gems + 300 rebrith + Remove benner.", "DAERISOFT", "$0.99", 4.0)}
+        );
+    }
 
-    @Test
-    public void canParseTitleFromHtml() throws IOException {
-        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
-        Document document = getDocument("weather-forecast-pro.html");
-        PlayStoreApp app = playStoreHtmlParser.parse(document);
+    private final String filename;
+    private final PlayStoreApp expectedApp;
 
-        assertThat(app.getTitle(), is("Weather Forecast Pro"));
+    public PlayStoreHtmlParserTest(String filename, PlayStoreApp expectedApp) {
+        this.filename = filename;
+        this.expectedApp = expectedApp;
     }
 
     @Test
-    public void canParseDescriptionFromHtml() throws IOException {
+    public void canParseAppFromHtml() throws IOException {
         PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
-        Document document = getDocument("weather-forecast-pro.html");
+        Document document = getDocument(filename);
         PlayStoreApp app = playStoreHtmlParser.parse(document);
 
-        assertThat(app.getDescription(), is("This is pro version that does not contain ads and has premium support."));
-    }
-
-    @Test
-    public void canParsePublisherFromHtml() throws IOException {
-        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
-        Document document = getDocument("weather-forecast-pro.html");
-        PlayStoreApp app = playStoreHtmlParser.parse(document);
-
-        assertThat(app.getPublisher(), is("Best App - Top Droid Team"));
-    }
-
-    @Test
-    public void canParsePriceFromHtml() throws IOException {
-        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
-        Document document = getDocument("weather-forecast-pro.html");
-        PlayStoreApp app = playStoreHtmlParser.parse(document);
-
-        assertThat(app.getPrice(), is("$3.99"));
-    }
-
-    @Test
-    public void canParseRatingFromHtml() throws IOException {
-        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
-        Document document = getDocument("weather-forecast-pro.html");
-        PlayStoreApp app = playStoreHtmlParser.parse(document);
-
-        assertThat(app.getRating(), is(4.7));
+        assertThat(app, is(expectedApp));
     }
 
     private Document getDocument(String filename) throws IOException {

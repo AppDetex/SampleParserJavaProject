@@ -17,13 +17,16 @@ public class PlayStoreHtmlParser {
 
         Elements descriptionElements = document.select(DESCRIPTION.getSelector());
         String fullDescription = descriptionElements.get(0).html();
-        String description = Arrays.stream(fullDescription.split("\\n<br>")).findFirst().orElse("");
+        String description = Arrays.stream(fullDescription.split("<br>")).findFirst().orElse("").trim();
 
         Elements publisherElements = document.select(PUBLISHER.getSelector());
         String publisher = publisherElements.get(0).text();
 
         Elements priceElements = document.select(PRICE.getSelector());
-        String price = priceElements.text();
+        String price = priceElements.get(0).attr("content");
+        if ("0".equals(price)) {
+            price = "$0.00";
+        }
 
         Elements ratingElements = document.select(RATING.getSelector());
         double rating = Double.parseDouble(ratingElements.text());
