@@ -2,7 +2,7 @@ package com.appdetex.sampleparserjavaproject;
 
 import java.util.Arrays;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+import org.jsoup.nodes.Element;
 
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.DESCRIPTION;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.PRICE;
@@ -12,25 +12,46 @@ import static com.appdetex.sampleparserjavaproject.PlayStoreElement.TITLE;
 
 public class PlayStoreHtmlParser {
     public PlayStoreApp parse(Document document) {
-        Elements nameElements = document.select(TITLE.getSelector());
-        String title = nameElements.get(0).text();
+        String title = parseTitle(document);
+        String description = parseDescription(document);
+        String publisher = parsePublisher(document);
+        String price = parsePrice(document);
+        double rating = parseRating(document);
 
-        Elements descriptionElements = document.select(DESCRIPTION.getSelector());
-        String fullDescription = descriptionElements.get(0).html();
-        String description = Arrays.stream(fullDescription.split("<br>")).findFirst().orElse("").trim();
+        return new PlayStoreApp(title, description, publisher, price, rating);
+    }
 
-        Elements publisherElements = document.select(PUBLISHER.getSelector());
-        String publisher = publisherElements.get(0).text();
+    private double parseRating(Document document) {
+        Element ratingElement = extractElement(document, RATING);
+        return Double.parseDouble(ratingElement.text());
+    }
 
-        Elements priceElements = document.select(PRICE.getSelector());
-        String price = priceElements.get(0).attr("content");
+    private String parsePrice(Document document) {
+        Element priceElement = extractElement(document, PRICE);
+        String price = priceElement.attr("content");
         if ("0".equals(price)) {
             price = "$0.00";
         }
+        return price;
+    }
 
-        Elements ratingElements = document.select(RATING.getSelector());
-        double rating = Double.parseDouble(ratingElements.text());
+    private String parsePublisher(Document document) {
+        Element publisherElement = extractElement(document, PUBLISHER);
+        return publisherElement.text();
+    }
 
-        return new PlayStoreApp(title, description, publisher, price, rating);
+    private String parseDescription(Document document) {
+        Element descriptionElement = extractElement(document, DESCRIPTION);
+        String fullDescription = descriptionElement.html();
+        return Arrays.stream(fullDescription.split("<br>")).findFirst().orElse("").trim();
+    }
+
+    private String parseTitle(Document document) {
+        Element nameElement = extractElement(document, TITLE);
+        return nameElement.text();
+    }
+
+    private Element extractElement(Document document, PlayStoreElement element) {
+        return document.select(element.getSelector()).get(0);
     }
 }
