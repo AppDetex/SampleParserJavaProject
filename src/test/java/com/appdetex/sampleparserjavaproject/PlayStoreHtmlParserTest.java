@@ -48,6 +48,15 @@ public class PlayStoreHtmlParserTest {
         assertThat(app.getPrice(), is("$3.99"));
     }
 
+    @Test
+    public void canParseRatingFromHtml() throws IOException {
+        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
+        Document document = getDocument("weather-forecast-pro.html");
+        PlayStoreApp app = playStoreHtmlParser.parse(document);
+
+        assertThat(app.getRating(), is(4.7));
+    }
+
     private Document getDocument(String filename) throws IOException {
         InputStream resource = this.getClass().getResourceAsStream(filename);
         return Jsoup.parse(IOUtils.toString(resource, "UTF-8"));

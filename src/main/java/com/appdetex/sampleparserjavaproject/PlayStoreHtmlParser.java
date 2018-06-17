@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.DESCRIPTION;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.PRICE;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.PUBLISHER;
+import static com.appdetex.sampleparserjavaproject.PlayStoreElement.RATING;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.TITLE;
 
 public class PlayStoreHtmlParser {
@@ -24,6 +25,9 @@ public class PlayStoreHtmlParser {
         Elements priceElements = document.select(PRICE.getSelector());
         String price = priceElements.text();
 
-        return new PlayStoreApp(title, description, publisher, price);
+        Elements ratingElements = document.select(RATING.getSelector());
+        double rating = Double.parseDouble(ratingElements.text());
+
+        return new PlayStoreApp(title, description, publisher, price, rating);
     }
 }

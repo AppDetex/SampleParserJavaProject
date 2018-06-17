@@ -7,12 +7,18 @@ public class PlayStoreApp {
     private final String description;
     private final String publisher;
     private final String price;
+    private final double rating;
 
-    public PlayStoreApp(String title, String description, String publisher, String price) {
+    public PlayStoreApp(String title, String description, String publisher, String price, double rating) {
         this.title = title;
         this.description = description;
         this.publisher = publisher;
         this.price = price;
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return rating;
     }
 
     public String getPrice() {
@@ -37,7 +43,8 @@ public class PlayStoreApp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlayStoreApp that = (PlayStoreApp) o;
-        return Objects.equals(title, that.title) &&
+        return Double.compare(that.rating, rating) == 0 &&
+                Objects.equals(title, that.title) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(publisher, that.publisher) &&
                 Objects.equals(price, that.price);
@@ -46,7 +53,7 @@ public class PlayStoreApp {
     @Override
     public int hashCode() {
 
-        return Objects.hash(title, description, publisher, price);
+        return Objects.hash(title, description, publisher, price, rating);
     }
 
     @Override
@@ -56,6 +63,7 @@ public class PlayStoreApp {
                 ", description='" + description + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", price='" + price + '\'' +
+                ", rating=" + rating +
                 '}';
     }
 }
