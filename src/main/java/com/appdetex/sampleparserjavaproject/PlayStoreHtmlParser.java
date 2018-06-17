@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.DESCRIPTION;
+import static com.appdetex.sampleparserjavaproject.PlayStoreElement.PRICE;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.PUBLISHER;
 import static com.appdetex.sampleparserjavaproject.PlayStoreElement.TITLE;
 
@@ -20,6 +21,9 @@ public class PlayStoreHtmlParser {
         Elements publisherElements = document.select(PUBLISHER.getSelector());
         String publisher = publisherElements.get(0).text();
 
-        return new PlayStoreApp(title, description, publisher);
+        Elements priceElements = document.select(PRICE.getSelector());
+        String price = priceElements.text();
+
+        return new PlayStoreApp(title, description, publisher, price);
     }
 }

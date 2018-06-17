@@ -28,7 +28,6 @@ public class PlayStoreHtmlParserTest {
         PlayStoreApp app = playStoreHtmlParser.parse(document);
 
         assertThat(app.getDescription(), is("This is pro version that does not contain ads and has premium support."));
-
     }
 
     @Test
@@ -38,7 +37,15 @@ public class PlayStoreHtmlParserTest {
         PlayStoreApp app = playStoreHtmlParser.parse(document);
 
         assertThat(app.getPublisher(), is("Best App - Top Droid Team"));
+    }
 
+    @Test
+    public void canParsePriceFromHtml() throws IOException {
+        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
+        Document document = getDocument("weather-forecast-pro.html");
+        PlayStoreApp app = playStoreHtmlParser.parse(document);
+
+        assertThat(app.getPrice(), is("$3.99"));
     }
 
     private Document getDocument(String filename) throws IOException {
