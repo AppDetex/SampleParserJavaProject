@@ -31,6 +31,16 @@ public class PlayStoreHtmlParserTest {
 
     }
 
+    @Test
+    public void canParsePublisherFromHtml() throws IOException {
+        PlayStoreHtmlParser playStoreHtmlParser = new PlayStoreHtmlParser();
+        Document document = getDocument("weather-forecast-pro.html");
+        PlayStoreApp app = playStoreHtmlParser.parse(document);
+
+        assertThat(app.getPublisher(), is("Best App - Top Droid Team"));
+
+    }
+
     private Document getDocument(String filename) throws IOException {
         InputStream resource = this.getClass().getResourceAsStream(filename);
         return Jsoup.parse(IOUtils.toString(resource, "UTF-8"));
