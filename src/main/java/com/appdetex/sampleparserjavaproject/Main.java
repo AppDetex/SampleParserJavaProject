@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject;
 
+import java.io.IOException;
+
 /**
  * Main Java Class
  *
@@ -9,8 +11,25 @@ package com.appdetex.sampleparserjavaproject;
  */
 public class Main {
 
-    public static void main( String[] args ) {
-        // Put code here
-    }
+    public static void main( String[] args ) throws IOException{
+        String parsedApp;
 
+        if (args.length > 0) {
+            AppInfoParser parsedAppInfo = new AppInfoParser(args[0]);
+            parsedApp = parsedAppInfo.parseAppInfo();
+            System.out.println(parsedApp);
+        } else {
+            System.err.println("Please enter a valid URL to begin application translation");
+            System.exit(9);
+        }
+    }
 }
+
+/**
+ * Here are some test URLs:
+ * https://play.google.com/store/apps/details?id=com.icegame.candyline
+ * https://play.google.com/store/apps/details?id=com.imangi.templerun2
+ *
+ * Here is a URL with a price other than $0: https://play.google.com/store/apps/details?id=com.mojang.minecraftpe
+ *
+ */
