@@ -4,14 +4,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 class Scraper {
-    private Document doc;
+    private Document page;
 
-    Scraper(Document d) {
-        doc = d;
+    Scraper(Document page) {
+        this.page = page;
     }
 
     String getForItemprop(String key) {
-        Element element = doc.select(String.format("meta[itemprop=\"%s\"]", key)).first();
+        Element element = page.select(String.format("meta[itemprop=\"%s\"]", key)).first();
 
         if (element == null) {
             return null;
@@ -29,7 +29,7 @@ class Scraper {
     }
 
     String getPublisher() {
-        Element span = doc.select("div:matchesOwn(Offered By) + span").first();
+        Element span = page.select("div:matchesOwn(Offered By) + span").first();
 
         if (span == null) {
             return null;
