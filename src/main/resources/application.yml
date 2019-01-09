@@ -1,0 +1,7 @@
+application.name: @project.artifactId@
+build.version: @project.version@
+
+logging.level.root: "WARN"
+
+spring:
+  main.banner-mode: "off"
