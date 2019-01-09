@@ -28,7 +28,7 @@ public class GooglePlayAppModel {
 
 Candy Scrape can easily be extended beyond its current Google Play Store
 scraping functionality. By adding new target to model keypairs in 
-`config.DomainModelConfiguration` other static web resources can easily
+`config.TargetModelConfiguration` other static web resources can easily
 be parsed.
 
 Models are simply POJOs with `@CssSelectorPath` annotations defining how
