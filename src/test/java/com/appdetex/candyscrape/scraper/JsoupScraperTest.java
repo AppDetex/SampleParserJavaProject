@@ -35,53 +35,48 @@ public class JsoupScraperTest {
     private IDocumentRetriever documentRetriever;
 
     private String testHtml;
+    private TestModel testModel;
 
     @Before
     public void setup() throws IOException {
         testHtml = new String(FileCopyUtils.copyToByteArray(testHtmlResource.getInputStream()), StandardCharsets.UTF_8);
         given(documentRetriever.fetch(anyString())).willReturn(Jsoup.parse(testHtml));
+        testModel = scraper.scrape("", TestModel.class);
     }
 
     @Test
     public void testScrapeAttribute() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getCharset()).isEqualTo("UTF-8");
+        assertThat(testModel.getCharset()).isEqualTo("UTF-8");
     }
 
     @Test
     public void testScrapeInnerText() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getInnerText()).isEqualTo("inner text");
+        assertThat(testModel.getInnerText()).isEqualTo("inner text");
     }
 
     @Test
     public void testScrapePseudoMatchers() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getOff()).isEqualTo("off");
-        assertThat(m.getOn()).isEqualTo("on");
+        assertThat(testModel.getOff()).isEqualTo("off");
+        assertThat(testModel.getOn()).isEqualTo("on");
     }
 
     @Test
     public void testScrapeNumeric() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getNumeric()).isEqualTo(123.333f);
+        assertThat(testModel.getNumeric()).isEqualTo(123.333f);
     }
 
     @Test
     public void testScrapeRegex() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getRegexSimple()).isEqualTo("555");
+        assertThat(testModel.getRegexSimple()).isEqualTo("555");
     }
 
     @Test
     public void testScrapeRegexNamed() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getRegexNamed()).isEqualTo("0199");
+        assertThat(testModel.getRegexNamed()).isEqualTo("0199");
     }
 
     @Test
     public void testScrapeDefault() {
-        TestModel m = scraper.scrape("", TestModel.class);
-        assertThat(m.getDefaulted()).isEqualTo("defaulted");
+        assertThat(testModel.getDefaulted()).isEqualTo("defaulted");
     }
 }

@@ -57,7 +57,7 @@ mvn clean package
 #### Running the Project
 
 The application takes a single command line parameter, the URL to scrape. If 
-an URL is specified with no model backing the application will fail. Currently
+an URL is specified with no model backing, the application will fail. Currently
 only google play app store pages are modeled.
 
 ```bash

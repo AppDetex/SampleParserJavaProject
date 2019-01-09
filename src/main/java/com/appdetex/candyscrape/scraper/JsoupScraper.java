@@ -53,7 +53,7 @@ public class JsoupScraper extends ScraperBase {
                     String regexGroupName = cssSelectorPathAnnotation.regexGroupName();
                     Elements elList = doc.select(selectorPath);
 
-                    if (elList.size() != 1 && StringUtils.isEmpty(defaultValue)) {
+                    if ((elList.isEmpty() && StringUtils.isEmpty(defaultValue)) || elList.size() > 1) {
                         log.error("Failed to parse selector path [{}], required exactly one element match.", selectorPath);
                         return null;
                     } else {
