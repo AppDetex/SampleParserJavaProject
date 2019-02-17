@@ -25,8 +25,7 @@ public final class Main {
     public static void main(final String[] args) {
 
         if (args.length != 1) {
-            System.out.println("Usage: java -jar scraper.jar"
-            + "https://play.google.com/store/apps/details?id=com.spotify.music");
+            System.out.println("Usage: java -jar Sampleparser.jar url");
             System.exit(0);
         }
 
