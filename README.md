@@ -22,7 +22,8 @@ either option, but I would recommend just manually importing the changes for now
 on the icon in the very bottom left of the editor. In here you can execute any of the Maven lifecycles.
 5) Edit the configuration settings to include the google playstore uri for the app you want to have parsed as a command
 line argument, and also make sure to select the parent directory of the project in the "Use classpath of module:" for 
-the "Run as Application" and the "HTMLParserTest" configurations. Now you should be able to run both through IntelliJ.
+the "Run as Application" and the "HTMLParserTest" configurations if they are not already properly set. Now you should be
+able to run both through IntelliJ.
 6) You can also run the unit tests by running the "test" lifecycle in the Maven bar.
 
 

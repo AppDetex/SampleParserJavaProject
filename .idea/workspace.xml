@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ce5c1a0-ae34-4c64-be1f-02acf8ae3b1a" name="Default Changelist" comment="" />
+    <list default="true" id="5ce5c1a0-ae34-4c64-be1f-02acf8ae3b1a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +30,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/appdetex/sampleparserjavaproject/App.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
+                <state relative-caret-position="578">
                   <caret line="36" column="50" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -38,8 +42,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/appdetex/sampleparserjavaproject/HtmlParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-178">
-                  <caret line="56" column="42" lean-forward="true" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+                <state relative-caret-position="850">
+                  <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -51,8 +55,8 @@
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="364">
-                    <caret line="58" column="115" selection-start-line="58" selection-start-column="115" selection-end-line="58" selection-end-column="115" />
+                  <first_editor relative-caret-position="425">
+                    <caret line="25" selection-start-line="25" selection-end-line="25" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -66,7 +70,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/com/appdetex/sampleparserjavaproject/test/HtmlParserTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1989">
+                <state relative-caret-position="1223">
                   <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -88,6 +92,9 @@
         <option value="JUnit4 Test Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -138,70 +145,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
+              <item name="SampleParserJavaProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SampleParserJavaProject" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sampleparserjavaproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sampleparserjavaproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SampleParserJavaProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,7 +196,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Run as Application">
+  <component name="RunManager" selected="JUnit.HtmlParserTest">
     <configuration default="true" type="Applet">
       <option name="MAIN_CLASS_NAME" value="com.appdetex.sampleparserjavaproject.App" />
       <module name="sampleparserjavaproject" />
@@ -246,14 +206,14 @@
     </configuration>
     <configuration name="Run as Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.appdetex.sampleparserjavaproject.App" />
-      <module name="sampleparserjavaproject" />
+      <module name="SampleParserJavaProject" />
       <option name="PROGRAM_PARAMETERS" value="https://play.google.com/store/apps/details?id=com.ambientdesign.artrage.playstore" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="HtmlParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="sampleparserjavaproject" />
+      <module name="SampleParserJavaProject" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.appdetex.sampleparserjavaproject.test.*" />
@@ -262,7 +222,9 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.appdetex.sampleparserjavaproject.test" />
       <option name="MAIN_CLASS_NAME" value="com.appdetex.sampleparserjavaproject.test.HtmlParserTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -351,7 +313,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13710937" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.051171876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -380,6 +342,9 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/com/appdetex/test/AppTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/appdetex/sampleparserjavaproject/test/AppTest.java" />
@@ -392,7 +357,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/appdetex/sampleparserjavaproject/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
+        <state relative-caret-position="578">
           <caret line="36" column="50" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -402,8 +367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/appdetex/sampleparserjavaproject/HtmlParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="56" column="42" lean-forward="true" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+        <state relative-caret-position="850">
+          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -412,7 +377,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/appdetex/sampleparserjavaproject/test/HtmlParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
+        <state relative-caret-position="1223">
           <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -423,8 +388,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="364">
-            <caret line="58" column="115" selection-start-line="58" selection-start-column="115" selection-end-line="58" selection-end-column="115" />
+          <first_editor relative-caret-position="425">
+            <caret line="25" selection-start-line="25" selection-end-line="25" />
           </first_editor>
           <second_editor />
         </state>
