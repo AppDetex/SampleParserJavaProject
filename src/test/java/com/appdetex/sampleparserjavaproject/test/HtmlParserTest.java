@@ -10,6 +10,7 @@ import com.appdetex.sampleparserjavaproject.HtmlParser;
 import java.io.IOException;
 
 /**
+ * This class has test methods for the HTMLParser class.
  * @author nbrinton
  */
 public class HtmlParserTest {
@@ -115,11 +116,4 @@ public class HtmlParserTest {
         exception.expect(IllegalArgumentException.class);
         HtmlParser parser = new HtmlParser("garbageUrl");
     }
-
-
-
-//    @Test
-//    public void toString_eggInc_toStringIsValid() {
-//
-//    }
 }

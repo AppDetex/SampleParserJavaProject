@@ -5,6 +5,8 @@ import org.apache.commons.validator.routines.UrlValidator;
 import java.io.IOException;
 
 /**
+ * This program takes a google playstore app uri as a command-line argument and parses important information about the
+ * app into a JSON object.
  * @author nbrinton
  */
 public class App {
@@ -32,6 +34,7 @@ public class App {
 
         System.out.println("Running...");
         try {
+            System.out.println("Parsing: " + url);
             HtmlParser parser = new HtmlParser(url);
             parser.parseToJSON();
             System.out.println(parser.toString());
