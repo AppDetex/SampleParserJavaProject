@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject
 
+import com.google.gson.Gson
+
 /**
  * Main Java Class
  *
@@ -10,9 +12,15 @@ package com.appdetex.sampleparserjavaproject
 
 fun main(args : Array<String>) {
     val url = args.first()
+    val gson = Gson()
 
 
+    // Send our url from command line to scraper
     val appInfo = GoogleAppStoreScraper(url)
 
-    print(appInfo.results())
+    // convert data class result to json
+    val appJson = gson.toJson(appInfo.result())
+
+    // Drop it to std out
+    print(appJson)
 }

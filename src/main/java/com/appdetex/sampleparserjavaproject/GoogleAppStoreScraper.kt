@@ -42,7 +42,7 @@ class GoogleAppStoreScraper(url: String){
         return urlValidator.isValid(this.target)
     }
 
-    fun results(): GoogleAppStoreInfo {
+    fun result(): GoogleAppStoreInfo {
         if( validUrl() ) {
             return scrapedApp()
         }
