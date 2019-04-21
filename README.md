@@ -9,17 +9,27 @@
 - Documentation bases added to functional code segments
 
 ## Overall Approach
+- Don't do anything that has been done before
+- Use existing tools
+- Don't fight with Maven
+- Run from IntelliJ to get around fighting with build tools
+- Add minimal documentation for clarification
+- Minimal main file to prevent over complications in non-critical files
+
+### General thoughts
+- I am not a Maven expert, do what I have to in order to get it to run in the IDE
+- Don't use java, as I would have to implement many things that are already in Kotlin
+- Use a data class to hold results thus allowing a standard format for any parser to use
+- Don't implement conversion to JSON. There are plenty of tools that allow for this.
+- Add some test to verify defaults return from a bad url
+- Add a test for verification of the "good" result
+- Don't spend an insane amount of time fighting with Java package issues
 
 
-## How to Run
-Due to the fact that I have not implemented the correct Maven configurations
-use of this is limited to direct compilation and java execution
-```
-cd src/main/java/com/appdetex/sampleparserjavaproject
-kotlinc .  -include-runtime -d scrape.jar
-java -jar scrape.jar "<Full url including http/s>"
-```
-
+My thoughts pretty much boil down to:
+- One data class
+- One Scraper class
+- Only use main to ingest url and print json result
 
 ## Things that are not working
 - Spock testing via Maven
