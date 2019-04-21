@@ -7,6 +7,7 @@
     - Use of existing packages to convert data class to JSON
     - Print JSON result to stdout
 - Documentation bases added to functional code segments
+- Use Spock for testing to allow for easy test reading
 
 ## Overall Approach
 - Don't do anything that has been done before
