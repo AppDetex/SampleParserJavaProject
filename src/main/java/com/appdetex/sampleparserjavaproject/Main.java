@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: java -jar sampleparserjavaproject.jar \"url-to-scrape\"");
+            System.out.println("Usage: java -jar /path/to/sampleparserjavaproject.jar \"url-to-scrape\"");
             System.exit(0);
         }
 

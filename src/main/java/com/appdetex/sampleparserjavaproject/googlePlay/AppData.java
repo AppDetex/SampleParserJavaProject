@@ -10,7 +10,7 @@ public final class AppData {
     public final String price;
     public final Float rating;
 
-    AppData(String title, String description, String publisher, String price, Float rating) {
+    public AppData(String title, String description, String publisher, String price, Float rating) {
         requireNonEmpty(title, "title is required");
         requireNonEmpty(description, "description is required");
         requireNonEmpty(publisher, "publisher is required");

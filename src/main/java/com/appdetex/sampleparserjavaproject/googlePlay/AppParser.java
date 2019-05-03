@@ -1,10 +1,7 @@
 package com.appdetex.sampleparserjavaproject.googlePlay;
 
 import com.appdetex.sampleparserjavaproject.Parser;
-import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
-import com.google.common.io.Resources;
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
@@ -26,7 +23,7 @@ public class AppParser implements Parser<AppData> {
                 parseRating(document));
     }
 
-    Float parseRating(Document document) {
+    private Float parseRating(Document document) {
         Elements elements = document.select("div.dNLKff > c-wiz > div.pf5lIe > div[role=img]");
 
         String ratingSentence = elements.stream().findFirst()
@@ -86,17 +83,4 @@ public class AppParser implements Parser<AppData> {
     private String unescape(String raw) {
         return org.jsoup.parser.Parser.unescapeEntities(raw, true);
     }
-
-//    public static void main(String[] args) throws IOException {
-//        String html = Resources.toString(Resources.getResource("com.mojang.minecraftpe.html"), Charsets.UTF_8);
-////        String html = Resources.toString(Resources.getResource("com.watabou.pixeldungeon.html"), Charsets.UTF_8);
-////        String html = Resources.toString(Resources.getResource("uk.co.aifactory.go.html"), Charsets.UTF_8);
-//
-//        AppParser parser = new AppParser();
-//
-//        Document document = Jsoup.parse(html);
-//
-//        System.out.println(parser.parseRating(document));
-//    }
-
 }

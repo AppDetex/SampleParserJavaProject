@@ -1,8 +1,6 @@
-package com.appdetex.sampleparserjavaproject.googlePlay;
+package com.appdetex.sampleparserjavaproject;
 
-import com.appdetex.sampleparserjavaproject.JsonService;
-import com.appdetex.sampleparserjavaproject.Parser;
-import com.appdetex.sampleparserjavaproject.Scraper;
+import com.appdetex.sampleparserjavaproject.googlePlay.AppData;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +23,7 @@ class JsonServiceTest {
     private JsonService<AppData> jsonService;
 
     @Test
-    void getJson() throws JSONException {
+    void getJsonForAppData() throws JSONException {
         when(scraper.getHtml("input")).thenReturn("test");
         when(parser.parse("test")).thenReturn(new AppData("title", "description", "publisher", "price", 1.23f));
 
