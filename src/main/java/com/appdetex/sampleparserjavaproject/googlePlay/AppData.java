@@ -1,5 +1,6 @@
 package com.appdetex.sampleparserjavaproject.googlePlay;
 
+import com.google.common.base.Strings;
 import java.util.Objects;
 
 public final class AppData {
@@ -10,13 +11,18 @@ public final class AppData {
     public final Float rating;
 
     AppData(String title, String description, String publisher, String price, Float rating) {
+        requireNonEmpty(title, "title is required");
+        requireNonEmpty(description, "description is required");
+        requireNonEmpty(publisher, "publisher is required");
+        requireNonEmpty(price, "price is required");
+        Objects.requireNonNull(rating);
+
         this.title = title;
         this.description = description;
         this.publisher = publisher;
         this.price = price;
         this.rating = rating;
     }
-
 
     @Override
     public String toString() {
@@ -44,5 +50,11 @@ public final class AppData {
     @Override
     public int hashCode() {
         return Objects.hash(title, description, publisher, price, rating);
+    }
+
+    private static void requireNonEmpty(String value, String msg) {
+        if (Strings.isNullOrEmpty(value)) {
+            throw new RuntimeException(msg);
+        }
     }
 }

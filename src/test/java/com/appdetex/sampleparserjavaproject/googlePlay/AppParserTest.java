@@ -18,20 +18,20 @@ class AppParserTest {
 
     enum TestValue {
         MINECRAFT("com.mojang.minecraftpe.html",
-                new AppData("Minecraft,",
+                new AppData("Minecraft",
                         "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off dangerous mobs. Create, explore and survive alone or with friends on mobile devices or Windows 10.",
                         "Mojang",
                         "$6.99",
                         4.5f)),
         PIXEL_DUNGEON("com.watabou.pixeldungeon.html",
                 new AppData("Pixel Dungeon",
-                        "Pixel Dungeon is a traditional roguelike* game with pixel-art graphics and simple interface.",
+                        "Pixel Dungeon is a traditional roguelike * game with pixel-art graphics and simple interface.",
                         "watabou",
-                        null,
+                        "0",
                         4.2f)),
         GO("uk.co.aifactory.go.html",
                 new AppData("Go",
-                        "★ Top Developer (awarded 2013 / 2015) ★", "Ai Factory Limited",
+                        "★ Top Developer (awarded 2013 / 2015) ★", "AI Factory Limited",
                         "$3.99",
                         4.6f));
 
