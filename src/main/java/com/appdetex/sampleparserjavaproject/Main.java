@@ -1,5 +1,10 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.appdetex.sampleparserjavaproject.googlePlay.AppData;
+import com.appdetex.sampleparserjavaproject.googlePlay.AppParser;
+import com.appdetex.sampleparserjavaproject.googlePlay.AppScraper;
+import org.apache.http.impl.client.HttpClients;
+
 /**
  * Main Java Class
  * <p>
@@ -15,7 +20,11 @@ public class Main {
             System.exit(0);
         }
 
-        System.out.println(args[0]);
+        JsonService<AppData> appDataJsonService = new JsonService<>(
+                new AppScraper(HttpClients.createDefault()),
+                new AppParser());
+
+        System.out.println(appDataJsonService.getJson(args[0]));
     }
 
 }
