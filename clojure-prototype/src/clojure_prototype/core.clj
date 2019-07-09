@@ -13,6 +13,19 @@
           {}
           mappings))
 
+(defn- get-publisher [doc]
+  (let [app-id (-> doc
+                   (.select "meta[name=appstore:bundle_id]")
+                   (.attr "content"))
+        ;;the root panel that includes the "Similar" bit doesn't have jsshadow, but all the app-specific ones seem to
+        app-panel-selector (str "c-wiz[jsshadow][data-p*=" app-id "]")]
+    (-> doc
+        ;;Other developer links exist on page, notably in the "Similar" panel
+        ;;Sometimes the link is just dev rather than developer
+        (.select (str app-panel-selector " a[href*=/dev]"))
+        first
+        .text)))
+    
 (def ^:private default-mappings
   {:title (fn [doc] (.text (.select doc "h1[itemprop=name]")))
    :description (fn [doc]
@@ -21,13 +34,12 @@
                       (.attr "content")
                       (clojure.string/split #"\r|\n")
                       first))
-   ;;Other developer links exist on page, notably in the "Similar" panel
-   :publisher (fn [doc] (.text (.first (.select doc "a[href*=/developer]"))))
-   :rating (fn [doc] (-> minecraft-document
+   :publisher get-publisher
+   :rating (fn [doc] (-> doc
                          (.select "[aria-label^=Rated]:not([role=img])")
                          .text
                          Double/parseDouble))
-   :price (fn [doc] (-> minecraft-document
+   :price (fn [doc] (-> doc
                         (.select "button[aria-label$=Buy]")
                         (.text)
                         (clojure.string/split #" ")
@@ -36,7 +48,15 @@
 (comment
   (def minecraft-document (parse-url "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"))
   
-  (extract minecraft-document default-mappings))
+  (extract minecraft-document default-mappings)
 
+  (let [test-urls ["https://play.google.com/store/apps/details?id=com.lego.city.my_city2&hl=en-US"
+                   "https://play.google.com/store/apps/details?id=com.roblox.client&hl=en-US"]]
+    (map #(-> %
+              parse-url
+              (extract default-mappings))
+         test-urls)))
+         
+  
   
   
