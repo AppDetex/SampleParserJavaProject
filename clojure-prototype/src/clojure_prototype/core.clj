@@ -1,6 +1,8 @@
 (ns clojure-prototype.core
+  (:require [cheshire.core :as cheshire])
   (:import [org.jsoup Jsoup]
            [java.net URL]))
+           
 
 (def ^:private timeout-millis 2000)
 
@@ -44,19 +46,47 @@
                         (.text)
                         (clojure.string/split #" ")
                         first))})
+
+(defn- ld-json-extract [document]
+  (-> document
+      (.select "script[type=application/ld+json]")
+      .html
+      cheshire/decode))
+
+(defn- ld-json-mapping [item]
+  {:title (get item "name")
+   :description (-> (get item "description")
+                    (clojure.string/split #"\r|\n")
+                    first)
+   :publisher (get-in item ["author" "name"])
+   :rating (get-in item ["aggregateRating" "ratingValue"])
+   :price (->> (get item "offers")
+               (map #(get % "price"))
+               first)})
+  
    
 (comment
   (def minecraft-document (parse-url "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"))
   
   (extract minecraft-document default-mappings)
 
-  (let [test-urls ["https://play.google.com/store/apps/details?id=com.lego.city.my_city2&hl=en-US"
-                   "https://play.google.com/store/apps/details?id=com.roblox.client&hl=en-US"]]
-    (map #(-> %
-              parse-url
-              (extract default-mappings))
-         test-urls)))
-         
+  (def test-urls ["https://play.google.com/store/apps/details?id=com.lego.city.my_city2&hl=en-US"
+                  "https://play.google.com/store/apps/details?id=com.roblox.client&hl=en-US"
+                  "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
+                  "https://play.google.com/store/apps/details?id=com.Slack"])
+  (clojure.pprint/pprint
+   (map #(-> %
+             parse-url
+             (extract default-mappings))
+        test-urls))
+
+  (clojure.pprint/pprint
+   (map #(-> %
+             parse-url
+             ld-json-extract
+             ld-json-mapping)
+        test-urls))
   
-  
+  (ld-json-extract minecraft-document))
+
   
