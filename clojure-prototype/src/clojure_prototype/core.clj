@@ -2,7 +2,6 @@
   (:require [cheshire.core :as cheshire])
   (:import [org.jsoup Jsoup]
            [java.net URL]))
-           
 
 (def ^:private timeout-millis 2000)
 
@@ -67,6 +66,32 @@
    
 (comment
   (def minecraft-document (parse-url "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"))
+
+  (def many-urls (let [anchors (-> (parse-url "https://play.google.com/store/apps")
+                                   (.select "a[href*=/apps/details]"))]
+                   (->> anchors
+                        (map #(.attr % "href"))
+                        (map #(if (clojure.string/starts-with? % "http") % (str "https://play.google.com" %)))
+                        (into #{}))))
+
+  (def many-selector-mapping (map #(-> %
+                                       parse-url
+                                       (extract default-mappings))
+                                  many-urls))
+
+  (count many-selector-mapping)
+
+  (def many-ld-mapping (map #(-> %
+                                 parse-url
+                                 ld-json-extract
+                                 ld-json-mapping)
+                            many-urls))
+
+  (count many-ld-mapping)
+
+  (clojure.data/diff
+   (sort-by :title many-selector-mapping)
+   (sort-by :title many-ld-mapping))
   
   (extract minecraft-document default-mappings)
 
@@ -88,5 +113,3 @@
         test-urls))
   
   (ld-json-extract minecraft-document))
-
-  
