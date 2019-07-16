@@ -3,8 +3,6 @@ package com.appdetex.sampleparserjavaproject
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.junit.Test
-import java.lang.Exception
-import java.lang.RuntimeException
 import kotlin.test.assertEquals
 
 class DocumentScraperTest {
@@ -46,14 +44,14 @@ class DocumentScraperTest {
         ), result)
     }
 
-    private fun parseError(doc:Document) : String {
-        throw RuntimeException();
+    private fun parseError(unused: Document): String {
+        throw RuntimeException()
     }
 
-    private fun getTitle(doc:Document) : String = doc.select("h1[itemprop=name]").text()
+    private fun getTitle(doc: Document): String = doc.select("h1[itemprop=name]").text()
 
-    private fun constantly(value:String?) : (Document) -> String? = {value}
+    private fun constantly(value: String?): (Document) -> String? = { value }
 
     // https://stackoverflow.com/a/42740416/2039914
-    private fun readFile(resourceUrl: String): String { return DocumentScraperTest::class.java.getResource(resourceUrl).readText() }
+    private fun readFile(resourceUrl: String): String = DocumentScraperTest::class.java.getResource(resourceUrl).readText()
 }
