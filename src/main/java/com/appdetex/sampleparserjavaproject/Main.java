@@ -2,10 +2,7 @@ package com.appdetex.sampleparserjavaproject;
 
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
-import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +12,6 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,13 +41,18 @@ public class Main {
             System.exit(1);
         }
 
-        String response = scraper.get(args[0]);
-        Map<String,String> items = scraper.parseStringToMap(response);
-        items = scraper.standardizeMapKeys(items);
-        System.out.println(new Gson().toJson(items));
+        try {
+            Document document = Jsoup.connect(args[1]).get();
+            HashMap<String,String> items = scraper.parseStringToHashMap(document.html());
+            items = scraper.standardizeMapKeys(items);
+            items = scraper.tryJsoup(document, items);
+            System.out.println(new Gson().toJson(items));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Map<String,String> standardizeMapKeys(Map<String, String> items) {
+    public HashMap<String,String> standardizeMapKeys(HashMap<String, String> items) {
         items.put("rating", items.remove("Rated"));
         items.put("title", items.remove("name"));
         items.put("publisher", items.remove("developer"));
@@ -59,8 +60,8 @@ public class Main {
         return items;
     }
 
-    public Map<String,String> parseStringToMap(String searchString) {
-        Map<String,String> map = new HashMap<String,String>();
+    public HashMap<String,String> parseStringToHashMap(String searchString) {
+        HashMap<String,String> map = new HashMap<String,String>();
         Matcher matches = Pattern.compile(REGEX)
                 .matcher(searchString);
         while (matches.find()) {
@@ -89,7 +90,7 @@ public class Main {
             }
             in.close();
 
-//            tryJsoup(urlString);
+            //tryJsoup(urlString);
         } catch (IOException e) {
             printErrorAndUsage(e);
         } finally {
@@ -97,27 +98,21 @@ public class Main {
         }
     }
 
-    public void tryJsoup(String url) throws IOException {
-        Document document = Jsoup.connect(url).get();
-        Element body  =document.body();
-        document.getElementsContainingText("Rated");
-        Elements elements = document.getElementsByAttribute("itemprop");
-        Elements eleemnts2  = document.getElementsByAttribute("developer");
+    public HashMap<String,String> tryJsoup(Document document, HashMap<String,String> items) throws IOException {
+        String title = document.getElementsByAttributeValueContaining("itemprop", "name").text();
         String rating = document.getElementsByAttributeValueContaining("aria-label", "Rated").text().trim();
-        String developer = document.getElementsContainingText( "SoftwareApplication").text().trim();
-        Map<String,String> jsoupMatches = new HashMap<String, String>();
-        document.getElementsContainingOwnText("@context");
-        for(int i = 0; i < elements.size(); i++ ) {
-            Element e = elements.get(i);
-            String itemPropName = e.attr("itemprop");
-            String itemPropValue = e.attr("content");
+        String publisher = document.getElementsContainingText( "SoftwareApplication").text().trim();
+        String price = document.getElementsByAttributeValueContaining("itemprop", "price").attr("content");
 
-            if(!itemPropName.equals("") && !itemPropValue.equals("")) {
-                //TODO: throw description and price into a map
-//                System.out.println(e.attr("itemprop"));
-//                System.out.println(e.attr("content"));
-            }
-        }
+        items.putIfAbsent("title", title);
+        items.putIfAbsent("rating", rating);
+        items.putIfAbsent("publisher", publisher);
+        items.putIfAbsent("price",price);
+//        document.getElementsByAttribute("aria-hidden");
+//        document.getElementsContainingOwnText("@context");
+//        Map<String,String> jsoupMatches = new HashMap<String, String>();
+        return items;
+
     }
 
     private void printErrorAndUsage(Exception e) {
