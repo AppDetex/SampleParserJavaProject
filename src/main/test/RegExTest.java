@@ -45,6 +45,11 @@ public class RegExTest {
 
     @Test
     public void googleIntegrationTest() {
-        main.get("https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US");
+        String response = main.get("https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US");
+        Map<String,String> testMap = main.parseStringToMap(response);
+        testMap = main.standardizeMapKeys(testMap);
+
+        //enforce that the regex and HTML still align.
+        assertEquals(5, testMap.size());
     }
 }

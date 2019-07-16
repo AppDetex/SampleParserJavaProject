@@ -64,14 +64,14 @@ public class Main {
         Matcher matches = Pattern.compile(REGEX)
                 .matcher(searchString);
         while (matches.find()) {
-            List<String> goodGroupigs = new ArrayList<String>();
+            List<String> goodGroupings = new ArrayList<String>();
             for (int i = 0; i < matches.groupCount(); i++) {
                 if(matches.group(i) != null) {
-                    goodGroupigs.add(matches.group(i));
+                    goodGroupings.add(matches.group(i));
                 }
             }
             //Group 1 is always the full matched string, the last two groups (roughly key/value) are always the last two in this array.
-            map.put(goodGroupigs.get(goodGroupigs.size()-2), goodGroupigs.get((goodGroupigs.size()-1)));
+            map.put(goodGroupings.get(goodGroupings.size()-2), goodGroupings.get((goodGroupings.size()-1)));
         }
         return map;
     }
@@ -89,7 +89,7 @@ public class Main {
             }
             in.close();
 
-            tryJsoup(urlString);
+//            tryJsoup(urlString);
         } catch (IOException e) {
             printErrorAndUsage(e);
         } finally {
@@ -104,7 +104,7 @@ public class Main {
         Elements elements = document.getElementsByAttribute("itemprop");
         Elements eleemnts2  = document.getElementsByAttribute("developer");
         String rating = document.getElementsByAttributeValueContaining("aria-label", "Rated").text().trim();
-        String developer = document.getElementsByAttributeValueContaining("", "(developer)\\?id=([a-zA-Z0-9]*)").text();
+        String developer = document.getElementsContainingText( "SoftwareApplication").text().trim();
         Map<String,String> jsoupMatches = new HashMap<String, String>();
         document.getElementsContainingOwnText("@context");
         for(int i = 0; i < elements.size(); i++ ) {
@@ -113,9 +113,9 @@ public class Main {
             String itemPropValue = e.attr("content");
 
             if(!itemPropName.equals("") && !itemPropValue.equals("")) {
-                System.out.println(e.attr("itemprop"));
-                System.out.println(e.attr("content"));
-
+                //TODO: throw description and price into a map
+//                System.out.println(e.attr("itemprop"));
+//                System.out.println(e.attr("content"));
             }
         }
     }
