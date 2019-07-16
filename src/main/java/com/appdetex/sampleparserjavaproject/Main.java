@@ -2,13 +2,10 @@ package com.appdetex.sampleparserjavaproject;
 
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
+import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +22,12 @@ import java.util.regex.Pattern;
 public class Main {
 
 
-
     //TODO: this can be cleaned up a bit. It might be better to set up the RegEx ORs to be 1-1 with data fields we're scraping.
     public static final String REGEX =
-                    "itemprop=\"([a-zA-Z0-9]*)\" content=\"([\\s\\n\\r\\t\\.\\*!@#$%^&*\\[\\]\\-,'\"_+=;&?=/:.a-zA-Z0-9]*)\"" + //match the easy stuff: Description, price
+            "itemprop=\"([a-zA-Z0-9]*)\" content=\"([\\s\\n\\r\\t\\.\\*!@#$%^&*\\[\\]\\-,'\"_+=;&?=/:.a-zA-Z0-9]*)\"" + //match the easy stuff: Description, price
                     "|aria-label=\"(Rated) [\\s\\n\\r\\t\\.\\*!@#$%^&*\\[\\]\\-,'_+=;&?=/:.a-zA-Z0-9]*\">([0-9.]*)" + //match rating
                     "|(developer)\\?id=([a-zA-Z0-9]*)" + //match publisher
-                    "|\"SoftwareApplication\",\"(name)\":\"(([\\s\\w0-9a-zA-Z]*))\",\"image\"" +
+                    "|\"SoftwareApplication\",\"(name)\":\"(([\\s\\w0-9a-zA-Z\\x00-\\x7F]*))\",\"image\"" +
                     ""; //end of regex
 
     public static void main(String[] args) {
@@ -40,16 +36,10 @@ public class Main {
             scraper.printErrorAndUsage(new Exception("missing parameter <URL> during execution"));
             System.exit(1);
         }
-
-        try {
-            Document document = Jsoup.connect(args[1]).get();
-            HashMap<String,String> items = scraper.parseStringToHashMap(document.html());
-            items = scraper.standardizeMapKeys(items);
-            items = scraper.tryJsoup(document, items);
-            System.out.println(new Gson().toJson(items));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String url = args[0];
+        HashMap<String,String> items = scraper.get(url);
+        items = scraper.standardizeMapKeys(items);
+        System.out.println(new Gson().toJson(items));
     }
 
     public HashMap<String,String> standardizeMapKeys(HashMap<String, String> items) {
@@ -60,12 +50,13 @@ public class Main {
         return items;
     }
 
+    @Deprecated
     public HashMap<String,String> parseStringToHashMap(String searchString) {
-        HashMap<String,String> map = new HashMap<String,String>();
+        HashMap<String,String> map = new HashMap<>();
         Matcher matches = Pattern.compile(REGEX)
                 .matcher(searchString);
         while (matches.find()) {
-            List<String> goodGroupings = new ArrayList<String>();
+            List<String> goodGroupings = new ArrayList<>();
             for (int i = 0; i < matches.groupCount(); i++) {
                 if(matches.group(i) != null) {
                     goodGroupings.add(matches.group(i));
@@ -77,24 +68,16 @@ public class Main {
         return map;
     }
 
-    public String get(String urlString) {
-        StringBuilder sb = new StringBuilder();
+    public HashMap<String,String> get(String urlString) {
+        Document document;
+        HashMap<String, String> items = new HashMap<>();
         try {
-            URL url = new URL(urlString);
-            URLConnection urlConn = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
-            String inputLine;
-
-            while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine);
-            }
-            in.close();
-
-            //tryJsoup(urlString);
+            document = Jsoup.connect(urlString).get();
+            items = tryJsoup(document, items);
         } catch (IOException e) {
             printErrorAndUsage(e);
         } finally {
-            return sb.toString();
+            return items;
         }
     }
 
@@ -103,14 +86,14 @@ public class Main {
         String rating = document.getElementsByAttributeValueContaining("aria-label", "Rated").text().trim();
         String publisher = document.getElementsContainingText( "SoftwareApplication").text().trim();
         String price = document.getElementsByAttributeValueContaining("itemprop", "price").attr("content");
+        String description = document.getElementsByAttributeValue("itemprop","description").text();
+        String shortDesc = description.trim().split("\\.[A-Z]*")[0];
 
-        items.putIfAbsent("title", title);
-        items.putIfAbsent("rating", rating);
-        items.putIfAbsent("publisher", publisher);
-        items.putIfAbsent("price",price);
-//        document.getElementsByAttribute("aria-hidden");
-//        document.getElementsContainingOwnText("@context");
-//        Map<String,String> jsoupMatches = new HashMap<String, String>();
+        if(StringUtil.isBlank(items.get("description"))) items.put("description", description);
+        if(StringUtil.isBlank(items.get("title"))) items.put("title", title);
+        if(StringUtil.isBlank(items.get("rating"))) items.put("rating", rating);
+        if(StringUtil.isBlank(items.get("publisher"))) items.put("publisher", publisher);
+        if(StringUtil.isBlank(items.get("price"))) items.put("price",price);
         return items;
 
     }
