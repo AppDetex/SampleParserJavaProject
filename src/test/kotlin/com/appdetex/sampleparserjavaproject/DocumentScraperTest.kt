@@ -8,7 +8,7 @@ import kotlin.test.assertEquals
 
 class DocumentScraperTest {
     @Test
-    fun testErrorHandling(): Unit {
+    fun testErrorHandling() {
         val exampleScraper = DocumentScraper(mapOf("title" to listOf(::parseError, ::getTitle),
                 "price" to listOf(constantly(null), constantly("9.99"))))
         val exampleHtml = """
@@ -27,7 +27,7 @@ class DocumentScraperTest {
     }
 
     @Test
-    fun testWithMinecraft(): Unit {
+    fun testWithMinecraft() {
         val exampleScraper = DocumentScraper(mapOf("title" to listOf(::getTitle),
                 "price" to listOf(LdJsonScraper { json ->
                     json.getAsJsonArray("offers")
@@ -47,7 +47,7 @@ class DocumentScraperTest {
 
 
     @Test
-    fun testPlayStoreScraperMinecraft() : Unit {
+    fun testPlayStoreScraperMinecraft() {
         val minecraftDescription = "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off dangerous mobs. Create, explore and survive alone or with friends on mobile devices or Windows 10."
         val extracted = playStoreExtract("/minecraft.html")
 
@@ -59,7 +59,7 @@ class DocumentScraperTest {
     }
 
     @Test
-    fun testPlayStoreScraperRoblox() : Unit {
+    fun testPlayStoreScraperRoblox() {
         val robloxDescription = "Roblox is the ultimate virtual universe that lets you play, create, and be anything you can imagine. Join millions of players and experience a diverse collection of games created by a global community!"
         val extracted = playStoreExtract("/roblox.html")
 
