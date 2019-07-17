@@ -1,5 +1,6 @@
 package com.appdetex.sampleparserjavaproject
 
+import com.appdetex.sampleparserjavaproject.playstore.LdJsonScraper
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.junit.Test
@@ -42,6 +43,39 @@ class DocumentScraperTest {
         assertEquals(mapOf("title" to "Minecraft",
                 "price" to "6.99"
         ), result)
+    }
+
+
+    @Test
+    fun testPlayStoreScraperMinecraft() : Unit {
+        val minecraftDescription = "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off dangerous mobs. Create, explore and survive alone or with friends on mobile devices or Windows 10."
+        val extracted = playStoreExtract("/minecraft.html")
+
+        assertEquals(mapOf("title" to "Minecraft",
+                "publisher" to "Mojang",
+                "price" to "6.99",
+                "description" to minecraftDescription,
+                "rating" to "4.5"), extracted)
+    }
+
+    @Test
+    fun testPlayStoreScraperRoblox() : Unit {
+        val robloxDescription = "Roblox is the ultimate virtual universe that lets you play, create, and be anything you can imagine. Join millions of players and experience a diverse collection of games created by a global community!"
+        val extracted = playStoreExtract("/roblox.html")
+
+        assertEquals(mapOf("title" to "Roblox",
+                "publisher" to "Roblox Corporation",
+                "price" to "0.0",
+                "description" to robloxDescription,
+                "rating" to "4.5"), extracted)
+    }
+
+    private fun playStoreExtract(resourceUrl: String): Map<String, String?> {
+        val html = readFile(resourceUrl)
+        val doc = Jsoup.parse(html)
+
+        val extracted = Scrapers.playStoreScraper.extract(doc)
+        return extracted
     }
 
     private fun parseError(unused: Document): String {

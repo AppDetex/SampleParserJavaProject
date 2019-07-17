@@ -1,4 +1,4 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.playstore
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
