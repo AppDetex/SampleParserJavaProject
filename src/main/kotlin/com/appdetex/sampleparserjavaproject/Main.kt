@@ -1,7 +1,6 @@
 package com.appdetex.sampleparserjavaproject
 
 import com.appdetex.sampleparserjavaproject.playstore.LdJsonScraper
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import org.jsoup.Jsoup
@@ -24,7 +23,7 @@ fun main(args: Array<String>) {
 }
 
 object Scrapers {
-    val playStoreScraper = DocumentScraper(ldJsonFieldExtractors.mapValues { (_, v) -> listOf(v) })
+    val playStoreScraper = DocumentScraper(ldJsonFieldExtractors)
 }
 
 val ldJsonFieldExtractors = mapOf("title" to LdJsonScraper { json -> json.get("name").asString },

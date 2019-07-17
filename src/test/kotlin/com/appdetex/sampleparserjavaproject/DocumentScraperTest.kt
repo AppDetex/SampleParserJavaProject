@@ -9,8 +9,8 @@ import kotlin.test.assertEquals
 class DocumentScraperTest {
     @Test
     fun testErrorHandling() {
-        val exampleScraper = DocumentScraper(mapOf("title" to listOf(::parseError, ::getTitle),
-                "price" to listOf(constantly(null), constantly("9.99"))))
+        val exampleScraper = DocumentScraper(mapOf("title" to ::parseError,
+                "price" to constantly(null)))
         val exampleHtml = """
             <html>
             <body>
@@ -22,19 +22,20 @@ class DocumentScraperTest {
 
         val result = exampleScraper.extract(doc)
 
-        assertEquals(mapOf("title" to "TheTitle!",
-                "price" to "9.99"), result)
+        //No exception raised for parse failure
+        assertEquals(mapOf("title" to null,
+                "price" to null), result)
     }
 
     @Test
     fun testWithMinecraft() {
-        val exampleScraper = DocumentScraper(mapOf("title" to listOf(::getTitle),
-                "price" to listOf(LdJsonScraper { json ->
+        val exampleScraper = DocumentScraper(mapOf("title" to ::getTitle,
+                "price" to LdJsonScraper { json ->
                     json.getAsJsonArray("offers")
                             .map { it.asJsonObject.getAsJsonPrimitive("price") }
                             .first()
                             .asString
-                })))
+                }))
 
         val html = readFile("/minecraft.html")
         val doc = Jsoup.parse(html)
