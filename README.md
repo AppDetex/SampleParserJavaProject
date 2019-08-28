@@ -26,7 +26,7 @@ Being new to web scraping, I think there is _likely_ a better way to go about ge
 - Because of the unpredictable nature of (at least my implementation of..) web scraping I was quite liberal with my logging. I surrounded each attempt to parse the document with a try catch to not only ensure that a relevant error would be thrown, but to allow the program to keep running should it hit a snag. If my scrape for 'rating' is broken, I would still like to see price, title, etc.
 - I pull the publisher from the "Offered By" section as that seemed like it would reliably be the publisher, not to  (potentially?) be mistaken with developer.
 
-I grabbed the first paragraph based on the occurrence of a newline, which isn't ideal in the case where an app description uses newlines (or even <br>) for misc styling. I didn't see any use of <p> or even <pre> tags, however.
+I grabbed the first paragraph based on the occurrence of a newline, which isn't ideal in the case where an app description uses newlines (or even \<br>) for misc styling. I didn't see any use of \<p> or even \<pre> tags, however.
 
 The tests I have are rudimentary. Ideally I would not be doing web calls in my tests. It would be worth looking into having a saved copy of the html and performing tests against that.
 
