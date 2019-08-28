@@ -26,6 +26,7 @@ Being new to web scraping, I think there is _lkely_ a better way to go about get
 - Because of the unpredictable nature of (at least my implementation of..) web scraping I was quite liberal with my logging. I surrounded each attempt to parse the document with a try catch to not only ensure that a relevant error would be thrown, but to allow the program to keep running should it hit a snag. If my scrape for 'rating' is broken, I would still like to see price, title, etc.
 - I pull the publisher from the "Offered By" section as that seemed like it would reliably be the publisher, not to  (potentially?) be mistaken with developer.
 
+The tests I have are rudimentary. Ideally I would not be doing web calls in my tests. It would be worth looking into having a saved copy of the html and performing tests against that.
 
 ### Moving forward
 
