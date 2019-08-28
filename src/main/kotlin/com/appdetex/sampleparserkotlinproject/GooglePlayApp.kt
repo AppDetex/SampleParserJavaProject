@@ -39,8 +39,10 @@ class GooglePlayApp : Logging, App() {
         }
 
         try {
-            val descriptionElement = doc.select("div[itemprop=description]").first()
-            description = descriptionElement.getElementsByTag("div").text()
+            val descriptionElement = doc.select("meta[itemprop=description]").first()
+            val content = descriptionElement.attr("content")
+            val firstParagraph = content.split("\n")[0]
+            description = firstParagraph
         } catch (e: Exception) {
             logger.error("Unable to parse app description, check if html accessor has changed")
         }
