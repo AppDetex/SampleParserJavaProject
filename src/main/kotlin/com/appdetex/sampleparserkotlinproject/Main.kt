@@ -1,4 +1,4 @@
-package com.appdetex.sampleparserkotlinproject;
+package com.appdetex.sampleparserkotlinproject
 
 /**
  * Main creates an App obj from user input Url
