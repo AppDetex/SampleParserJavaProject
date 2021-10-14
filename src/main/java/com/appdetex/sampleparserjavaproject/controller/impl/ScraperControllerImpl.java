@@ -28,19 +28,26 @@ public class ScraperControllerImpl implements ScraperController {
         String result = "";
         
         try {
+            // Let the user know we're getting the data from the URL (would normally be a DEBUG LOG)
+            System.out.print("Loading data from: " + googlePlayUrl + " ... ");
+            
             // Grab the HTML from the URL.
             Document doc = Jsoup.connect(googlePlayUrl).get();
+            
+            // Report done (would normally be a DEBUG LOG - with more context with multiple threads)
+            System.out.println("DONE.\n");
             
             // Create our output object that we'll transform to JSON.
             GooglePlayApp game = new GooglePlayApp();
             
-            // Set the title
+            // Set the title with the selector value from our configuration.
             game.setTitle(doc.select(config.getValue("title")).text());
             
             // Get the entire description in HTML form.
             String descriptionHtml = doc.select(config.getValue("description")).first().html();
             
-            // Look for the first break <BR>
+            // Look for the first break <BR> 
+            // *** Assumes the first break denotes above text is description ***
             int brIndex = descriptionHtml.indexOf("<br>");
             if (brIndex > 0) {
                 // Set the description. Only the first paragraph.
@@ -50,10 +57,10 @@ public class ScraperControllerImpl implements ScraperController {
                 game.setDescription(doc.select(config.getValue("description")).first().text());
             }
 
-            // Set the publisher
+            // Set the publisher (assumes next elements text is the data)
             game.setPublisher(doc.select(config.getValue("publisher")).next().text());    
             
-            // Set the price
+            // Set the price (assumes the elements attribute "content" is the data)
             game.setPrice(doc.select(config.getValue("price")).attr("content"));
 
             // Set the rating
