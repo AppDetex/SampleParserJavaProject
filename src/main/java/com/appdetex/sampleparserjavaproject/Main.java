@@ -43,9 +43,14 @@ Required data:
 @Slf4j
 public class Main {
 
-    public static void main( String[] args ) throws ScrapingException, FormattingException {
+    public static void main( String[] args )   {
 
-        //Build our data miner
+        if (null == args || args.length < 1) {
+            System.err.println("Provide at least one Google Play URL for parsing.");
+            System.exit(1);
+        }
+
+        //Build our data miner (stateless so we can multithread this if we want to)
         DataMiningCoordinator dmc = DataMiningCoordinator.builder()
             .scraper(new GenericScraper())
             .parser(Parsers.GooglePlayStoreParser())
@@ -53,9 +58,17 @@ public class Main {
             .formatter(new JsonFormatter())
             .build();
 
-        String url = " https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US";
-        final String output = dmc.execute(url, HttpMethod.GET);
+        for (final String url : args) {
+            try {
+                String json = dmc.execute(url, HttpMethod.GET);
+                System.out.println("Success processing url: " + url);
+                System.out.println("OutputData was: " + json);
 
-        log.info(output);
+            } catch (final Exception e) {
+                System.err.println("Error processing url: " + url);
+                System.err.println("Error was: " + e.getMessage());
+            }
+            System.out.println();
+        }
     }
 }

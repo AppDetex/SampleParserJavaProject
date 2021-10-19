@@ -8,6 +8,7 @@ import com.appdetex.sampleparserjavaproject.scraper.ScrapingException;
 import com.appdetex.sampleparserjavaproject.util.HttpMethod;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.nodes.Document;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -25,7 +26,13 @@ public class DataMiningCoordinator {
     private final DataFormatter formatter;
 
     public final String execute(final String url, final HttpMethod method) throws ScrapingException, FormattingException {
-        //This might be easier to read if it was flattened out.
-        return formatter.format(converter.apply(parser.parseRawDocument(scraper.scrapeURL(url, method))));
+
+        final Document doc = scraper.scrapeURL(url, method);
+
+        final Map<String, String> parsedData = parser.parseRawDocument(doc);
+
+        final Object o = converter.apply(parsedData);
+
+        return formatter.format(o);
     }
 }
