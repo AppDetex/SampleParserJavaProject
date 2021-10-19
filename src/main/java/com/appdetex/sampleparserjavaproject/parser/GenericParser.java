@@ -1,34 +1,20 @@
 package com.appdetex.sampleparserjavaproject.parser;
 
-import com.appdetex.sampleparserjavaproject.dto.GooglePlayStorePageSummaryDto;
-import com.appdetex.sampleparserjavaproject.parser.elementhandler.*;
+import com.appdetex.sampleparserjavaproject.parser.elementhandler.ElementHandler;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class GooglePlayStoreParser implements HtmlParser {
+@RequiredArgsConstructor
+public class GenericParser implements HtmlParser {
 
-    private final List<ElementHandler> handlers = new ArrayList<>();
-
-    public GooglePlayStoreParser() {
-        handlers.add(new AppTitleHandler());
-        handlers.add(new FirstParagraphHandler());
-        handlers.add(new PublisherHandler());
-        handlers.add(new PriceHandler());
-        handlers.add(new RatingHandler());
-    }
-
-    private final AppTitleHandler appTitleHandler = new AppTitleHandler();
-    private final FirstParagraphHandler firstParagraphHandler = new FirstParagraphHandler();
-    private final PublisherHandler publisherHandler = new PublisherHandler();
-    private final PriceHandler priceHandler = new PriceHandler();
-    private final RatingHandler ratingHandler = new RatingHandler();
+    private final List<ElementHandler> handlers;
 
     /**
      * Parse a document obtained from a Google PlayStore page and extract

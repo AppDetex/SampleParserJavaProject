@@ -4,10 +4,15 @@ import com.appdetex.sampleparserjavaproject.parser.elementhandler.*;
 
 import java.util.Arrays;
 
-public class GooglePlayStoreParser extends GenericParser {
+/**
+ * Class containing factory methods for pre-configured parsers
+ */
+public class Parsers {
 
-    public GooglePlayStoreParser() {
-        super(Arrays.asList(new AppTitleHandler(),
+    private Parsers(){}
+
+    public static final HtmlParser GooglePlayStoreParser() {
+        return new GenericParser(Arrays.asList(new AppTitleHandler(),
                 new FirstParagraphHandler(),
                 new PublisherHandler(),
                 new PriceHandler(),
