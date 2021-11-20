@@ -45,3 +45,6 @@ java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 
 - **Kotest** For semantic tests with a StringSpec similar to spock. This is the first time I've touched. [Documentation](https://kotest.io/docs/quickstart) and [Code](https://github.com/kotest/kotest).
+
+
+- **kotlinx-serialization-json** [Read about how Kotlin serializes JSON](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/serialization-guide.md) beautifully.
