@@ -1,8 +1,11 @@
 package com.appdetex
 
-import org.junit.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 
-class MainTest {
+class MainTest: StringSpec({
+    "Ensure that a simple test runs" {
+        "hello".length shouldBe 5
+    }
+})
 
-}

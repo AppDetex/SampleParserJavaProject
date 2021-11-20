@@ -20,7 +20,9 @@ To build the project run the command:
 mvn compile
 ```
 
-### Test
+### Testing with Kotest
+If you're using Intellij, install the [**Kotest plugin**](https://plugins.jetbrains.com/plugin/14080-kotest) for running the tests in the IDE.
+
 To test the project run the command:
 ```
 mvn test
@@ -40,3 +42,6 @@ java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ## Useful Tools
 - **Semantic Commit Messages** For git commits I like to use the [Karma convention for commit messages](http://karma-runner.github.io/1.0/dev/git-commit-msg.html).
+
+
+- **Kotest** For semantic tests with a StringSpec similar to spock. This is the first time I've touched. [Documentation](https://kotest.io/docs/quickstart) and [Code](https://github.com/kotest/kotest).

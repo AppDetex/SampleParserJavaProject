@@ -10,7 +10,6 @@ package com.appdetex.sampleparserjavaproject
 fun main(args: Array<String>) {
     println("Hello, Appdetex")
 
-// TODO("setup test noop")
 // TODO("write some tests")
 // TODO("create the GooglePlayApp model")
 // TODO("get commandline argument")
