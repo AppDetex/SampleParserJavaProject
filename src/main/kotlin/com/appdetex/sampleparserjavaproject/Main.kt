@@ -11,7 +11,6 @@ fun main(args: Array<String>) {
     println("Hello, Appdetex")
 
 // TODO("write some tests")
-// TODO("create the GooglePlayApp model")
 // TODO("get commandline argument")
 // TODO("create info log file")
 // TODO("check commandline arg url for propriety")
