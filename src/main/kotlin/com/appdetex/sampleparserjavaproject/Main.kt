@@ -26,6 +26,8 @@ fun main(args: Array<String>) {
 // TODO("create info log file entry for each successful retrieval")
 // TODO("create error log file for failed retrievals with error messages")
 // TODO("sanitize content for bad actors")
+// TODO("check for scoping gafs")
+// TODO("security pass analysis")
 // TODO("do a fluency pass. Does everything read correctly")
 // TODO("clean up documentation")
 // TODO("clean up PR")
