@@ -39,13 +39,13 @@ class JsonSerializerTest : StringSpec ({
 
 })
 
-val title = TITLE_FIELD
-val description = DESCRIPTION_FIELD
-val publisher = PUBLISHER_FIELD
-val price = "$0.00"
-val rating = 11.0f
+private const val title = TITLE_FIELD
+private const val description = DESCRIPTION_FIELD
+private const val publisher = PUBLISHER_FIELD
+private const val price = "$0.00"
+private const val rating = 11.0f
 
-val prettyFormat = """
+private val prettyFormat = """
 {
     "$TITLE_FIELD": "$title",
     "$DESCRIPTION_FIELD": "$description",
