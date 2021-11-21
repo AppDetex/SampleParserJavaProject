@@ -10,7 +10,7 @@ import io.kotest.matchers.types.shouldBeInstanceOf
  */
 class GooglePlayStoreUrlValidatorTest : StringSpec({
 
-    val googlePlayStoreUrlValidator = GooglePlayStoreUrlValidator(GooglePlayStore())
+    val googlePlayStoreUrlValidator: UrlValidator = GooglePlayStoreUrlValidator(GooglePlayStore())
 
     "google url happy path" {
         googlePlayStoreUrlValidator

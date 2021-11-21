@@ -11,7 +11,7 @@ import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 class AppStoreTest: StringSpec({
 
     "should be able to create an instance of GooglePlayStore" {
-        val instance = AppStore.instance("https://$GOOGLE_PLAY_STORE_DOMAIN/")
+        AppStore.instance("https://$GOOGLE_PLAY_STORE_DOMAIN/")
             .shouldBeInstanceOf<GooglePlayStore>()
     }
 
@@ -22,7 +22,7 @@ class AppStoreTest: StringSpec({
     }
 
     "should be able to create an instance of AppleAppStore" {
-        val instance = AppStore.instance("https://$APPLE_APP_STORE_DOMAIN")
+        AppStore.instance("https://$APPLE_APP_STORE_DOMAIN")
             .shouldBeInstanceOf<AppleAppStore>()
     }
 
@@ -33,7 +33,7 @@ class AppStoreTest: StringSpec({
     }
 
     "should be able to create an instance of UnknownAppStore" {
-        val instance = AppStore.instance("https://unknown.app.store/")
+        AppStore.instance("https://unknown.app.store/")
             .shouldBeInstanceOf<UnknownAppStore>()
     }
 

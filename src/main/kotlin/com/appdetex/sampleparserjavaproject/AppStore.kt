@@ -72,7 +72,7 @@ sealed class AppStore {
          *  If no recognized app store domain is passed, we will attempt to
          *  do our very best with the little data given by returning an UnknownAppStore.
          *
-         * @param url string passed into the application
+         * @param urlString passed into the application
          * @return a specific instance of AppStore or UnknownAppStore
          */
         fun instance(urlString: String): AppStore {
