@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.validation
 
-import com.appdetex.sampleparserjavaproject.AppStore
+import com.appdetex.sampleparserjavaproject.AppStore.AppleAppStore
 import java.net.URL
 
 /**
@@ -8,7 +8,7 @@ import java.net.URL
  *
  * https://apps.apple.com/us/app/multicraft-build-and-mine/id1174039276
  */
-internal class AppleAppStoreUrlValidator(private val appStore: AppStore) : AbstractStoreUrlValidator(appStore) {
+internal class AppleAppStoreUrlValidator(private val appStore: AppleAppStore) : AbstractStoreUrlValidator(appStore) {
 
     override fun badPath(url: URL): Boolean {
         val path = url.path
