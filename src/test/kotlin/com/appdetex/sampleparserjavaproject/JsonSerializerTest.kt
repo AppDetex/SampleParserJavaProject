@@ -1,12 +1,10 @@
-package com.appdetex
+package com.appdetex.sampleparserjavaproject
 
-import com.appdetex.sampleparserjavaproject.GooglePlayApp
 import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.DESCRIPTION_FIELD
 import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.PRICE_FIELD
 import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.PUBLISHER_FIELD
 import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.RATING_FIELD
 import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.TITLE_FIELD
-import com.appdetex.sampleparserjavaproject.JsonSerializer
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
