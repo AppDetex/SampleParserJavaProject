@@ -5,13 +5,12 @@ import com.appdetex.sampleparserjavaproject.model.AppStore.GooglePlayStore
 import org.jsoup.Jsoup
 import java.net.URL
 
-
 internal class GooglePlayAppParser(val appStore: GooglePlayStore) : Parser {
 
     override fun parse(url: URL): ParseResult {
-        val doc = Jsoup.connect(url.toString()).get()
-        // TODO("parsing comes next")
-        val title = "not set yet"
+        println(url.toString())
+        val doc = Jsoup.connect("https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US").get()
+        val title = appStore.queries.title(doc)
         val description = "not set yet"
         val publisher = "not set yet"
         val price = "not set yet"

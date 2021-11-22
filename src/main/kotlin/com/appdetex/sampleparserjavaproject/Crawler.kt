@@ -3,6 +3,7 @@ package com.appdetex.sampleparserjavaproject
 import com.appdetex.sampleparserjavaproject.io.IOService
 import com.appdetex.sampleparserjavaproject.io.IOService.Companion.QUIT_COMMAND
 import com.appdetex.sampleparserjavaproject.model.AppStore
+import com.appdetex.sampleparserjavaproject.parsing.ParseResult
 import com.appdetex.sampleparserjavaproject.parsing.ParserFactory
 import com.appdetex.sampleparserjavaproject.validation.UrlValidatorFactory
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult
@@ -38,9 +39,12 @@ internal class Crawler(val io: IOService) {
     }
 
     private fun parse(appStore: AppStore, url: URL) {
-        ParserFactory
+        when (val result = ParserFactory
             .instance(appStore)
-            .parse(url)
+            .parse(url)) {
+            is ParseResult.Success -> io.display(result.app)
+            is ParseResult.Failed -> io.reportError(result, appStore)
+        }
     }
 
     private fun validate(appStore: AppStore, appUrl: URL) : ValidationResult =

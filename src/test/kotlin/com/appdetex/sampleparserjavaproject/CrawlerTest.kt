@@ -2,7 +2,9 @@ package com.appdetex.sampleparserjavaproject
 
 import com.appdetex.sampleparserjavaproject.io.IOService
 import com.appdetex.sampleparserjavaproject.io.IOService.Companion.QUIT_COMMAND
+import com.appdetex.sampleparserjavaproject.model.App
 import com.appdetex.sampleparserjavaproject.model.AppStore
+import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 import io.kotest.core.spec.style.StringSpec
 import io.mockk.*
 import java.net.URL
@@ -35,7 +37,14 @@ class CrawlerTest : StringSpec({
     }
 
     "good url happy path from commandline arg" {
-        val goodUrl = "https://apps.apple.com/us/app/multicraft-build-and-mine/id1174039276"
+        val goodUrl = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
+        val expectedApp = App(
+            "Minecraft",
+            "not set yet",
+            "not set yet",
+            "not set yet",
+            0.0f
+        )
         val argsWithGoodUrl = arrayOf(goodUrl)
         every { io.prompt(argsWithGoodUrl) } returns goodUrl
         every { io.prompt() } returns QUIT_COMMAND
@@ -45,6 +54,7 @@ class CrawlerTest : StringSpec({
         verifySequence{
             io.printBanner()
             io.prompt(argsWithGoodUrl)
+            io.display(expectedApp)
             io.prompt()
             io.printGoodbye()
         }
@@ -61,7 +71,7 @@ class CrawlerTest : StringSpec({
         verifySequence{
             io.printBanner()
             io.prompt(argsWithMalformedUrl)
-            io.reportError(any())
+            io.reportError(any<ValidationResult.Failed>())
             io.prompt()
             io.printGoodbye()
         }

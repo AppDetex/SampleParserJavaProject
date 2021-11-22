@@ -1,6 +1,9 @@
 package com.appdetex.sampleparserjavaproject.io
 
+import com.appdetex.sampleparserjavaproject.model.App
 import com.appdetex.sampleparserjavaproject.model.AppStore
+import com.appdetex.sampleparserjavaproject.parsing.JsonSerializer
+import com.appdetex.sampleparserjavaproject.parsing.ParseResult
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 
 internal class IOService(private val io: IOConfig) {
@@ -26,6 +29,11 @@ internal class IOService(private val io: IOConfig) {
         }
     }
 
+    fun display(app: App) {
+       val json = JsonSerializer.asJson(app)
+       io.println(json)
+    }
+
     fun prompt(initialArgs: Array<String>? = null): String {
         newLine()
         if (initialArgs != null) {
@@ -43,10 +51,13 @@ internal class IOService(private val io: IOConfig) {
         return io.readLine() ?: QUIT_COMMAND
     }
 
+   fun reportError(result: ParseResult.Failed, appStore: AppStore? = null) : ParseResult {
+       reportError(result.message, appStore)
+       return result
+   }
+
    fun reportError(result: ValidationResult.Failed, appStore: AppStore? = null) : ValidationResult {
-        val appStoreClass = appStore?.javaClass?.simpleName
-        val domain = appStore?.domain
-        io.println(result.message.withErrorFormat(appStoreClass, domain))
+        reportError(result.message, appStore)
         return result
     }
 
@@ -60,5 +71,11 @@ internal class IOService(private val io: IOConfig) {
 
     fun newLine() {
         io.newLine()
+    }
+
+    private fun reportError(message: String, appStore: AppStore? = null) {
+        val appStoreClass = appStore?.javaClass?.simpleName
+        val domain = appStore?.domain
+        io.println(message.withErrorFormat(appStoreClass, domain))
     }
 }
