@@ -16,7 +16,7 @@ sealed class AppStore {
     data class GooglePlayStore(
         override val domain: String = GOOGLE_PLAY_STORE_DOMAIN,
         override val path: String = "/store/apps/details",
-        override val getId: (URL) -> String? = defaultGetId
+        override val getId: (URL) -> String? = ::defaultGetId
     ) : AppStore()
 
     /**
@@ -49,7 +49,7 @@ sealed class AppStore {
     data class UnknownAppStore(
         override val domain: String,
         override val path: String,
-        override val getId: (URL) -> String? = defaultGetId
+        override val getId: (URL) -> String? = ::defaultGetId
         ) : AppStore()
 
 
@@ -72,12 +72,10 @@ sealed class AppStore {
          *  If no recognized app store domain is passed, we will attempt to
          *  do our very best with the little data given by returning an UnknownAppStore.
          *
-         * @param urlString passed into the application
+         * @param url passed into the application
          * @return a specific instance of AppStore or UnknownAppStore
          */
-        fun instance(urlString: String): AppStore {
-            val url = URL(urlString)
-
+        fun instance(url: URL): AppStore {
             return when (val host = url.host) {
                 GOOGLE_PLAY_STORE_DOMAIN -> appStores.getOrPut(host) { GooglePlayStore() }
                 APPLE_APP_STORE_DOMAIN -> appStores.getOrPut(host) { AppleAppStore() }
@@ -97,8 +95,9 @@ sealed class AppStore {
          * </p>
          * @return a default reference to a lambda for getting the id from the url querystring
          */
-        val defaultGetId: (URL) -> String? = { url ->
-            url.query
+        fun defaultGetId(url: URL) : String? {
+            val query = url.query ?: return null
+            return query
                 .split('&')
                 .filter { param -> param.contains("id=") }
                 .map { param -> param.split('=').getOrNull(1) }

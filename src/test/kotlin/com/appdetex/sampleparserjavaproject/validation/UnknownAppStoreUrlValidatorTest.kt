@@ -1,9 +1,10 @@
 package com.appdetex.sampleparserjavaproject.validation
 
 import com.appdetex.sampleparserjavaproject.AppStore.UnknownAppStore
-import com.appdetex.sampleparserjavaproject.validation.UrlValidationResult.*
+import com.appdetex.sampleparserjavaproject.validation.ValidationResult.*
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.types.shouldBeInstanceOf
+import java.net.URL
 
 /**
  * https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US
@@ -16,39 +17,34 @@ class UnknownAppStoreUrlValidatorTest : StringSpec({
     val unknownAppStore = UnknownAppStore(unknownDomain, unknownPath)
     val unknownAppStoreUrlValidator: UrlValidator = UnknownAppStoreUrlValidator(unknownAppStore)
 
+    val goodUrl = URL("https://$unknownDomain$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
     "unkown url happy path" {
-        unknownAppStoreUrlValidator
-            .validate("https://$unknownDomain$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
+        unknownAppStoreUrlValidator.validate(goodUrl)
             .shouldBeInstanceOf<Success>()
     }
 
-    "malformed unkown storeurl returns MalformedUrl result" {
-        unknownAppStoreUrlValidator
-            .validate("httpss://$unknownDomain$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
-            .shouldBeInstanceOf<MalformedUrl>()
-    }
-
+    val unsecuredUrl = URL("http://$unknownDomain$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
     "unkown storeurl must be https or it will return UnsecuredUrl result" {
-        unknownAppStoreUrlValidator
-            .validate("http://$unknownDomain$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
-            .shouldBeInstanceOf<UnsecuredUrl>()
+        unknownAppStoreUrlValidator.validate(unsecuredUrl)
+            .shouldBeInstanceOf<Failed.UnsecuredUrl>()
     }
 
-    "invalid unkown storedomain returns WrongDomain result" {
+    val urlWithWrongDomain = URL("https://plays.google.com/$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
+    "invalid unkown store domain returns WrongDomain result" {
         unknownAppStoreUrlValidator
-            .validate("https://plays.google.com/$unknownPath?id=com.mojang.minecraftpe&hl=en-US")
-            .shouldBeInstanceOf<WrongDomain>()
+            .validate(urlWithWrongDomain)
+            .shouldBeInstanceOf<Failed.WrongDomain>()
     }
 
-    "invalid unkown store path returns WrongPath result" {
-        unknownAppStoreUrlValidator
-            .validate("https://$unknownDomain/store/app/details?id=com.mojang.minecraftpe&hl=en-US")
-            .shouldBeInstanceOf<WrongPath>()
+    val urlWithInvalidPath = URL("https://$unknownDomain/store/app/details?id=com.mojang.minecraftpe&hl=en-US")
+    "invalid unknown store path returns WrongPath result" {
+        unknownAppStoreUrlValidator.validate(urlWithInvalidPath)
+            .shouldBeInstanceOf<Failed.WrongPath>()
     }
 
-    "unkown storequerystring without app id returns MissingId result" {
-        unknownAppStoreUrlValidator
-            .validate("https://$unknownDomain$unknownPath?idd=test&a&&=a&a=")
-            .shouldBeInstanceOf<MissingId>()
+    val urlwithMissSpelledId = URL("https://$unknownDomain$unknownPath?idd=test&a&&=a&a=")
+    "unkown store querystring without app id returns MissingId result" {
+        unknownAppStoreUrlValidator.validate(urlwithMissSpelledId)
+            .shouldBeInstanceOf<Failed.MissingId>()
     }
 })

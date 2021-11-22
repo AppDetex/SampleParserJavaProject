@@ -1,8 +1,7 @@
 package com.appdetex.sampleparserjavaproject.validation
 
 import com.appdetex.sampleparserjavaproject.AppStore
-import com.appdetex.sampleparserjavaproject.validation.UrlValidationResult.*
-import java.net.MalformedURLException
+import com.appdetex.sampleparserjavaproject.validation.ValidationResult.*
 import java.net.URL
 
 
@@ -10,20 +9,14 @@ internal abstract class AbstractStoreUrlValidator(
     private val appStore: AppStore,
 ) : UrlValidator {
 
-    override fun validate(urlString: String) : UrlValidationResult = try {
-        val url = URL(urlString)
-
+    override fun validate(appUrl: URL) : ValidationResult =
         when {
-            badDomain(url) -> WrongDomain("Invalid domain. The domain should be ${appStore.domain}, but we received ${url.host}.")
-            urlNotSecured(url) -> UnsecuredUrl("Url must use https for your protection.")
-            idNotSupplied(url) -> MissingId(getIdNotSuppliedMessage(url))
-            badPath(url) -> WrongPath(getWrongPathMessage(url))
-            else -> Success(url)
+            badDomain(appUrl) -> Failed.WrongDomain("Invalid domain. The domain should be ${appStore.domain}, but we received ${appUrl.host}.")
+            urlNotSecured(appUrl) -> Failed.UnsecuredUrl("Url must use https for your protection.")
+            idNotSupplied(appUrl) -> Failed.MissingId(getIdNotSuppliedMessage(appUrl))
+            badPath(appUrl) -> Failed.WrongPath(getWrongPathMessage(appUrl))
+            else -> Success(appUrl)
         }
-
-    } catch (e: MalformedURLException) {
-        MalformedUrl(e.message ?: "no message supplied", e)
-    }
 
     private fun badDomain(url: URL) : Boolean = url.host != appStore.domain
 

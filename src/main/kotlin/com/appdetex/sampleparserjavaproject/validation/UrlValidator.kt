@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject.validation
 
+import java.net.URL
+
 interface UrlValidator {
-    fun validate(urlString: String) : UrlValidationResult
+    fun validate(appUrl: URL) : ValidationResult
 }
