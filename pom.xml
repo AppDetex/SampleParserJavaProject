@@ -13,9 +13,10 @@
         <kotlin.version>1.6.0</kotlin.version>
         <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
         <kotlin.code.style>official</kotlin.code.style>
-        <junit.version>4.13.2</junit.version>
         <jsoup.version>1.14.3</jsoup.version>
-        <kotest-runner.version>5.0.0.RC</kotest-runner.version>
+        <junit.version>4.13.2</junit.version>
+        <kotest.version>5.0.0.RC</kotest.version>
+        <mockk.version>1.12.1</mockk.version>
         <main.class>com.appdetex.sampleparserjavaproject.MainKt</main.class>
     </properties>
 
@@ -51,19 +52,26 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-runner-junit5-jvm</artifactId>
-            <version>${kotest-runner.version}</version>
+            <version>${kotest.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
-            <version>${kotest-runner.version}</version>
+            <version>${kotest.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-property-jvm</artifactId>
-            <version>${kotest-runner.version}</version>
+            <version>${kotest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- mockk is a mocking library for kotlin @ https://mockk.io/ -->
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk</artifactId>
+            <version>${mockk.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
