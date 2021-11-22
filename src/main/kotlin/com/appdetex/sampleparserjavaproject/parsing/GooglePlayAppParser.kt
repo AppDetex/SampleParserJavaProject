@@ -1,7 +1,7 @@
 package com.appdetex.sampleparserjavaproject.parsing
 
 import com.appdetex.sampleparserjavaproject.model.App
-import com.appdetex.sampleparserjavaproject.AppStore.GooglePlayStore
+import com.appdetex.sampleparserjavaproject.model.AppStore.GooglePlayStore
 import org.jsoup.Jsoup
 import java.net.URL
 

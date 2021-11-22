@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.validation
 
-import com.appdetex.sampleparserjavaproject.AppStore.UnknownAppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore.UnknownAppStore
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.*
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.types.shouldBeInstanceOf

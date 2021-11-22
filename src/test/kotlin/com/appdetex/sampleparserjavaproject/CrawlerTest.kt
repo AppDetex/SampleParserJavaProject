@@ -2,8 +2,10 @@ package com.appdetex.sampleparserjavaproject
 
 import com.appdetex.sampleparserjavaproject.io.IOService
 import com.appdetex.sampleparserjavaproject.io.IOService.Companion.QUIT_COMMAND
+import com.appdetex.sampleparserjavaproject.model.AppStore
 import io.kotest.core.spec.style.StringSpec
 import io.mockk.*
+import java.net.URL
 
 class CrawlerTest : StringSpec({
 
@@ -21,7 +23,7 @@ class CrawlerTest : StringSpec({
         crawler.start(arrayOf(QUIT_COMMAND))
 
         // ensure that private crawl() isn't called
-        verify(exactly = 0, timeout = 50) { crawler["crawl"](allAny<String>()) }
+        verify(exactly = 0, timeout = 50) { crawler["validate"](any<AppStore>(), any<URL>()) }
         verify(exactly = 1, timeout = 50) { io.printGoodbye() }
     }
 

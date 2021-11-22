@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.parsing
 
-import com.appdetex.sampleparserjavaproject.AppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore
 
 internal object ParserFactory {
     fun instance(appStore: AppStore): Parser =

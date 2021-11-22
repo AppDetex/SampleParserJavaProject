@@ -1,11 +1,10 @@
 package com.appdetex.sampleparserjavaproject.validation
 
-import com.appdetex.sampleparserjavaproject.AppStore.AppleAppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore.AppleAppStore
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.Success
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.Failed
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.types.shouldBeInstanceOf
-import kotlinx.coroutines.withContext
 import java.net.URL
 
 /**

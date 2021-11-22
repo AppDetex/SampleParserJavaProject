@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.validation
 
-import com.appdetex.sampleparserjavaproject.AppStore.UnknownAppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore.UnknownAppStore
 
 /**
  * Example Unknown App Store url:<br/>

@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.io
 
-import com.appdetex.sampleparserjavaproject.AppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 
 internal class IOService(private val io: IOConfig) {

@@ -1,6 +1,6 @@
 package com.appdetex.sampleparserjavaproject.validation
 
-import com.appdetex.sampleparserjavaproject.AppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.*
 import java.net.URL
 

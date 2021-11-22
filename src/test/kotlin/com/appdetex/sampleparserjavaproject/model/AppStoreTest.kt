@@ -1,8 +1,9 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.model
 
-import com.appdetex.sampleparserjavaproject.AppStore.*
-import com.appdetex.sampleparserjavaproject.AppStore.Companion.APPLE_APP_STORE_DOMAIN
-import com.appdetex.sampleparserjavaproject.AppStore.Companion.GOOGLE_PLAY_STORE_DOMAIN
+import com.appdetex.sampleparserjavaproject.model.AppStore
+import com.appdetex.sampleparserjavaproject.model.AppStore.*
+import com.appdetex.sampleparserjavaproject.model.AppStore.Companion.APPLE_APP_STORE_DOMAIN
+import com.appdetex.sampleparserjavaproject.model.AppStore.Companion.GOOGLE_PLAY_STORE_DOMAIN
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.matchers.types.shouldBeSameInstanceAs

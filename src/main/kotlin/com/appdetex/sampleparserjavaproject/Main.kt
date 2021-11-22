@@ -16,8 +16,6 @@ fun main(args: Array<String>) {
     Crawler(io).start(args)
 
 // TODO("write some tests")
-// TODO("create info log file")
-// TODO("create debug log file with raw request data")
 // TODO("create GooglePlayAppParser")
 //         TODO("get app title")
 //         TODO("get first paragraph of the description")
@@ -25,6 +23,8 @@ fun main(args: Array<String>) {
 //         TODO("get price")
 //            TODO("regular price")
 //            TODO("free price")
+// TODO("create info log file")
+// TODO("create debug log file with raw request data")
 // TODO("create info log file entry for each successful retrieval")
 // TODO("create error log file for failed retrievals with error messages")
 // TODO("sanitize content for bad actors")

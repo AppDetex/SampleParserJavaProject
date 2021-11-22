@@ -1,4 +1,4 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.model
 
 import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
