@@ -1,5 +1,8 @@
 package com.appdetex.sampleparserjavaproject
 
+import com.appdetex.sampleparserjavaproject.io.IOConfig
+import com.appdetex.sampleparserjavaproject.io.IOService
+
 /**
  * Main Kotlin Class
  *
@@ -8,13 +11,12 @@ package com.appdetex.sampleparserjavaproject
  * stdout in a JSON format.
  */
 fun main(args: Array<String>) {
-    println("Hello, Appdetex")
+
+    val io = IOService(IOConfig())
+    Crawler(io).start(args)
 
 // TODO("write some tests")
-// TODO("get commandline argument")
 // TODO("create info log file")
-// TODO("check commandline arg url for propriety")
-// TODO("add commandline help")
 // TODO("create debug log file with raw request data")
 // TODO("create GooglePlayAppParser")
 //         TODO("get app title")
@@ -31,6 +33,12 @@ fun main(args: Array<String>) {
 // TODO("do a fluency pass. Does everything read correctly")
 // TODO("clean up documentation")
 // TODO("clean up PR")
+/**
+ * TODO("check AppDetex grading")
+ * It just occured to me that may be AppDetex has a program that
+ * runs a bunch of tests against this app from the command line.
+ * If that is the case we would want to respond differently for
+ * command line input.
+ */
 // TODO("submit the PR and go celebrate with friends")
-
 }

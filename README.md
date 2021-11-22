@@ -36,8 +36,18 @@ mvn package
 
 ### Run
 Run the application with the following command.
+
+This app runs in an input loop. The first url can be supplied
+from the command line, but after that the app does not
+immediately exit. It will continue to request crawl targets
+until you're tired of it.
+
 ```
 java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+or
+```
+java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
 ```
 
 ## Useful Tools
