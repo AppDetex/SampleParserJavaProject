@@ -1,9 +1,9 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.model
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class GooglePlayAppTest : StringSpec({
+class AppTest : StringSpec({
     val title = "Minecraft"
     val description = """
         Explore infinite worlds and build everything from the simplest 
@@ -17,7 +17,7 @@ class GooglePlayAppTest : StringSpec({
     val price = "$7.49"
     val rating = 4.6f
 
-    val minecraft = GooglePlayApp(title, description, publisher, price, rating)
+    val minecraft = App(title, description, publisher, price, rating)
 
     "title field is settable" {
         minecraft.title shouldBe title

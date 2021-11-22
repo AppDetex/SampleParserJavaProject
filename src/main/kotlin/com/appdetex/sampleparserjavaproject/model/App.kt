@@ -1,9 +1,9 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GooglePlayApp(
+data class App(
     val title: String,
     val description: String,
     val publisher: String,

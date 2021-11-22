@@ -12,8 +12,7 @@ internal class IOService(private val io: IOConfig) {
   Appdetex Coding Test Crawler ~ @jsnbuchanan   
  ########################################################
   https://github.com/jsnbuchanan/SampleParserJavaProject
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        """
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
         const val ENTER_URL_PROMPT = "Please enter an app url to crawl ['quit' when done]: "
 
         const val ERROR_TOO_MANY_URLS = "Too many urls. Please only provide one url at a time."
@@ -44,10 +43,11 @@ internal class IOService(private val io: IOConfig) {
         return io.readLine() ?: QUIT_COMMAND
     }
 
-   fun reportError(result: ValidationResult.Failed, appStore: AppStore? = null) {
+   fun reportError(result: ValidationResult.Failed, appStore: AppStore? = null) : ValidationResult {
         val appStoreClass = appStore?.javaClass?.simpleName
         val domain = appStore?.domain
         io.println(result.message.withErrorFormat(appStoreClass, domain))
+        return result
     }
 
     fun printBanner() {

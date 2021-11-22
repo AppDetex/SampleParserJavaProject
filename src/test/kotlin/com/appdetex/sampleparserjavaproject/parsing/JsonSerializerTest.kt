@@ -1,16 +1,18 @@
-package com.appdetex.sampleparserjavaproject
+package com.appdetex.sampleparserjavaproject.parsing
 
-import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.DESCRIPTION_FIELD
-import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.PRICE_FIELD
-import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.PUBLISHER_FIELD
-import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.RATING_FIELD
-import com.appdetex.sampleparserjavaproject.GooglePlayApp.Companion.TITLE_FIELD
+import com.appdetex.sampleparserjavaproject.model.App
+import com.appdetex.sampleparserjavaproject.model.App.Companion.DESCRIPTION_FIELD
+import com.appdetex.sampleparserjavaproject.model.App.Companion.PRICE_FIELD
+import com.appdetex.sampleparserjavaproject.model.App.Companion.PUBLISHER_FIELD
+import com.appdetex.sampleparserjavaproject.model.App.Companion.RATING_FIELD
+import com.appdetex.sampleparserjavaproject.model.App.Companion.TITLE_FIELD
+import com.appdetex.sampleparserjavaproject.parsing.JsonSerializer
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 
 class JsonSerializerTest : StringSpec ({
-    val app = GooglePlayApp(title, description, publisher, price, rating)
+    val app = App(title, description, publisher, price, rating)
     val json = JsonSerializer.asJson(app)
 
     "$RATING_FIELD included in JSON" {
