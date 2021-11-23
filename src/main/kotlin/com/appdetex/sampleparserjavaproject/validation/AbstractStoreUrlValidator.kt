@@ -4,11 +4,24 @@ import com.appdetex.sampleparserjavaproject.model.AppStore
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.*
 import java.net.URL
 
-
+/**
+ * This class handles most of the work in validating urls and messaging
+ * the user with failure details.
+ *
+ * @property appStore
+ * @constructor Create empty Abstract store url validator
+ */
 internal abstract class AbstractStoreUrlValidator(
     private val appStore: AppStore,
 ) : UrlValidator {
 
+    /**
+     * Is it valid or not.
+     *
+     * @param appUrl, not the store url
+     * @return Success or Failed
+     * @see UrlValidator
+     */
     override fun validate(appUrl: URL) : ValidationResult =
         when {
             badDomain(appUrl) -> Failed.WrongDomain("Invalid domain. The domain should be ${appStore.domain}, but we received ${appUrl.host}.")

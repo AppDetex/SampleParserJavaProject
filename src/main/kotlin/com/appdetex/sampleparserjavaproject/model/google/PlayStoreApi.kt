@@ -34,6 +34,10 @@ import kotlinx.serialization.Serializable
  *         "availability": "https://schema.org/InStock"
  *     }]
  *  }
+ *
+ *  It's interesting to note that the "offers" which is pricing information, is an array.
+ *  I haven't found any apps that have more than one entry, but given the data type I bet
+ *  there are some. I've been explicitly taking the first value in the array.
  */
 internal object PlayStoreApi {
 

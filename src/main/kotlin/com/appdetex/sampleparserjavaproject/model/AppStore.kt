@@ -3,6 +3,15 @@ package com.appdetex.sampleparserjavaproject.model
 import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
 
+/**
+ * I'm still not sure about the way I created this
+ * set of classes. The Stores aren't necessarily
+ * state, but I was really attempting to understand
+ * sealed class when I built this.
+ *
+ * A future improvement would probably be to break
+ * these out, giving each app store their own package.
+ */
 sealed class AppStore {
     abstract val domain: String
     abstract val path: String
@@ -36,7 +45,6 @@ sealed class AppStore {
         }
     ) : AppStore()
 
-
     /**
      * An unknown app store defaults to the Google Play Store implementation
      * except the domain and path are passed in based on the url that was passed.
@@ -51,7 +59,6 @@ sealed class AppStore {
         override val path: String,
         override val getId: (URL) -> String? = ::defaultGetId
         ) : AppStore()
-
 
     companion object {
         const val GOOGLE_PLAY_STORE_DOMAIN = "play.google.com"

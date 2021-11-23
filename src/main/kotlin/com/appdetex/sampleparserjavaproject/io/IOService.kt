@@ -6,6 +6,14 @@ import com.appdetex.sampleparserjavaproject.parsing.JsonSerializer
 import com.appdetex.sampleparserjavaproject.parsing.ParseResult
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 
+/**
+ * The IOService basically handles all communication with the
+ * end-user.
+ *
+ * @property io configuration file allowing us to inject different implementations
+ *
+ * @see IOConfig
+ */
 internal class IOService(private val io: IOConfig) {
 
     companion object {

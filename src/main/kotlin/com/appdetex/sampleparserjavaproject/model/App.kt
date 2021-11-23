@@ -2,6 +2,19 @@ package com.appdetex.sampleparserjavaproject.model
 
 import kotlinx.serialization.Serializable
 
+/**
+ * The App is why we're all here. This is
+ * the primary pojo, or poko?, for collecting
+ * the application data in a cohesive format.
+ *
+ * @property title of the app
+ * @property description is the first paragraph of the apps description on the store
+ * @property publisher would be the creators and/or distributors of the app
+ * @property price what does it sell for? Note that the Play Store has an array of
+ *                 prices for each app. Most of those arrays only have one entry, but
+ *                 it's still interesting.
+ * @property rating displays the average number of stars users have awarded the app with
+ */
 @Serializable
 data class App(
     val title: String,
