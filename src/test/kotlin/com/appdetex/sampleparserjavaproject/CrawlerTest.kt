@@ -40,10 +40,10 @@ class CrawlerTest : StringSpec({
         val goodUrl = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
         val expectedApp = App(
             "Minecraft",
-            "not set yet",
-            "not set yet",
-            "not set yet",
-            0.0f
+            "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off dangerous mobs. Create, explore and survive alone or with friends on mobile devices or Windows 10.",
+            "Mojang",
+            "$7.49",
+            4.6f
         )
         val argsWithGoodUrl = arrayOf(goodUrl)
         every { io.prompt(argsWithGoodUrl) } returns goodUrl

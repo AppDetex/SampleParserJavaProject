@@ -1,7 +1,7 @@
 package com.appdetex.sampleparserjavaproject.parsing
 
-import java.net.URL
+import org.jsoup.nodes.Document
 
 interface Parser {
-    fun parse(url: URL) : ParseResult
+    fun parse(doc: Document) : ParseResult
 }

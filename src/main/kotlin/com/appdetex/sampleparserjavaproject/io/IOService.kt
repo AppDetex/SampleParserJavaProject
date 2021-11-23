@@ -9,7 +9,6 @@ import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 internal class IOService(private val io: IOConfig) {
 
     companion object {
-        const val QUIT_COMMAND = "quit"
         const val BANNER = """
  ########################################################
   Appdetex Coding Test Crawler ~ @jsnbuchanan   
@@ -17,9 +16,8 @@ internal class IOService(private val io: IOConfig) {
   https://github.com/jsnbuchanan/SampleParserJavaProject
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
         const val ENTER_URL_PROMPT = "Please enter an app url to crawl ['quit' when done]: "
-
         const val ERROR_TOO_MANY_URLS = "Too many urls. Please only provide one url at a time."
-
+        const val QUIT_COMMAND = "quit"
         const val GOODBYE = "Thank you for using my program. Have a great day!"
 
         fun String.withErrorFormat(appStore: String? = null, domain: String? = null) : String {
@@ -29,10 +27,10 @@ internal class IOService(private val io: IOConfig) {
         }
     }
 
-    fun display(app: App) {
-       val json = JsonSerializer.asJson(app)
-       io.println(json)
-    }
+    fun printBanner() = io.println(BANNER)
+    fun newLine() = io.newLine()
+    fun display(app: App) = io.println(JsonSerializer.asJson(app))
+    fun printGoodbye() = io.println(GOODBYE)
 
     fun prompt(initialArgs: Array<String>? = null): String {
         newLine()
@@ -59,18 +57,6 @@ internal class IOService(private val io: IOConfig) {
    fun reportError(result: ValidationResult.Failed, appStore: AppStore? = null) : ValidationResult {
         reportError(result.message, appStore)
         return result
-    }
-
-    fun printBanner() {
-        io.println(BANNER)
-    }
-
-    fun printGoodbye() {
-        io.println(GOODBYE)
-    }
-
-    fun newLine() {
-        io.newLine()
     }
 
     private fun reportError(message: String, appStore: AppStore? = null) {

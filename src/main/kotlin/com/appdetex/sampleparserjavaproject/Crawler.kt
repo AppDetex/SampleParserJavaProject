@@ -8,10 +8,15 @@ import com.appdetex.sampleparserjavaproject.parsing.ParserFactory
 import com.appdetex.sampleparserjavaproject.validation.UrlValidatorFactory
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult
 import com.appdetex.sampleparserjavaproject.validation.ValidationResult.Failed.MalformedUrl
+import org.jsoup.Jsoup
 import java.net.MalformedURLException
 import java.net.URL
 
 internal class Crawler(val io: IOService) {
+
+    companion object {
+        const val USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    }
 
     fun start(args: Array<String>) {
         io.printBanner()
@@ -21,7 +26,6 @@ internal class Crawler(val io: IOService) {
             handleInput(userInput)
             userInput = io.prompt()
         }
-
         io.printGoodbye()
     }
 
@@ -39,9 +43,12 @@ internal class Crawler(val io: IOService) {
     }
 
     private fun parse(appStore: AppStore, url: URL) {
+        val doc = Jsoup.connect(url.toString())
+            .userAgent(USER_AGENT)
+            .get()
         when (val result = ParserFactory
             .instance(appStore)
-            .parse(url)) {
+            .parse(doc)) {
             is ParseResult.Success -> io.display(result.app)
             is ParseResult.Failed -> io.reportError(result, appStore)
         }

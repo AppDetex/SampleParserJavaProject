@@ -8,7 +8,7 @@ class ParseFactoryTest : StringSpec({
 
     "instance(GooglePlayStore) returns a GooglePlayAppParser" {
         ParserFactory.instance(GooglePlayStore())
-            .shouldBeInstanceOf<GooglePlayAppParser>()
+            .shouldBeInstanceOf<PlayStoreAppParser>()
     }
 
     "instance(AppleAppStore) returns a AppleAppParser" {

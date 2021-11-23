@@ -4,6 +4,13 @@ import com.appdetex.sampleparserjavaproject.model.App
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
 
+/**
+ * Simple singleton for pretty formatting
+ * Kotlin serialization library is pretty sweet. I need to spend more time
+ * reading the docs later.
+ *
+ * https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md
+ */
 object JsonSerializer {
     // https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md
     private val prettyFormat = Json { prettyPrint = true }

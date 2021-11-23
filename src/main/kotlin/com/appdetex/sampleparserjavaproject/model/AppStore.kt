@@ -1,6 +1,5 @@
 package com.appdetex.sampleparserjavaproject.model
 
-import org.jsoup.nodes.Document
 import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
 
@@ -18,13 +17,6 @@ sealed class AppStore {
         override val domain: String = GOOGLE_PLAY_STORE_DOMAIN,
         override val path: String = "/store/apps/details",
         override val getId: (URL) -> String? = ::defaultGetId,
-        val queries: AppQueries = object : AppQueries {
-            override val title = { d: Document -> d.select("body * h1 > span").text() }
-            override val description = { d: Document -> "" }
-            override val publisher = { d: Document -> "" }
-            override val price = { d: Document -> "" }
-            override val rating = { d: Document -> 0.0f }
-        }
     ) : AppStore()
 
     /**

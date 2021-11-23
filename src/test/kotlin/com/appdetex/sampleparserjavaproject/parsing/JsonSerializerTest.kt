@@ -6,7 +6,6 @@ import com.appdetex.sampleparserjavaproject.model.App.Companion.PRICE_FIELD
 import com.appdetex.sampleparserjavaproject.model.App.Companion.PUBLISHER_FIELD
 import com.appdetex.sampleparserjavaproject.model.App.Companion.RATING_FIELD
 import com.appdetex.sampleparserjavaproject.model.App.Companion.TITLE_FIELD
-import com.appdetex.sampleparserjavaproject.parsing.JsonSerializer
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
