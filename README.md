@@ -35,20 +35,32 @@ mvn package
 ```
 
 ### Run
-Run the application with the following command.
+Run the application with one of the three following command. The app runs on an 
+input loop. The first url can be supplied from the command line, but after that 
+the app does not immediately exit. It will continue to request crawl targets
+until you're tired of it. Type 'quit' to exit.
 
-This app runs in an input loop. The first url can be supplied
-from the command line, but after that the app does not
-immediately exit. It will continue to request crawl targets
-until you're tired of it.
-
+#### 1. Run it with no command line args
+It will operate as a text prompt application. I know you're homesick for zork, 
+midnight commander and pine.
 ```
-java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar bin/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 or
+#### 2. Run it by passing a url in the commandline as specked
+This is the implementation that was asked for. I could have stopped there, 
+but was having fun learning Kotlin.
 ```
-java -jar target/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
+java -jar bin/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en-US"
 ```
+or
+#### 3. Pass a file of URL's to the app for maximum test speed
+If you're an OG gangster, pass in a file with a url on each line. I've 
+added a test file with ten urls to test the Play Store.
+```
+<src/test/resources/list-of-app-urls.txt xargs -n1 java -jar bin/sampleparserjavaproject-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
 
 ## Useful Tools
 - **Semantic Commit Messages** For git commits I like to use the [Karma convention for commit messages](http://karma-runner.github.io/1.0/dev/git-commit-msg.html).
