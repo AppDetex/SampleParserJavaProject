@@ -14,6 +14,7 @@ import com.appdetex.sampleparserjavaproject.io.IOService
  * appropriate yet. Maybe it'll get there. This has been fun!
  */
 fun main(args: Array<String>) {
+
     val io = IOService(IOConfig())
     Crawler(io).start(args)
 }

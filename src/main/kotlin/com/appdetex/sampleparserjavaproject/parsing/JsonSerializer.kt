@@ -14,8 +14,13 @@ import kotlinx.serialization.encodeToString
 object JsonSerializer {
     // https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md
     private val prettyFormat = Json { prettyPrint = true }
+    private val deserialize = Json { ignoreUnknownKeys = true }
 
     fun asJson(app: App): String {
         return prettyFormat.encodeToString(app)
+    }
+
+    fun fromString(string: String) : String {
+        return deserialize.encodeToString(string)
     }
 }

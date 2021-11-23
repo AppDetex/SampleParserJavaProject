@@ -1,7 +1,7 @@
 package com.appdetex.sampleparserjavaproject.parsing
 
 import com.appdetex.sampleparserjavaproject.model.App
-import com.appdetex.sampleparserjavaproject.model.google.PlayStoreApi
+import com.appdetex.sampleparserjavaproject.model.JsonLinkedDataApi
 import kotlinx.serialization.decodeFromString as fromJsonStringTo
 import kotlinx.serialization.json.Json
 import org.jsoup.nodes.Document
@@ -28,45 +28,43 @@ import kotlin.math.round
  *
  * As you can see title and description are okay, but publisher's a real problem.
  *
- * Luckily I was able to find the whole app embedded in json
- * form in a <script> tag. Then it was just a matter of mapping
- * fields and deserializing the json.
+ * Luckily I was able to find the JSON-LD format. JSON-LD is a standard for
+ * expressing linked data in JSON. Learn more here:
  *
- * @constructor Create empty Play store app parser
+ *  https://json-ld.org/learn.html.
+ *
+ * Then it was just a matter of mapping fields and deserializing the json.
  */
-internal class PlayStoreAppParser : Parser {
-
-    private val deserialize = Json { ignoreUnknownKeys = true }
+internal open class JsonLDStoreAppParser : Parser {
+    protected val jsonLdCssSelector = "html * script[type=application/ld+json]"
+    protected val deserialize = Json { ignoreUnknownKeys = true }
 
     override fun parse(doc: Document): ParseResult {
-
-        val playStoreApp =
-            deserialize.fromJsonStringTo<PlayStoreApi.PlayStoreApp>(
-                doc.select("body * script[type=application/ld+json]").html())
+        val jsonLDApp =
+            deserialize.fromJsonStringTo<JsonLinkedDataApi.JsonLDApp>(
+                doc.select(jsonLdCssSelector).html())
 
         return ParseResult.Success(
-            App(title = playStoreApp.name,
-                description = format(playStoreApp.description),
-                publisher = playStoreApp.author.name,
-                price = format(playStoreApp.offers[0]),
-                rating = format(playStoreApp.aggregateRating.ratingValue)))
+            App(title = jsonLDApp.name,
+                description = format(jsonLDApp.description),
+                publisher = jsonLDApp.author.name,
+                price = format(jsonLDApp.offers),
+                rating = format(jsonLDApp.aggregateRating.ratingValue)))
     }
 
-    private fun format(description: String) : String =
+    protected fun format(description: String) : String =
         description.substringBefore("\n")
 
-    private fun format(rating: Float) : Float =
+    protected fun format(rating: Float) : Float =
         round(rating * 10) / 10
 
-    private fun format(price: PlayStoreApi.Price) : String =
-        getCurrencyFormatter(price.priceCurrency).format(price.price)
-
-
-    private fun getCurrencyFormatter(currencyCode: String) : NumberFormat {
+    protected fun getCurrencyFormatter(currencyCode: String) : NumberFormat {
         val formatter = NumberFormat.getCurrencyInstance()
         formatter.maximumFractionDigits = 2
         formatter.currency = Currency.getInstance(currencyCode)
         return formatter
     }
 
+    private fun format(price: JsonLinkedDataApi.Price) : String =
+        getCurrencyFormatter("USD").format(price.price)
 }

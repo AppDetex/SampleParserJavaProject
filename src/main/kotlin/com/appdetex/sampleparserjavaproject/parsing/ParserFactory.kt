@@ -8,8 +8,8 @@ import com.appdetex.sampleparserjavaproject.model.AppStore
 internal object ParserFactory {
     fun instance(appStore: AppStore): Parser =
         when (appStore) {
-            is AppStore.GooglePlayStore -> PlayStoreAppParser()
-            is AppStore.AppleAppStore -> AppleAppParser()
-            is AppStore.UnknownAppStore -> UnknownAppParser()
+            is AppStore.GooglePlayStore -> JsonLDStoreAppParserWithPriceList()
+            is AppStore.AppleAppStore -> JsonLDStoreAppParser()
+            is AppStore.UnknownAppStore -> JsonLDStoreAppParser()
         }
 }

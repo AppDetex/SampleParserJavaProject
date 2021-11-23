@@ -8,16 +8,16 @@ class ParseFactoryTest : StringSpec({
 
     "instance(GooglePlayStore) returns a GooglePlayAppParser" {
         ParserFactory.instance(GooglePlayStore())
-            .shouldBeInstanceOf<PlayStoreAppParser>()
+            .shouldBeInstanceOf<JsonLDStoreAppParserWithPriceList>()
     }
 
     "instance(AppleAppStore) returns a AppleAppParser" {
         ParserFactory.instance(AppleAppStore())
-            .shouldBeInstanceOf<AppleAppParser>()
+            .shouldBeInstanceOf<JsonLDStoreAppParser>()
     }
 
     "instance(UnknownAppStore) returns a UnknownAppStoreUrlValidator" {
         ParserFactory.instance(UnknownAppStore("some.store.com", "/some/path/to/app"))
-            .shouldBeInstanceOf<UnknownAppParser>()
+            .shouldBeInstanceOf<JsonLDStoreAppParser>()
     }
 })

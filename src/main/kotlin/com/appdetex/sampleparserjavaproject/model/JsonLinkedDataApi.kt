@@ -1,11 +1,15 @@
-package com.appdetex.sampleparserjavaproject.model.google
+package com.appdetex.sampleparserjavaproject.model
 
 import kotlinx.serialization.Serializable
 
 /**
- * The Google Play Store api is a collecting spot for api mapping classes.
+ * The JSON-LD api is a collecting spot for api mapping classes.
  * It is possible to retrieve the JSON object for a complete app from the
- * Google Play Store page. It looks like this:
+ * Google Play Store, Apple App Store and possibly others. It looks like this:
+ *
+ *  JSON-LD is a standard for expressing linked data in JSON. Learn more here:
+ *
+ *  https://json-ld.org/learn.html
  *
  *  {
  *     "@context": "https://schema.org",
@@ -34,12 +38,8 @@ import kotlinx.serialization.Serializable
  *         "availability": "https://schema.org/InStock"
  *     }]
  *  }
- *
- *  It's interesting to note that the "offers" which is pricing information, is an array.
- *  I haven't found any apps that have more than one entry, but given the data type I bet
- *  there are some. I've been explicitly taking the first value in the array.
  */
-internal object PlayStoreApi {
+internal object JsonLinkedDataApi {
 
     @Serializable
     internal class Publisher (val name: String )
@@ -48,14 +48,26 @@ internal object PlayStoreApi {
     internal class Rating(val ratingValue: Float)
 
     @Serializable
-    internal class Price(val price: Float, val priceCurrency: String)
+    internal class Price(val price: Float)
 
     @Serializable
-    internal class PlayStoreApp (
+    internal class PriceAndCurrency(val price: Float, val priceCurrency: String)
+
+    @Serializable
+    internal class JsonLDAppWithListPrice (
         val name: String,
         val description: String,
         val author: Publisher,
         val aggregateRating: Rating,
-        val offers: List<Price>
+        val offers: List<PriceAndCurrency>
+    )
+
+    @Serializable
+    internal class JsonLDApp (
+        val name: String,
+        val description: String,
+        val author: Publisher,
+        val aggregateRating: Rating,
+        val offers: Price
     )
 }

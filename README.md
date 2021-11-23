@@ -1,6 +1,13 @@
 # Sample Parser Kotlin Project
 @author [*Jason Buchanan*](https://github.com/jsnbuchanan)
 
+Use **Google Play Store** or **Apple App Store** urls. Both work for the most part.
+
+A couple things to note on the Apple Store:
+- Apple App Store app links seem to work for the most part
+- Most of the Apple apps are reporting $0.00 in their Json-LD record, but not on the App store.
+- There are some specific Apple apps that don't supply any offer price field and those links will throw an error.
+
 ## Developers 
 
 ### Prerequisites
