@@ -3,8 +3,7 @@ package com.appdetex.sampleparserjavaproject.io
 import com.appdetex.sampleparserjavaproject.model.App
 import com.appdetex.sampleparserjavaproject.model.AppStore
 import com.appdetex.sampleparserjavaproject.parsing.JsonSerializer
-import com.appdetex.sampleparserjavaproject.parsing.ParseResult
-import com.appdetex.sampleparserjavaproject.validation.ValidationResult
+import com.appdetex.sampleparserjavaproject.validation.ValidationResult.Failed.TooManyArgsSupplied
 
 /**
  * The IOService basically handles all communication with the
@@ -14,7 +13,7 @@ import com.appdetex.sampleparserjavaproject.validation.ValidationResult
  *
  * @see IOConfig
  */
-internal class IOService(private val io: IOConfig) {
+class IOService(private val io: IOConfig) {
 
     companion object {
         const val BANNER = """
@@ -36,19 +35,18 @@ internal class IOService(private val io: IOConfig) {
     }
 
     fun printBanner() = io.println(BANNER)
-    fun newLine() = io.newLine()
     fun display(app: App) = io.println(JsonSerializer.asJson(app))
     fun printGoodbye() = io.println(GOODBYE)
 
     fun prompt(initialArgs: Array<String>? = null): String {
-        newLine()
+        io.newLine()
         if (initialArgs != null) {
             val argCount = initialArgs.size
 
             if(argCount == 1) return initialArgs[0]
 
             if (argCount > 1) {
-                reportError(ValidationResult.Failed.TooManyArgsSupplied(ERROR_TOO_MANY_URLS))
+                reportError(TooManyArgsSupplied(ERROR_TOO_MANY_URLS).message)
             }
         }
 
@@ -57,17 +55,11 @@ internal class IOService(private val io: IOConfig) {
         return io.readLine() ?: QUIT_COMMAND
     }
 
-   fun reportError(result: ParseResult.Failed, appStore: AppStore? = null) : ParseResult {
-       reportError(result.message, appStore)
-       return result
-   }
-
-   fun reportError(result: ValidationResult.Failed, appStore: AppStore? = null) : ValidationResult {
-        reportError(result.message, appStore)
-        return result
+    fun debug(message: String) {
+        if (io.debug) io.println(message)
     }
 
-    private fun reportError(message: String, appStore: AppStore? = null) {
+    fun reportError(message: String, appStore: AppStore? = null) {
         val appStoreClass = appStore?.javaClass?.simpleName
         val domain = appStore?.domain
         io.println(message.withErrorFormat(appStoreClass, domain))

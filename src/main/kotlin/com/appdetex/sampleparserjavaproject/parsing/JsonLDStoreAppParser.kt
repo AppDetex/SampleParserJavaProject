@@ -2,6 +2,7 @@ package com.appdetex.sampleparserjavaproject.parsing
 
 import com.appdetex.sampleparserjavaproject.model.App
 import com.appdetex.sampleparserjavaproject.model.JsonLinkedDataApi
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString as fromJsonStringTo
 import kotlinx.serialization.json.Json
 import org.jsoup.nodes.Document
@@ -39,18 +40,25 @@ internal open class JsonLDStoreAppParser : Parser {
     protected val jsonLdCssSelector = "html * script[type=application/ld+json]"
     protected val deserialize = Json { ignoreUnknownKeys = true }
 
-    override fun parse(doc: Document): ParseResult {
-        val jsonLDApp =
-            deserialize.fromJsonStringTo<JsonLinkedDataApi.JsonLDApp>(
-                doc.select(jsonLdCssSelector).html())
+    override fun parse(doc: Document): ParseResult =
+        try {
+            val jsonLDApp =
+                deserialize.fromJsonStringTo<JsonLinkedDataApi.JsonLDApp>(
+                    doc.select(jsonLdCssSelector).html()
+                )
 
-        return ParseResult.Success(
-            App(title = jsonLDApp.name,
-                description = format(jsonLDApp.description),
-                publisher = jsonLDApp.author.name,
-                price = format(jsonLDApp.offers),
-                rating = format(jsonLDApp.aggregateRating.ratingValue)))
-    }
+            ParseResult.Success(
+                App(
+                    title = jsonLDApp.name,
+                    description = format(jsonLDApp.description),
+                    publisher = jsonLDApp.author.name,
+                    price = format(jsonLDApp.offers),
+                    rating = format(jsonLDApp.aggregateRating.ratingValue)
+                )
+            )
+        } catch (e: SerializationException) {
+            getFailedMessage(e)
+        }
 
     protected fun format(description: String) : String =
         description.substringBefore("\n")
@@ -64,6 +72,9 @@ internal open class JsonLDStoreAppParser : Parser {
         formatter.currency = Currency.getInstance(currencyCode)
         return formatter
     }
+
+    protected fun getFailedMessage(e: SerializationException) : ParseResult.Failed =
+        ParseResult.Failed("Failed to parse with message [${e::class.simpleName}] ${e.message}")
 
     private fun format(price: JsonLinkedDataApi.Price) : String =
         getCurrencyFormatter("USD").format(price.price)
