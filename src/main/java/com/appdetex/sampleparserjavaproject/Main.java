@@ -1,5 +1,7 @@
 package com.appdetex.sampleparserjavaproject;
 
+import com.appdetex.sampleparserjavaproject.service.App;
+
 /**
  * Main Java Class
  *
@@ -10,7 +12,7 @@ package com.appdetex.sampleparserjavaproject;
 public class Main {
 
     public static void main( String[] args ) {
-        // Put code here
+        App.Companion.run();
     }
 
 }
