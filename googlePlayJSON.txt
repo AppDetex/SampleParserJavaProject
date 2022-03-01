@@ -1,0 +1,33 @@
+{
+  "publisher": {
+    "textOffset": 0,
+    "selects": [
+      "#fcxH9b > div.WpDbMd > c-wiz > div > div.ZfcPIb > div > div > main > c-wiz:nth-child(1) > c-wiz:nth-child(1) > div > div.D0ZKYe > div > div.sIskre > div.jdjqLd > div.ZVWMWc > div:nth-child(1) > span:nth-child(1) > a"
+    ]
+  },
+  "desc": {
+    "textOffset": 0,
+    "selects": [
+      "#fcxH9b > div.WpDbMd > c-wiz > div > div.ZfcPIb > div > div > main > c-wiz:nth-child(1) > c-wiz:nth-child(4) > div > div.W4P4ne > div.PHBdkd > div.DWPxHb > span > div"
+    ]
+  },
+  "rating": {
+    "textOffset": 0,
+    "selects": [
+      "div.K9wGie > div.BHMmbe"
+    ]
+  },
+  "price": {
+    "textOffset": 1,
+    "selects": [
+      "#fcxH9b > div.WpDbMd > c-wiz > div > div.ZfcPIb > div > div > main > c-wiz:nth-child(1) > c-wiz:nth-child(1) > div > div.D0ZKYe > div > div.wE7q7b > div > div.hfWwZc > div > c-wiz > c-wiz > div > span > button"
+    ]
+  },
+  "title": {
+    "textOffset": 0,
+    "selects": [
+        "#fcxH9b > div.WpDbMd > c-wiz > div > div.ZfcPIb > div > div > main > c-wiz:nth-child(1) > c-wiz:nth-child(1) > div > div.D0ZKYe > div > div.sIskre > c-wiz:nth-child(2) > h1 > span",
+        "#fcxH9b > div.WpDbMd > c-wiz > div > div.ZfcPIb > div > div > main > c-wiz:nth-child(1) > c-wiz:nth-child(1) > div > div.D0ZKYe > div > div.sIskre > c-wiz:nth-child(1) > h1 > span"
+    ]
+  }
+}

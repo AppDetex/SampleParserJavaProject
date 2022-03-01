@@ -1,0 +1,26 @@
+{
+  "item_title": {
+    "textOffset": 0,
+    "selects": [
+      "#productTitle"
+    ]
+  },
+  "review_texts": {
+    "textOffset": 0,
+    "selects": [
+      "#acrCustomerReviewText"
+    ]
+  },
+  "rating": {
+    "textOffset": 0,
+    "selects": [
+      "#averageCustomerReviews"
+    ]
+  },
+  "price": {
+    "textOffset": 0,
+    "selects": [
+      "#corePrice_desktop > div > table > tbody > tr:nth-child(2) > td.a-span12 > span.a-price.a-text-price.a-size-medium.apexPriceToPay > span:nth-child(2)"
+    ]
+  }
+}
