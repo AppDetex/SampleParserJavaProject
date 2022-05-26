@@ -38,7 +38,7 @@ public class Scraper implements Callable<String> {
                 publisherElement.text(),
                 ratingElement.textNodes().get(0).text(),
                 priceElement.textNodes().get(0).text(),
-                descriptionElement.text());
+                descriptionElement.childNode(0).toString());
 
         ObjectMapper mapper = new ObjectMapper();
 
