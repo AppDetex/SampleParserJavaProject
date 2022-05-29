@@ -8,15 +8,26 @@ fun main(args: Array<String>) {
     if (!validateArgs(args)) {
         println("Invalid arguments")
         println(helpText)
-        return;
+        return
+    }
+
+    val playStoreConnector = PlayStoreConnector()
+    try {
+        val details = playStoreConnector.fetchDetails(args[0])
+
+        println(details)
+    }
+    catch (e: Exception) {
+        println("Error")
+        println(e)
     }
 
     println("Finished")
 }
 
 fun validateArgs(args: Array<String>) : Boolean {
-    var validatedLength = args.size == 1
-    var validatedFormat = args.size > 0 && args[0].contains("https://play.google.com/store/apps/details")
+    val validatedLength = args.size == 1
+    val validatedFormat = args.size > 0 && args[0].contains("https://play.google.com/store/apps/details")
 
     return validatedLength && validatedFormat
 }
